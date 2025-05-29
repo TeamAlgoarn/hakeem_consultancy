@@ -239,6 +239,60 @@ const countries = [
     description: ['Country Info', 'Visa Tips'],
     link: '/countries/ireland',
   },
+  {
+    name: 'france',
+    image: '/flag-france.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/france',
+  },
+  {
+    name: 'Austria',
+    image: '/flag-austria.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/Austria',
+  },
+  {
+    name: 'Luxembourg',
+    image: '/flag-luxembourg.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/luxembourg',
+  },
+  {
+    name: 'Netherlands',
+    image: '/flag-netherlands.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/Netherlands',
+  },
+  {
+    name: 'Switzerland',
+    image: '/flag-switzerland.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/switzerland',
+  },
+  {
+    name: 'Denmark',
+    image: '/flag-denmark.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/Denmark',
+  },
+  {
+    name: 'Italy',
+    image: '/flag-italy.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/Italy',
+  },
+  {
+    name: 'Belgium',
+    image: '/flag-belgium.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/Belgium',
+  },
+  {
+    name: 'Norway',
+    image: '/flag-norway.jpg',
+    description: ['Country Info', 'Visa Tips'],
+    link: '/countries/norway',
+  },
 ];
 
 export default function CountriesPage() {
@@ -350,10 +404,15 @@ export default function CountriesPage() {
           </div>
           <div>
             <h3 className="font-semibold mb-2">Address</h3>
-            <p>Flat no.301, Okaz Building</p>
+            {/* <p>Flat no.301, Okaz Building</p>
             <p>Opp. Pillar Number 5</p>
             <p>Above Habitat Furniture</p>
             <p>Royal Colony, Mehdipatnam</p>
+            <p>Hyderabad, Telangana 500028</p> */}
+            <p>Flat no.301, Okaz Complex</p>
+            <p>Opp. Pillar Number 5</p>
+            {/* <p>Above Habitat Furniture</p>
+            <p>Royal Colony, Mehdipatnam</p> */}
             <p>Hyderabad, Telangana 500028</p>
           </div>
           <div>

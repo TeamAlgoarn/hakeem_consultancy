@@ -46,6 +46,69 @@ const countries = [
     height: '320px',
     link: 'countries/ireland',
   },
+  {
+    name: 'France',
+    image: '/france.jpg',
+    flag: '/france-round.png',
+    height: '320px',
+    link: 'countries/france',
+  },
+  {
+    name: 'Austria',
+    image: '/aus-stu.jpg',
+    flag: '/aus-ro.png',
+    height: '320px',
+    link: 'countries/Austria',
+  },
+  {
+    name: 'Luxembourg',
+    image: '/lux-image.jpg',
+    flag: '/lux-ro.png',
+    height: '320px',
+    link: 'countries/luxembourg',
+  },
+  {
+    name: 'Netherlands',
+    image: '/neaa-image.jpg',
+    flag: '/nea-ro.png',
+    height: '320px',
+    link: 'countries/Netherlands',
+  },
+  {
+    name: 'Switzerland',
+    image: '/swiz-image.jpg',
+    flag: '/swi-ro.png',
+    height: '320px',
+    link: 'countries/switzerland',
+  },
+  {
+    name: 'Denmark',
+    image: '/den-stu.jpg',
+    flag: '/den-ro.png',
+    height: '320px',
+    link: 'countries/Denmark',
+  },
+  {
+    name: 'Italy',
+    image: '/ita-stu.jpg',
+    flag: '/ita-ro.png',
+    height: '320px',
+    link: 'countries/italy',
+  },
+  {
+    name: 'Belgium',
+    image: '/bela-stu.jpg',
+    flag: '/bel-ro.png',
+    height: '320px',
+    link: 'countries/Belgium',
+  },
+  {
+    name: 'Norway',
+    image: '/nor-stu.jpg',
+    flag: '/nor-ro.png',
+    height: '320px',
+    link: 'countries/norway',
+  },
 ];
 
 export default function CountrySlider() {
@@ -104,11 +167,11 @@ export default function CountrySlider() {
         {/* Address */}
         <div className="space-y-1 text-sm">
           <h3 className="font-semibold mb-2 text-base">Address</h3>
-          <p>Flat no.301, Okaz Building</p>
-          <p>Opp. Pillar Number 5</p>
-          <p>Above Habitat Furniture</p>
-          <p>Royal Colony, Mehdipatnam</p>
-          <p>Hyderabad, Telangana 500028</p>
+         <p>Flat no.301, Okaz Complex</p>
+            <p>Opp. Pillar Number 5</p>
+            {/* <p>Above Habitat Furniture</p>
+            <p>Royal Colony, Mehdipatnam</p> */}
+            <p>Hyderabad, Telangana 500028</p>
         </div>
 
         {/* Navigation */}

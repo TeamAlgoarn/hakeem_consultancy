@@ -514,10 +514,9 @@ export default function CounsellingForm() {
           </div>
           <div>
             <h3 className="font-semibold mb-2">Address</h3>
-            <p>Flat no.301, Okaz Building</p>
+            <p>Flat no.301, Okaz Complex</p>
             <p>Opp. Pillar Number 5</p>
-            <p>Above Habitat Furniture</p>
-            <p>Royal Colony, Mehdipatnam</p>
+           
             <p>Hyderabad, Telangana 500028</p>
           </div>
           <div>

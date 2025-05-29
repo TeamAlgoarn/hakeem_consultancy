@@ -308,7 +308,7 @@ export default function ContactPage() {
           <div className="space-y-6">
             <iframe
               className="w-full h-60 rounded-md border"
-              src="https://www.google.com/maps?q=Flat+No.301,+Okaz+Building,+opp.+Pillar+Number+5,+above+Habitat+Furniture,+Royal+Colony,+Mehdipatnam,+Hyderabad,+Telangana+500028&output=embed"
+              src="https://www.google.com/maps?q=Flat+No.+301,+Okaz+Complex,+Opposite+to+Pillar+No.+5,+Mehdipatnam,+Hyderabad-500028&output=embed"
               allowFullScreen
               loading="lazy"
             ></iframe>
@@ -324,7 +324,7 @@ export default function ContactPage() {
                 <MapPin className="text-blue-600" />
                 <div>
                   <p className="font-semibold">Visit us</p>
-                  <p className="text-gray-600">Flat no.301, Okaz Building, Mehdipatnam, Hyderabad, Telangana 500028</p>
+                  <p className="text-gray-600">Flat no.301, Okaz Complex,Opposite to Pillar No.5, Mehdipatnam, Hyderabad, Telangana 500028</p>
                 </div>
               </div>
               <div className="flex gap-4 items-start">
@@ -347,10 +347,10 @@ export default function ContactPage() {
           </div>
           <div>
             <h3 className="font-semibold mb-2">Address</h3>
-            <p>Flat no.301, Okaz Building</p>
+            <p>Flat no.301, Okaz Complex</p>
             <p>Opp. Pillar Number 5</p>
-            <p>Above Habitat Furniture</p>
-            <p>Royal Colony, Mehdipatnam</p>
+            {/* <p>Above Habitat Furniture</p>
+            <p>Royal Colony, Mehdipatnam</p> */}
             <p>Hyderabad, Telangana 500028</p>
           </div>
           <div>
