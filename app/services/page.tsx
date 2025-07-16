@@ -330,6 +330,7 @@ export default function ServicesPage() {
               <li><a href="/about" className="hover:underline">About Us</a></li>
               <li><a href="/services" className="hover:underline">Services</a></li>
               <li><a href="/contact" className="hover:underline">Contact</a></li>
+               <li><a href="/countries" className="hover:underline ">Countries</a></li>
             </ul>
           </div>
           <div>

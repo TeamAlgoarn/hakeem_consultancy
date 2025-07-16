@@ -181,6 +181,7 @@ export default function CountrySlider() {
             <li><a href="/about" className="hover:underline block">About Us</a></li>
             <li><a href="/services" className="hover:underline block">Services</a></li>
             <li><a href="/contact" className="hover:underline block">Contact</a></li>
+            <li><a href="/countries" className="hover:underline block">Countries</a></li>
           </ul>
         </div>
 
