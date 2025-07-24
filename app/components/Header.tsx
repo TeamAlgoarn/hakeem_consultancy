@@ -91,7 +91,7 @@ export default function Header() {
   return (
     <div className="w-full z-50">
       {/* Top Bar */}
-      <div className="bg-[#0c0c2c] text-white text-sm flex justify-between items-center px-6 py-2 flex-wrap">
+      <div className="bg-[#0c0c2c] text-white text-sm flex justify-between items-center px-6 py-2 flex-wrap" style={{padding:'14px'}}>
         <div>
           📞 +918374779361 , +919704879361
         </div>
@@ -116,7 +116,7 @@ export default function Header() {
       <nav className="bg-white shadow-md w-full px-6 py-3 flex justify-between items-center relative">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Logo" width={140} height={40} />
+          <Image src="/LOGO.jpg" alt="Logo" width={165} height={50} />
         </div>
 
         {/* Hamburger menu (mobile only) */}
@@ -127,7 +127,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex gap-2 text-sm text-[#000] font-larger items-center" style={{fontSize:'medium',fontWeight:'bold'}}>
+        <ul className="hidden lg:flex gap-2 text-sm text-[#000] font-larger items-center" style={{fontSize:'larger',fontWeight:'bold'}}>
           {/* <li><a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a></li> */}
           <li>
             <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
@@ -143,7 +143,7 @@ export default function Header() {
         </ul>
 
         {/* CTA Button */}
-        <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'10px'}}>
+        <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'16px',width:'300px'}}>
   Book Free Counselling
 </a>
 
