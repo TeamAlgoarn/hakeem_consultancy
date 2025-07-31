@@ -182,6 +182,8 @@
 //   );
 // }
 'use client';
+import IrelandUniversities from "../../components/universities/IrelandUniversities";
+import CounsellingForm from "@/app/components/CounsellingForm";
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -232,7 +234,7 @@ export default function IrelandPage() {
         </div>
 
         {/* Right Form */}
-        <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full" style={{marginBottom:'150px'}}>
+        {/* <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full" style={{marginBottom:'150px'}}>
           <h3 className="text-xl font-semibold mb-4">
             Book Free Consultation to Study in Ireland
           </h3>
@@ -257,12 +259,9 @@ export default function IrelandPage() {
             />
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a branch--</option>
-              <option>Delhi</option>
-              <option>Bangalore</option>
+             
               <option>Hyderabad</option>
-              <option>Chennai</option>
-              <option>Goa</option>
-              <option>Other City</option>
+              
             </select>
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a country--</option>
@@ -285,7 +284,8 @@ export default function IrelandPage() {
               Request Free Consultation
             </button>
           </form>
-        </div>
+        </div> */}
+        <CounsellingForm/>
       </div>
 
       {/* How We Help Section */}
@@ -322,6 +322,8 @@ export default function IrelandPage() {
           </div>
         </div>
       </section>
+      <IrelandUniversities />
+
     </div>
   );
 }

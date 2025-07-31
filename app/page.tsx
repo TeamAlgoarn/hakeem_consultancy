@@ -200,8 +200,11 @@
 // }
 import Header from './components/Header';
 import HeroSlider from './components/HeroSlider';
+// import UniversityPartners from "./components/UniversityPartners"
 import CountrySlider from './components/CountrySlider';
+import MBBSSection from "./components/MBBSSection";
 import ReviewsSection from './components/ReviewsSection';
+
 import PopupForm from './components/PopupForm';
 
 export default function Home() {
@@ -212,7 +215,9 @@ export default function Home() {
 <PopupForm/>
       {/* Hero Image Slider with Text and CTA */}
       <HeroSlider />
+       {/* <UniversityPartners /> */}
       <ReviewsSection /> 
+      <MBBSSection />
       <CountrySlider />
     </>
   );

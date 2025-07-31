@@ -158,7 +158,8 @@
 //   );
 // }
 'use client';
-
+import USAUniversities from '../../components/universities/USAUniversities';
+import CounsellingForm from '@/app/components/CounsellingForm';
 import Image from 'next/image';
 import Link from 'next/link';
 export default function USAPage() {
@@ -210,6 +211,8 @@ export default function USAPage() {
             <li>Global education system</li>
             <li>Prospects of internships & career enhancement</li>
           </ul>
+       
+
 
           {/* <h2 className="text-xl font-semibold mt-8 mb-2">Overseas Education Consultants to Study in the USA</h2>
           <p className="mb-4">
@@ -224,7 +227,7 @@ export default function USAPage() {
         </div>
 
         {/* Right Form */}
-       <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full" style={{marginBottom:'400px'}}>
+       {/* <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full" style={{marginBottom:'400px'}}>
           <h3 className="text-xl font-semibold mb-4">
             Book Free Consultation to Study in USA
           </h3>
@@ -234,12 +237,9 @@ export default function USAPage() {
             <input type="email" placeholder="Your Email" className="w-full px-4 py-2 rounded text-black" required />
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a branch--</option>
-              <option>Delhi</option>
-              <option>Bangalore</option>
+             
               <option>Hyderabad</option>
-              <option>Chennai</option>
-              <option>Goa</option>
-              <option>Other City</option>
+          
             </select>
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a country--</option>
@@ -255,8 +255,10 @@ export default function USAPage() {
               Request Free Consultation
             </button>
           </form>
-        </div>
+        </div> */}
+        <CounsellingForm/>
       </div>
+      
 
       {/* How We Help Section */}
       <section className="bg-gray-100 py-12 px-6" style={{marginTop:'-205px'}}>
@@ -288,6 +290,9 @@ export default function USAPage() {
           </div>
         </div>
       </section>
+      {/* Universities Section */}
+<USAUniversities />
+
     </div>
   );
 }

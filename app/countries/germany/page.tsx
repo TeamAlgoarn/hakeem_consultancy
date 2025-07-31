@@ -149,7 +149,8 @@
 //   );
 // }
 'use client';
-
+import CounsellingForm from "@/app/components/CounsellingForm";
+import GermanyUniversities from "../../components/universities/GermanyUniversities";
 import Image from 'next/image';
 import Link from 'next/link';
 export default function GermanyPage() {
@@ -210,7 +211,8 @@ export default function GermanyPage() {
         </div>
 
         {/* Right Form */}
-        <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full" style={{marginBottom:'150px'}}>
+        <CounsellingForm/>
+        {/* <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full" style={{marginBottom:'150px'}}>
           <h3 className="text-xl font-semibold mb-4">
             Book Free Consultation to Study in Germany
           </h3>
@@ -235,12 +237,9 @@ export default function GermanyPage() {
             />
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a branch--</option>
-              <option>Delhi</option>
-              <option>Bangalore</option>
+          
               <option>Hyderabad</option>
-              <option>Chennai</option>
-              <option>Goa</option>
-              <option>Other City</option>
+              
             </select>
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a country--</option>
@@ -264,7 +263,7 @@ export default function GermanyPage() {
               Request Free Consultation
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
 
       {/* How We Help Section */}
@@ -301,6 +300,7 @@ export default function GermanyPage() {
           </div>
         </div>
       </section>
+      <GermanyUniversities />
     </div>
   );
 }

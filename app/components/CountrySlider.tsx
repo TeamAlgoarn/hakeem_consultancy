@@ -161,51 +161,43 @@ export default function CountrySlider() {
         
         {/* Branding */}
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold"> HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED</h2>
+          {/* <h2 className="text-2xl font-bold"> HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED</h2> */}
+          <h2 className="text-4xl md:text-5xl font-bold flex items-center justify-center gap-2">
+  <span className="usa-text">Study</span>{' '}
+  <span className="germany-text">Visum</span>
+</h2>
         </div>
 
-        {/* Address */}
-        <div className="space-y-1 text-sm">
-          <h3 className="font-semibold mb-2 text-base">Address</h3>
-         <p>Flat no.301, Okaz Complex</p>
-            <p>Opp. Pillar Number 5</p>
-            {/* <p>Above Habitat Furniture</p>
-            <p>Royal Colony, Mehdipatnam</p> */}
-            <p>Hyderabad, Telangana 500028</p>
-        </div>
-
-        {/* Navigation */}
-        <div className="space-y-1 lg:ml-4 text-sm">
-          <h3 className="font-semibold mb-2 text-base">Navigation</h3>
-          <ul className="space-y-1">
-            <li><a href="/about" className="hover:underline block">About Us</a></li>
-            <li><a href="/services" className="hover:underline block">Services</a></li>
-            <li><a href="/contact" className="hover:underline block">Contact</a></li>
-            <li><a href="/countries" className="hover:underline block">Countries</a></li>
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-                    <h3 className="font-semibold mb-2">Contact</h3>
-                    <p className="flex items-center gap-2"><MdEmail className="text-lg" /><a href="mailto:studyvisa2000@gmail.com" className="hover:underline">studyvisa2000@gmail.com</a></p>
-                    <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+918374779361</a></p>
-                    <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+919704879361</a></p>
-                  </div>
-        
-        
-            {/* <a href="tel:+918374779361" className="hover:underline"> +919704879361</a>
-          
-        </div>
-
-        {/* Follow Us */}
-        <div className="space-y-2">
-          <h3 className="font-semibold mb-2 text-base">Follow Us</h3>
-          <div className="flex space-x-4 text-xl">
-            <a href="#" className="hover:text-blue-300" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="#" className="hover:text-pink-400" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-400" aria-label="LinkedIn"><FaLinkedinIn /></a>
-          </div>
+        <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Address</h3>
+                <p>Flat no.301, Okaz Complex</p>
+                <p>Opp. Pillar Number 5,Mehdipatnam</p>
+                {/* <p>Above Habitat Furniture</p>
+                <p>Royal Colony, Mehdipatnam</p> */}
+                <p>Hyderabad, Telangana 500028</p>
+              </div>
+                    <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Navigation</h3>
+                <ul className="space-y-1">
+                  <li><a href="/about" className="hover:underline">About Us</a></li>
+                  <li><a href="/services" className="hover:underline">Services</a></li>
+                  <li><a href="/contact" className="hover:underline">Contact</a></li>
+                   <li><a href="/countries" className="hover:underline block">Countries</a></li>
+                </ul>
+              </div>
+                   <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Contact</h3>
+                <p className="flex items-center gap-2"><MdEmail className="text-lg" /><a href="mailto:studyvisa2000@gmail.com" className="hover:underline">studyvisa2000@gmail.com</a></p>
+                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+918374779361</a></p>
+                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+919704879361</a></p>
+              </div>
+                     <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Follow Us</h3>
+                <div className="flex space-x-4 mt-2 text-xl">
+                  <a href="#" className="hover:text-blue-300"><FaFacebookF /></a>
+                  <a href="#" className="hover:text-pink-400"><FaInstagram /></a>
+                  <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
+                </div>
         </div>
       </div>
 

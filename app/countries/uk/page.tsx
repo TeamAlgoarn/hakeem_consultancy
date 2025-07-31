@@ -144,7 +144,8 @@
 //   );
 // }
 'use client';
-
+import UKUniversities from "../../components/universities/UKUniversities";
+import CounsellingForm from "@/app/components/CounsellingForm";
 import Image from 'next/image';
 import Link from 'next/link';
 export default function UKPage() {
@@ -184,7 +185,7 @@ export default function UKPage() {
         </div>
 
         {/* Right Form */}
-       <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full">
+       {/* <div className="bg-red-600 text-white p-6 sm:p-8 rounded shadow w-full">
           <h3 className="text-xl font-semibold mb-4">Book Free Consultation to Study in UK</h3>
           <form className="space-y-4">
             <input type="text" placeholder="Your Full Name" className="w-full px-4 py-2 rounded text-black" required />
@@ -192,12 +193,9 @@ export default function UKPage() {
             <input type="email" placeholder="Your Email" className="w-full px-4 py-2 rounded text-black" required />
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a branch--</option>
-              <option>Delhi</option>
-              <option>Bangalore</option>
+       
               <option>Hyderabad</option>
-              <option>Chennai</option>
-              <option>Goa</option>
-              <option>Other City</option>
+              
             </select>
             <select className="w-full px-4 py-2 rounded text-black" required>
               <option value="">--Please choose a country--</option>
@@ -213,7 +211,8 @@ export default function UKPage() {
               Request Free Consultation
             </button>
           </form>
-        </div>
+        </div> */}
+        <CounsellingForm/>
       </div>
 
       {/* How We Help Section */}
@@ -244,6 +243,9 @@ export default function UKPage() {
           </div>
         </div>
       </section>
+      {/* UK Universities Section */}
+<UKUniversities />
+
     </div>
   );
 }

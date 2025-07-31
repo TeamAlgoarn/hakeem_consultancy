@@ -80,11 +80,12 @@
 //   );
 // }
 'use client';
+import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
 import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
 import { FiMenu, FiX } from 'react-icons/fi';
-
+import { HiMenu, HiX } from 'react-icons/hi';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -115,64 +116,97 @@ export default function Header() {
       {/* Main Navbar */}
       <nav className="bg-white shadow-md w-full px-6 py-3 flex justify-between items-center relative">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Image src="/LOGO.jpg" alt="Logo" width={165} height={50} />
+        {/* <div className="flex items-center ">
+          <Image src="/hakeem-logo.jpg" alt="Logo" width={160} height={50} />
+        
         </div>
 
-        {/* Hamburger menu (mobile only) */}
-        <div className="lg:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
-        </div>
+  <div className="flex flex-col leading-tight" style={{marginTop:'30px', marginLeft:'-180px'}}>
+   <h1 className="text-4xl font-bold text-center" style={{fontSize:'45px'}}>
+      <span className="usa-text-header">Study</span>{' '}
+      <span className="germany-text-header">Visum</span>
+      </h1> */}
+      {/* <div className="flex flex-col sm:flex-row items-center gap-1">
+        <div className="mt-[-24px] sm:mt-0">
+  <Image
+    src="/hakeem-logo.jpg"
+    alt="Logo"
+    width={160}
+    height={50}
+    className="object-contain"
+  />
+  <h1 className="text-4xl font-bold text-center" style={{fontSize:'47px', marginLeft:'-13px'}}>
+      <span className="usa-text-header">Study</span>{' '}
+      <span className="germany-text-header">Visum</span>
+      </h1> */}
+      {/* <div className="flex flex-col sm:flex-row items-center justify-between">
+  
 
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex gap-2 text-sm text-[#000] font-larger items-center" style={{fontSize:'larger',fontWeight:'bold'}}>
-          {/* <li><a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a></li> */}
-          <li>
-            <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-              HOME
-            </a>
-          </li>
-          <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-  ABOUT US
-</a>
-          <li><a href="/services" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">SERVICES</a></li>
-          <li><a href="/countries" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">COUNTRIES</a></li>
-          <li><a href="/contact" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">CONTACT US</a></li>
-        </ul>
+   {/* <p className="text-sm md:text-base text-gray-600 italic mt-1" >
+        (A unit of HCS – Where your career journey begins)
+      </p> */}
+      <div className="flex items-center gap-1 sm:gap-3">
+  {/* Logo */}
+   <Image
+    src="/hakeem-logo.jpg"
+    alt="Logo"
+    width={160}
+    height={50}
+    className="object-contain"
+  />
 
-        {/* CTA Button */}
-        <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'16px',width:'300px'}}>
+  {/* Study Visum */}
+  <h1 className="text-4xl sm:text-4xl font-bold text-center" style={{fontSize:'47px', marginLeft:'-13px'}}>
+      <span className="usa-text-header">Study</span>{' '}
+      <span className="germany-text-header">Visum</span>
+      </h1> 
+</div>
+  
+
+  
+
+       
+       
+  {/* Desktop Nav */}
+            <div className="hidden md:flex space-x-6 text-sm font-medium items-center" style={{fontWeight:'bold',fontSize:'large'}}>
+              
+                <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
+                  HOME
+                </a>
+              
+              <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a>
+              <a href="/services" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">SERVICES</a>
+              <a href="/countries" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">COUNTRIES</a>
+              <a href="/contact" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">CONTACT US</a>
+              <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'10px',width:'200px', marginTop:'-4px'}}>
   Book Free Counselling
 </a>
-
-      </nav>
-
-      {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className="lg:hidden bg-white px-6 py-4 shadow-md space-y-2 text-sm font-medium">
-          <a href="/" className="block px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200">HOME</a>
-
-
-          
-          <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-  ABOUT US
-</a>
-
-          <a href="/services" className="block px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200">SERVICES</a>
-          <a href="/countries" className="block px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200">COUNTES</a>
-          <a href="/contact" className="block px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200">CONTACT US</a>
-          <a
-            href="/counselling"
-            className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2"
-          >
-            Book Free Counselling
-          </a>
+            </div>
+    
+            {/* Mobile Hamburger Button */}
+            <button className="md:hidden text-5xl" onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <HiX /> : <HiMenu />}
+            </button>
+          </nav>
+    
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div className="md:hidden bg-white px-4 py-4 space-y-3 text-sm font-medium shadow">
+              
+                <a href="/" className="block">
+                  HOME
+                </a>
+              
+              <a href="/about" className="block">ABOUT US</a>
+              <a href="/services" className="block">SERVICES</a>
+              <a href="/countries" className="block">COUNTRIES</a>
+              <a href="/contact" className="block">CONTACT US</a>
+              <Link href="/counselling" className="block text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Book Free Counselling</Link>
+            </div>
+          )}
         </div>
       )}
       
-    </div>
     
-  );
-}
+    
+  

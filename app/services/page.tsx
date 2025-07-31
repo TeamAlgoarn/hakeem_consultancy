@@ -118,12 +118,12 @@
 // </div>
 // <footer className="bg-blue-900 text-white px-6 py-10 text-sm w-full" style={{marginTop:'40px'}}>
 //             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
-      
+
 //               {/* Column 1: Branding */}
 //               <div>
 //                 <h2 className="text-xl font-bold mb-4">HAKEEM CONSULTANCY</h2>
 //               </div>
-      
+
 //               {/* Column 2: Address */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Address</h3>
@@ -133,7 +133,7 @@
 //                 <p>Royal Colony, Mehdipatnam</p>
 //                 <p>Hyderabad, Telangana 500028</p>
 //               </div>
-      
+
 //               {/* Column 3: Navigation */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Navigation</h3>
@@ -143,7 +143,7 @@
 //                   <li><a href="/contact" className="hover:underline">Contact</a></li>
 //                 </ul>
 //               </div>
-      
+
 //               {/* Column 4: Contact with icons */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Contact</h3>
@@ -156,7 +156,7 @@
 //                   <a href="tel:+919000065858" className="hover:underline">+91- 097048 79361</a>
 //                 </p>
 //               </div>
-      
+
 //               {/* Column 5: Social Media */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Follow Us</h3>
@@ -167,7 +167,7 @@
 //                 </div>
 //               </div>
 //             </div>
-      
+
 //             {/* Bottom Note */}
 //             <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
 //               &copy; 2025 hakeemconsultancy. All rights reserved.
@@ -189,24 +189,57 @@ export default function ServicesPage() {
 
   return (
     <div>
-      {/* Navbar */}
-      <nav className="bg-white shadow-md py-4 px-4 sm:px-6 lg:px-10 flex justify-between items-center">
-        <div className="text-xl font-bold">Hakeem Consultancy Services Private Limited</div>
+     <nav className="bg-white shadow-md px-4 py-4 sm:px-6 lg:px-10 flex justify-between items-center">
+        {/* <div className="text-xl font-bold">Hakeem Consultancy Services Private Limited</div> */}
+           {/* <h2 className="text-4xl md:text-5xl font-bold text-center">
+  <span className="bg-[linear-gradient(to_right,#b22234,#ffffff_20%,#3c3b6e_60%)] bg-clip-text text-transparent">
+    Study
+  </span>
+  <span className="ml-2 bg-[linear-gradient(to_right,#000000,#dd0000,#ffce00)] bg-clip-text text-transparent">
+    Visum
+  </span>
+</h2> */}
+<div className="flex items-center gap-1 sm:gap-3">
+  {/* Logo */}
+   <Image
+    src="/hakeem-logo.jpg"
+    alt="Logo"
+    width={160}
+    height={50}
+    className="object-contain"
+  />
+
+  {/* Study Visum */}
+  <h1 className="text-4xl sm:text-4xl font-bold text-center" style={{fontSize:'47px', marginLeft:'-13px'}}>
+      <span className="usa-text-header">Study</span>{' '}
+      <span className="germany-text-header">Visum</span>
+      </h1> 
+</div>
+   {/* <p className="text-sm md:text-base text-gray-600 italic mt-1" >
+        (A unit of HCS – Where your career journey begins)
+      </p> */}
+ 
+
+
+
+
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 text-sm font-medium items-center" style={{fontWeight:'bold'}}>
+        <div className="hidden md:flex space-x-6 text-sm font-medium items-center" style={{ fontWeight: 'bold',fontSize:'large' }}>
           <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-              HOME
-            </a>
+            HOME
+          </a>
           <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a>
           <a href="/services" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">SERVICES</a>
           <a href="/countries" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">COUNTRIES</a>
           <a href="/contact" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">CONTACT US</a>
-          <Link href="/counselling" className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm font-semibold">Book Free Counselling</Link>
+          <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'10px',width:'200px', marginTop:'-4px'}}>
+  Book Free Counselling
+</a>
         </div>
 
         {/* Mobile Toggle Button */}
-        <button className="md:hidden text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="md:hidden text-5xl" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
       </nav>
@@ -224,15 +257,22 @@ export default function ServicesPage() {
       )}
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20 text-center rounded-lg shadow-lg mb-12 px-4">
+      {/* <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20 text-center rounded-lg shadow-lg mb-12 px-4"> */}
+       {/* <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20 text-center rounded-lg shadow-lg mb-12 px-4">
         <h1 className="text-4xl sm:text-5xl font-bold">Services in Hakeem Consultancy</h1>
         <p className="mt-4 text-lg">Empowering your global education journey since day one</p>
-      </div>
-
+      </div> */}
+    <div className="min-h-screen bg-white px-4 sm:px-10 py-10 text-gray-800">
+        {/* Hero Section */}
+        <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20 text-center rounded-lg shadow-lg mb-12 px-4">
+          <h1 className="text-4xl sm:text-5xl font-bold">Services in Hakeem Consultancy</h1>
+          <p className="mt-4 text-lg">Empowering your global education journey since day one</p>
+        </div>
+        
       {/* Services Description */}
       <div className="max-w-6xl mx-auto px-4 py-12 space-y-6">
         <p className="text-lg text-justify">
-          At <strong>Hakeem Consulting Services</strong>, our overseas education consultants in provide expert assistance to Indian students, who are seeking admission to the top universities across the world.
+          At <strong>HCS</strong>, our overseas education consultants in provide expert assistance to Indian students, who are seeking admission to the top universities across the world.
         </p>
         <p className="text-lg text-justify">
           Our team understands the challenges that you might face, including test preparation, visa approval, scholarships, accommodation abroad, and so on.
@@ -304,54 +344,60 @@ export default function ServicesPage() {
           ))}
         </div>
       </div>
+</div>
 
-      {/* Footer */}
-      <footer className="bg-blue-900 text-white px-6 py-10 text-sm w-full mt-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
-          <div>
-            <h2 className="text-xl font-bold mb-4">HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED</h2>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-2">Address</h3>
-            {/* <p>Flat no.301, Okaz Building</p>
-            <p>Opp. Pillar Number 5</p>
-            <p>Above Habitat Furniture</p>
-            <p>Royal Colony, Mehdipatnam</p>
-            <p>Hyderabad, Telangana 500028</p> */}
-            <p>Flat no.301, Okaz Complex</p>
-            <p>Opp. Pillar Number 5</p>
-            {/* <p>Above Habitat Furniture</p>
-            <p>Royal Colony, Mehdipatnam</p> */}
-            <p>Hyderabad, Telangana 500028</p>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-2">Navigation</h3>
-            <ul className="space-y-1">
-              <li><a href="/about" className="hover:underline">About Us</a></li>
-              <li><a href="/services" className="hover:underline">Services</a></li>
-              <li><a href="/contact" className="hover:underline">Contact</a></li>
-               <li><a href="/countries" className="hover:underline ">Countries</a></li>
-            </ul>
-          </div>
-          <div>
-                      <h3 className="font-semibold mb-2">Contact</h3>
-                      <p className="flex items-center gap-2"><MdEmail className="text-lg" /><a href="mailto:studyvisa2000@gmail.com" className="hover:underline">studyvisa2000@gmail.com</a></p>
-                      <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+918374779361</a></p>
-                      <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+919704879361</a></p>
-                    </div>
-          <div>
-            <h3 className="font-semibold mb-2">Follow Us</h3>
-            <div className="flex space-x-4 mt-2 text-xl">
-              <a href="#" className="hover:text-blue-300"><FaFacebookF /></a>
-              <a href="#" className="hover:text-pink-400"><FaInstagram /></a>
-              <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
-            </div>
-          </div>
-        </div>
-        <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
-          &copy; 2025 hakeemconsultancy. All rights reserved.
-        </div>
-      </footer>
-    </div>
-  );
-}
+     {/* Footer */}
+           <footer className="bg-blue-900 text-white py-10" style={{marginTop:'70px'}}>
+             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 px-4">
+               <div>
+                 {/* <h2 className="text-xl font-bold mb-4">HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED</h2> */}
+                     {/* <h2 className="text-4xl md:text-5xl font-bold flex items-center justify-center gap-2">
+       <span className="usa-text">Study</span>{' '}
+       <span className="germany-text">Visum</span>
+     </h2> */}
+     <h2 className="text-4xl md:text-5xl font-bold flex items-center justify-center gap-2">
+  <span className="usa-text-footer">Study</span>{' '}
+  <span className="germany-text-footer">Visum</span>
+</h2>
+               </div>
+               <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Address</h3>
+                <p>Flat no.301, Okaz Complex</p>
+                <p>Opp. Pillar Number 5,Mehdipatnam</p>
+                {/* <p>Above Habitat Furniture</p>
+                <p>Royal Colony, Mehdipatnam</p> */}
+                <p>Hyderabad, Telangana 500028</p>
+              </div>
+                    <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Navigation</h3>
+                <ul className="space-y-1">
+                  <li><a href="/about" className="hover:underline">About Us</a></li>
+                  <li><a href="/services" className="hover:underline">Services</a></li>
+                  <li><a href="/contact" className="hover:underline">Contact</a></li>
+                   <li><a href="/countries" className="hover:underline block">Countries</a></li>
+                </ul>
+              </div>
+                   <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Contact</h3>
+                <p className="flex items-center gap-2"><MdEmail className="text-lg" /><a href="mailto:studyvisa2000@gmail.com" className="hover:underline">studyvisa2000@gmail.com</a></p>
+                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+918374779361</a></p>
+                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+919704879361</a></p>
+              </div>
+                     <div style={{marginInline:'28px'}}>
+                <h3 className="font-semibold mb-2">Follow Us</h3>
+                <div className="flex space-x-4 mt-2 text-xl">
+                  <a href="#" className="hover:text-blue-300"><FaFacebookF /></a>
+                  <a href="#" className="hover:text-pink-400"><FaInstagram /></a>
+                  <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
+                </div>
+               </div>
+             </div>
+             <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
+               &copy; 2025 hakeemconsultancy. All rights reserved.
+             </div>
+            
+           </footer>
+         </div>
+       );
+     }
+     
