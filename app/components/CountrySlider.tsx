@@ -148,7 +148,9 @@ export default function CountrySlider() {
                   </div>
                 </div>
                 <div className="text-center pt-10 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-700">{country.name}</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 ">{country.name.charAt(0).toUpperCase()+ country.name.slice(1)}
+                    
+                  </h3>
                 </div>
               </a>
             </SwiperSlide>

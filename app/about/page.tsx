@@ -265,7 +265,8 @@ export default function AboutPage() {
         <section className="max-w-6xl mx-auto mb-16">
           <h2 className="text-3xl font-semibold mb-4  inline-block">Our Story and Values</h2>
           <p className="mt-4 text-lg leading-relaxed">
-            HCS, based in Hyderabad,Study Visum - a unit where your journey begins.We specializes in overseas education and study visa consultation. Since our inception, we have remained committed to helping students fulfill their academic dreams abroad.
+            Based in Hyderabad, HCS is a trusted name in overseas education and study visa consulting where your journey begins. Through our dedicated division, Study Visum, we have helped countless students achieve their academic aspirations abroad.
+From personalized university selection to hassle-free visa processing, we provide end-to-end guidance and support to make your global education dream a reality.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
             {['Integrity', 'Commitment', 'Excellence', 'Innovation'].map((value, i) => (

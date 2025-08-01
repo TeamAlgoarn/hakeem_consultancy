@@ -240,7 +240,7 @@ const countries = [
     link: '/countries/ireland',
   },
   {
-    name: 'france',
+    name: 'France',
     image: '/flag-france.jpg',
     description: ['Country Info', 'Visa Tips'],
     link: '/countries/france',

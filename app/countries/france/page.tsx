@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CounsellingForm from '@/app/components/CounsellingForm';
-export default function francePage() {
+export default function FrancePage() {
   return (
     <div>
       {/* Hero Section */}
