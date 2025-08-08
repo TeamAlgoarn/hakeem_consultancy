@@ -111,103 +111,106 @@ const countries = [
   },
 ];
 
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 export default function CountrySlider() {
   return (
-    <section className="py-12 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center text-blue-900 mb-8">Popular Destinations</h2>
+    <section className="py-16 bg-gradient-to-b from-slate-50 via-white to-blue-50">
       <div className="max-w-6xl mx-auto px-4">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={20}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 4000 }}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-        >
-          {countries.map((country, idx) => (
-            <SwiperSlide key={idx}>
-              <a
-                href={country.link}
-                className="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-all block"
-              >
-                <div className="relative">
-                <img
-  src={country.image}
-  alt={country.name}
-  style={{ height: country.height }}
-  className="w-full object-cover clip-diagonal"
-/>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800">
+            Popular Destinations
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full"></div>
+        </div>
 
-                  <div className="absolute bottom-[-24px] left-1/2 transform -translate-x-1/2 bg-white p-1 rounded-full shadow-lg">
-                    <img src={country.flag} alt="flag" className="w-20 h-20 object-contain" />
+        <div className="relative group">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.country-swiper-button-next',
+              prevEl: '.country-swiper-button-prev',
+            }}
+            pagination={{ 
+              clickable: true,
+              el: '.country-swiper-pagination',
+              type: 'bullets',
+            }}
+            autoplay={{ 
+              delay: 5000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
+            breakpoints={{
+              640: { slidesPerView: 1, spaceBetween: 24 },
+              768: { slidesPerView: 2, spaceBetween: 28 },
+              1024: { slidesPerView: 3, spaceBetween: 32 },
+            }}
+            className="px-2" // Added padding to prevent cards from touching edges
+          >
+            {countries.map((country, idx) => (
+              <SwiperSlide key={idx}>
+                <Link
+                  href={country.link}
+                  className="group block"
+                >
+                  <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-blue-100 transform hover:-translate-y-2 overflow-hidden">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={country.flag}
+                        alt={country.name}
+                        className="w-full h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+                      {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white p-1 rounded-full shadow-lg border-2 border-white z-10">
+                        <img 
+                          src={country.image} 
+                          alt={`${country.name} flag`} 
+                          className="w-16 h-16 object-contain rounded-full"
+                        />
+                      </div> */}
+                    </div>
+                    <div className="p-6 pt-10 text-center flex-grow">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                        {country.name.charAt(0).toUpperCase() + country.name.slice(1)}
+                      </h3>
+                      
+                      <div className="mt-auto">
+                        <span className="inline-block px-4 py-1.5 text-xs font-medium bg-blue-100 text-blue-600 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                          Explore {country.name}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="text-center pt-10 pb-4">
-                  <h3 className="text-lg font-semibold text-gray-700 ">{country.name.charAt(0).toUpperCase()+ country.name.slice(1)}
-                    
-                  </h3>
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    
-<footer className="bg-blue-900 text-white px-4 sm:px-6 lg:px-10 py-10 w-full" style={{marginTop:'45px'}}>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8">
-        
-        {/* Branding */}
-        <div className="space-y-2">
-          {/* <h2 className="text-2xl font-bold"> HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED</h2> */}
-          <h2 className="text-4xl md:text-5xl font-bold flex items-center justify-center gap-2">
-  <span className="usa-text">Study</span>{' '}
-  <span className="germany-text">Visum</span>
-</h2>
-        </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-        <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Address</h3>
-                <p>Flat no.301, Okaz Complex</p>
-                <p>Opp. Pillar Number 5,Mehdipatnam</p>
-                {/* <p>Above Habitat Furniture</p>
-                <p>Royal Colony, Mehdipatnam</p> */}
-                <p>Hyderabad, Telangana 500028</p>
-              </div>
-                    <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Navigation</h3>
-                <ul className="space-y-1">
-                  <li><a href="/about" className="hover:underline">About Us</a></li>
-                  <li><a href="/services" className="hover:underline">Services</a></li>
-                  <li><a href="/contact" className="hover:underline">Contact</a></li>
-                   <li><a href="/countries" className="hover:underline block">Countries</a></li>
-                </ul>
-              </div>
-                   <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Contact</h3>
-                <p className="flex items-center gap-2"><MdEmail className="text-lg" /><a href="mailto:studyvisa2000@gmail.com" className="hover:underline">studyvisa2000@gmail.com</a></p>
-                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+918374779361</a></p>
-                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+919704879361</a></p>
-              </div>
-                     <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Follow Us</h3>
-                <div className="flex space-x-4 mt-2 text-xl">
-                  <a href="#" className="hover:text-blue-300"><FaFacebookF /></a>
-                  <a href="#" className="hover:text-pink-400"><FaInstagram /></a>
-                  <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
-                </div>
+          {/* Custom Navigation Buttons */}
+          <div className="country-swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </div>
+          <div className="country-swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          {/* Custom Pagination */}
+          <div className="country-swiper-pagination flex justify-center mt-8 space-x-2"></div>
         </div>
       </div>
 
-      <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
-        &copy; 2025 hakeemconsultancy. All rights reserved.
-      </div>
-    </footer>
+      
     </section>
-    
   );
 }
+

@@ -11,6 +11,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "bootstrap": "^5.3.6",
+    "framer-motion": "^12.23.12",
     "lucide-react": "^0.510.0",
     "next": "^15.3.2",
     "react": "^19.1.0",
@@ -25,7 +26,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-slick": "^0.23.13",

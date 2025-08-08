@@ -475,11 +475,24 @@ const reviews = [
     rating: 5,
    },
 ];
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="text-yellow-500">
+    <div className="flex items-center justify-center space-x-0.5">
       {Array.from({ length: 5 }, (_, i) => (
-        <span key={i}>{i < rating ? '⭐' : '☆'}</span>
+        <span 
+          key={i} 
+          className={`transition-all duration-300 ${i < rating ? 
+            'text-yellow-400 scale-110' : 
+            'text-gray-300 hover:text-yellow-300'}`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fill-current" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </span>
       ))}
     </div>
   );
@@ -487,42 +500,87 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function ReviewSlider() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10" style={{marginBottom:'24px'}}>
-      <h2 className="text-center text-2xl sm:text-3xl font-bold mb-8 text-blue-900">
-        What Our Students Say
-      </h2>
+    <div className="max-w-7xl mx-auto px-4 py-16 bg-gradient-to-b from-blue-50 to-white">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800">
+          What Our Students Say
+        </h2>
+        <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full"></div>
+      </div>
 
-<Swiper
-        loop={true}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        navigation={true}
-        modules={[Navigation, Autoplay]}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-        className="w-full max-w-6xl mx-auto px-4"
-      >
-        {reviews.map((r, i) => (
-          <SwiperSlide key={i}>
-  <div className="bg-gray-100 p-6 rounded-xl shadow-md mx-2 h-full flex flex-col justify-between min-h-[320px]">
-    <p className="text-gray-700 mb-6 flex-grow">{r.review}</p>
-    <div className="flex flex-col items-center mt-auto">
-      <img
-        src={r.image}
-        alt={r.name}
-        className="w-16 h-16 rounded-full mb-2"
-      />
-      <h3 className="font-semibold text-lg">{r.name}</h3>
-      <StarRating rating={r.rating} />
-    </div>
-  </div>
-</SwiperSlide>
+      <div className="relative group">
+        <Swiper
+          loop={true}
+          autoplay={{ 
+            delay: 5000, 
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true 
+          }}
+          navigation={{
+            nextEl: '.review-swiper-button-next',
+            prevEl: '.review-swiper-button-prev',
+          }}
+          modules={[Navigation, Autoplay]}
+          breakpoints={{
+            640: { slidesPerView: 1, spaceBetween: 24 },
+            768: { slidesPerView: 2, spaceBetween: 28 },
+            1024: { slidesPerView: 3, spaceBetween: 32 },
+          }}
+          className="px-2"
+        >
+          {reviews.map((r, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-blue-100 transform hover:-translate-y-2">
+                <div className="relative mb-6 flex-grow">
+                  <svg 
+                    className="absolute top-0 left-0 w-10 h-10 text-blue-100 opacity-70 -mt-1" 
+                    fill="currentColor" 
+                    viewBox="0 0 32 32"
+                  >
+                    <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                  </svg>
+                  <p className="text-gray-600 text-base pl-8 leading-relaxed">"{r.review}"</p>
+                </div>
+                <div className="flex flex-col items-center mt-auto pt-6 border-t border-gray-50">
+                  <div className="relative group">
+                    <img
+                      src={r.image}
+                      alt={r.name}
+                      className="w-16 h-16 rounded-full mb-4 object-cover border-4 border-white shadow-lg group-hover:border-blue-200 transition-all duration-300"
+                    />
+                    <div className="absolute inset-0 rounded-full bg-blue-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                  </div>
+                  <h3 className="font-bold text-lg text-gray-800">{r.name}</h3>
+                  
+                  <StarRating rating={r.rating} />
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation Buttons */}
+        <div className="review-swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 transition-colors duration-300 hover:scale-110">
+          <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </div>
+        <div className="review-swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 transition-colors duration-300 hover:scale-110">
+          <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex justify-center mt-10 space-x-2">
+        {reviews.slice(0, 5).map((_, i) => (
+          <div 
+            key={i} 
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all duration-300 cursor-pointer"
+          ></div>
         ))}
-      </Swiper>
+      </div>
     </div>
   );
 }
-
-        

@@ -1,197 +1,3 @@
-// 'use client';
-
-// import './flip.css';
-// import Image from 'next/image';
-// import { useState } from 'react';
-// import Link from 'next/link';
-// import CountUp from 'react-countup';
-// import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
-// import { MdEmail, MdPhone } from 'react-icons/md';
-// import { HiMenu, HiX } from 'react-icons/hi';
-// const countries = [
-//   {
-//     name: 'Canada',
-//     image: '/flag-canada.jpg' ,
-//     description: ['Country Info', 'Visa Tips'],
-//     link: '/countries/canada',
-//   },
-//   {
-//     name: 'Australia',
-//     image: '/aust.jpg',
-//     description: ['Country Info', 'Visa Tips'],
-//     link: '/countries/australia',
-//   },
-//   {
-//     name: 'Germany',
-//     image: '/flag-germany.jpg',
-//     description: ['Country Info', 'Visa Tips'],
-//     link: '/countries/germany',
-//   },
-//   {
-//     name: 'UK',
-//     image: '/london.jpg',
-//     description: ['Country Info', 'Visa Tips'],
-//     link: '/countries/uk',
-//   },
-//   {
-//     name: 'USA',
-//     image: '/usa flag.jpg',
-//     description: ['Country Info', 'Visa Tips' ],
-//     link: '/countries/usa',
-//   },
-//   {
-//     name: 'Ireland',
-//     image: '/flags-ireland.jpg',
-//     description: ['Country Info', 'Visa Tips'],
-//     link: '/countries/ireland',
-//   },
-// ];
-
-// export default function CountriesPage() {
-//   const [menuOpen, setMenuOpen] = useState(false);
-//   return (
-//     <div>
-//     {/* Responsive Navbar */}
-//           <nav className="bg-white shadow-md px-4 py-4 sm:px-6 lg:px-10 flex justify-between items-center">
-//             <div className="text-xl font-bold">Hakeem Consultancy</div>
-    
-//             {/* Desktop Nav */}
-//             <div className="hidden md:flex space-x-6 text-sm font-medium items-center" style={{fontWeight:'bold'}}>
-              
-//                 <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//                   HOME
-//                 </a>
-              
-//               <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a>
-//               <a href="/services" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">SERVICES</a>
-//               <a href="/countries" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">COUNTRIES</a>
-//               <a href="/contact" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">CONTACT US</a>
-//               <Link href="/counselling" className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm font-semibold">Book Free Counselling</Link>
-//             </div>
-    
-//             {/* Mobile Hamburger Button */}
-//             <button className="md:hidden text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
-//               {menuOpen ? <HiX /> : <HiMenu />}
-//             </button>
-//           </nav>
-    
-//           {/* Mobile Menu */}
-//           {menuOpen && (
-//             <div className="md:hidden bg-white px-4 py-4 space-y-3 text-sm font-medium shadow">
-              
-//                 <a href="/" className="block">
-//                   HOME
-//                 </a>
-              
-//               <a href="/about" className="block">ABOUT US</a>
-//               <a href="/services" className="block">SERVICES</a>
-//               <a href="/countries" className="block">COUNTRIES</a>
-//               <a href="/contact" className="block">CONTACT US</a>
-//               <Link href="/counselling" className="block text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Book Free Counselling</Link>
-//             </div>
-//           )}
-    
-//     <section className="py-12 bg-white px-4">
-//       <h2 className="text-3xl font-bold text-center text-blue-900 mb-10" >Popular Destinations</h2>
-
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-//         {countries.map((country, index) => (
-//           <div key={index} className="flip-card">
-//             <div className="flip-inner">
-//               {/* Front Side */}
-//              <div className="flip-front flex flex-col items-center justify-center h-[260px] bg-sky-200 p-6 rounded shadow-md">
-
-//                 <Image
-//                   src={country.image}
-//                   alt={country.name}
-//                   width={260}
-//                   height={160}
-//                   className="mb-4"
-//                 />
-//                 <h3 className="text-lg font-semibold">{country.name}</h3>
-//               </div>
-
-//               {/* Back Side */}
-//               <div className="flip-back flex flex-col items-center justify-center bg-blue-900 text-white p-6 rounded shadow-md">
-//                 <h3 className="text-lg font-semibold mb-2">{country.name}</h3>
-//                 <ul className="list-disc list-inside text-sm text-center space-y-1">
-//                   {country.description.map((tip, i) => {
-//   let href = '#';
-
-//   if (tip === 'Country Info') {
-//     href = `${country.link}`;
-//   } else if (tip === 'Visa Tips') {
-//     href = `${country.link}/visa-tips`;
-//   } else if (tip === 'Top Universities') {
-//     href = `${country.link}/top-universities`;
-//   }
-
-//   return (
-//     <li key={i}>
-//       <Link href={href} className="underline text-blue-200 hover:text-white transition">
-//         {tip}
-//       </Link>
-//     </li>
-//   );
-// })}
-
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-          
-//         ))}
-      
-//       </div>
-//       <footer className="bg-blue-900 text-white px-6 py-10 text-sm w-full mt-20">
-//         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
-//           <div>
-//             <h2 className="text-xl font-bold mb-4">HAKEEM CONSULTANCY</h2>
-//           </div>
-//           <div>
-//             <h3 className="font-semibold mb-2">Address</h3>
-//             <p>Flat no.301, Okaz Building</p>
-//             <p>Opp. Pillar Number 5</p>
-//             <p>Above Habitat Furniture</p>
-//             <p>Royal Colony, Mehdipatnam</p>
-//             <p>Hyderabad, Telangana 500028</p>
-//           </div>
-//           <div>
-//             <h3 className="font-semibold mb-2">Navigation</h3>
-//             <ul className="space-y-1">
-//               <li><a href="/about" className="hover:underline">About Us</a></li>
-//               <li><a href="/services" className="hover:underline">Services</a></li>
-//               <li><a href="/contact" className="hover:underline">Contact</a></li>
-//             </ul>
-//           </div>
-//           <div>
-//             <h3 className="font-semibold mb-2">Contact</h3>
-//             <p className="flex items-center gap-2">
-//               <MdEmail className="text-lg" />
-//               <a href="mailto:info@i20fever.com" className="hover:underline">info@i20fever.com</a>
-//             </p>
-//             <p className="flex items-center gap-2 mt-2">
-//               <MdPhone className="text-lg" />
-//               <a href="tel:+919000065858" className="hover:underline">+91-9000065858</a>
-//             </p>
-//           </div>
-//           <div>
-//             <h3 className="font-semibold mb-2">Follow Us</h3>
-//             <div className="flex space-x-4 mt-2 text-xl">
-//               <a href="#" className="hover:text-blue-300"><FaFacebookF /></a>
-//               <a href="#" className="hover:text-pink-400"><FaInstagram /></a>
-//               <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
-//           &copy; 2025 hakeemconsultancy. All rights reserved.
-//         </div>
-//       </footer>
-//     </section>
-//     </div>
-//   );
-// }
 'use client';
 
 import './flip.css';
@@ -202,276 +8,516 @@ import CountUp from 'react-countup';
 import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
+
 const countries = [
   {
     name: 'Canada',
-    image: '/flag-canada.jpg' ,
-    description: ['Country Info', 'Visa Tips'],
+    image: '/flag-canada.jpg',
+    description: 'Explore study opportunities in Canada with world-class universities and post-study work options.',
     link: '/countries/canada',
   },
   {
     name: 'Australia',
     image: '/aust.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Discover Australian education with its innovative teaching methods and vibrant student life.',
     link: '/countries/australia',
   },
   {
     name: 'Germany',
     image: '/flag-germany.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Study in Germany with tuition-free or low-cost education at top-ranked universities.',
     link: '/countries/germany',
   },
   {
     name: 'UK',
     image: '/london.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Pursue your education in the UK with its rich academic heritage and global recognition.',
     link: '/countries/uk',
   },
   {
     name: 'USA',
     image: '/usa flag.jpg',
-    description: ['Country Info', 'Visa Tips' ],
+    description: 'Access world-leading institutions and diverse academic programs in the United States.',
     link: '/countries/usa',
   },
   {
     name: 'Ireland',
     image: '/flags-ireland.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Study in Ireland with its excellent education system and welcoming international community.',
     link: '/countries/ireland',
   },
   {
     name: 'France',
     image: '/flag-france.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Experience French higher education with affordable tuition and cultural richness.',
     link: '/countries/france',
   },
   {
     name: 'Austria',
     image: '/flag-austria.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Quality education in Austria with low tuition fees and high living standards.',
     link: '/countries/Austria',
   },
   {
     name: 'Luxembourg',
     image: '/flag-luxembourg.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Study in Luxembourg with its multilingual environment and international institutions.',
     link: '/countries/luxembourg',
   },
   {
     name: 'Netherlands',
     image: '/flag-netherlands.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'English-taught programs in the Netherlands with innovative teaching approaches.',
     link: '/countries/Netherlands',
   },
   {
     name: 'Switzerland',
     image: '/flag-switzerland.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'World-class education in Switzerland with stunning landscapes and multicultural environment.',
     link: '/countries/switzerland',
   },
   {
     name: 'Denmark',
     image: '/flag-denmark.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Study in Denmark with its focus on innovation and student-centered learning.',
     link: '/countries/Denmark',
   },
   {
     name: 'Italy',
     image: '/flag-italy.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Rich cultural heritage meets affordable quality education in Italy.',
     link: '/countries/Italy',
   },
   {
     name: 'Belgium',
     image: '/flag-belgium.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Multilingual education in Belgium with central European location.',
     link: '/countries/Belgium',
   },
   {
     name: 'Norway',
     image: '/flag-norway.jpg',
-    description: ['Country Info', 'Visa Tips'],
+    description: 'Tuition-free education in Norway with exceptional quality of life.',
     link: '/countries/norway',
   },
 ];
 
 export default function CountriesPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  
   return (
     <div>
-   <nav className="bg-white shadow-md px-4 py-4 sm:px-6 lg:px-10 flex justify-between items-center">
-        {/* <div className="text-xl font-bold">Hakeem Consultancy Services Private Limited</div> */}
-           {/* <h2 className="text-4xl md:text-5xl font-bold text-center">
-  <span className="bg-[linear-gradient(to_right,#b22234,#ffffff_20%,#3c3b6e_60%)] bg-clip-text text-transparent">
-    Study
-  </span>
-  <span className="ml-2 bg-[linear-gradient(to_right,#000000,#dd0000,#ffce00)] bg-clip-text text-transparent">
-    Visum
-  </span>
-</h2> */}
-<div className="flex items-center gap-1 sm:gap-3">
-  {/* Logo */}
-   <Image
-    src="/hakeem-logo.jpg"
-    alt="Logo"
-    width={160}
-    height={50}
-    className="object-contain"
-  />
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .animate-slide-in-left {
+          animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-right {
+          animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-up {
+          animation: slideInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+          animation: scaleIn 0.6s ease-out forwards;
+        }
+        
+        .animation-delay-100 { animation-delay: 100ms; }
+        .animation-delay-200 { animation-delay: 200ms; }
+        .animation-delay-300 { animation-delay: 300ms; }
+        .animation-delay-400 { animation-delay: 400ms; }
+        .animation-delay-500 { animation-delay: 500ms; }
+        .animation-delay-600 { animation-delay: 600ms; }
+        .animation-delay-700 { animation-delay: 700ms; }
+        .animation-delay-800 { animation-delay: 800ms; }
+        .animation-delay-900 { animation-delay: 900ms; }
+        .animation-delay-1000 { animation-delay: 1000ms; }
+        .animation-delay-1100 { animation-delay: 1100ms; }
+        .animation-delay-1200 { animation-delay: 1200ms; }
+        .animation-delay-1300 { animation-delay: 1300ms; }
+        .animation-delay-1400 { animation-delay: 1400ms; }
+        .animation-delay-1500 { animation-delay: 1500ms; }
+        
+        .country-card {
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 0.75rem;
+          overflow: hidden;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          background: white;
+        }
+        
+        .country-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .country-image-container {
+          height: 180px;
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .country-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+        
+        .country-card:hover .country-image {
+          transform: scale(1.1);
+        }
+        
+        .country-content {
+          padding: 1.5rem;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .country-name {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 1rem;
+          color: white;
+          font-size: 1.5rem;
+          font-weight: 600;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
+        
+        .country-description {
+          color: #4b5563;
+          font-size: 0.9375rem;
+          margin-bottom: 1.5rem;
+          line-height: 1.5;
+          flex-grow: 1;
+        }
+        
+        .button-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        
+        .country-button {
+          display: inline-block;
+          padding: 0.75rem 1rem;
+          text-align: center;
+          border-radius: 0.5rem;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          cursor: pointer;
+          border: none;
+          font-size: 0.875rem;
+          width: 100%;
+        }
+        
+        .info-button {
+          background-color: #2563eb;
+          color: white;
+        }
+        
+        .info-button:hover {
+          background-color: #1d4ed8;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+        
+        .visa-button {
+          background-color: #10b981;
+          color: white;
+        }
+        
+        .visa-button:hover {
+          background-color: #059669;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+      `}</style>
 
-  {/* Study Visum */}
-  <h1 className="text-4xl sm:text-4xl font-bold text-center" style={{fontSize:'47px', marginLeft:'-13px'}}>
-      <span className="usa-text-header">Study</span>{' '}
-      <span className="germany-text-header">Visum</span>
-      </h1> 
-
-</div>
-
-
-            {/* Desktop Nav */}
-            <div className="hidden md:flex space-x-6 text-sm font-medium items-center" style={{fontWeight:'bold',fontSize:'large'}}>
-              
-                <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-                  HOME
-                </a>
-              
-              <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a>
-              <a href="/services" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">SERVICES</a>
-              <a href="/countries" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">COUNTRIES</a>
-              <a href="/contact" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">CONTACT US</a>
-              <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'10px',width:'200px', marginTop:'-4px'}}>
-  Book Free Counselling
-</a>
-            </div>
-    
-            {/* Mobile Hamburger Button */}
-            <button className="md:hidden text-5xl" onClick={() => setMenuOpen(!menuOpen)}>
-              {menuOpen ? <HiX /> : <HiMenu />}
-            </button>
-          </nav>
-    
-          {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="md:hidden bg-white px-4 py-4 space-y-3 text-sm font-medium shadow">
-              
-                <a href="/" className="block">
-                  HOME
-                </a>
-              
-              <a href="/about" className="block">ABOUT US</a>
-              <a href="/services" className="block">SERVICES</a>
-              <a href="/countries" className="block">COUNTRIES</a>
-              <a href="/contact" className="block">CONTACT US</a>
-              <Link href="/counselling" className="block text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Book Free Counselling</Link>
-            </div>
-          )}
-    
-    
-<section className="py-12 bg-white px-4"> 
-{/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-  {countries.map((country, index) => (
-    <div
-      key={index}
-      className="rounded overflow-hidden shadow-lg w-[350px] mx-auto"
-    >
-      <img
-        src={country.image}
-        alt={country.name}
-        className="w-full h-56 object-cover" // Taller image for proportion
-      />
-      <div className="bg-sky-400 text-white text-center py-2">
-        <h3 className="text-base font-semibold">{country.name}</h3>
-      </div>
-    </div>
-  ))}
-</div> */}
-<h2 className="text-3xl font-bold text-center text-blue-900 mb-8" style={{marginBottom:'70px'}}>Popular Destinations</h2>
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-  
-  {countries.map((country, index) => (
-    <div key={index} className="flip-card w-[350px] mx-auto">
-      <div className="flip-inner">
-        {/* Front Side */}
-        <div className="flip-front rounded overflow-hidden shadow-lg">
-          <img
-            src={country.image}
-            alt={country.name}
-            className="w-full h-56 object-cover"
-          />
-          <div className="bg-sky-400 text-black text-center py-2">
-            <h3 className="text-base font-semibold">{country.name}</h3>
+      {/* Navbar (unchanged) */}
+      <nav className="bg-slate-900/95 backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700 shadow-lg">
+        <div className="flex items-center space-x-2">
+          <div className="transform hover:scale-105 transition-transform duration-300">
+            <Image
+              src="/hakeem-logo.jpg"
+              alt="Logo"
+              width={80}
+              height={35}
+              className="object-contain drop-shadow-lg"
+            />
+          </div>
+          
+          <div className="flex items-center">
+            <h1 className="text-2xl lg:text-3xl font-extrabold">
+              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
+              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
+            </h1>
           </div>
         </div>
 
-        {/* Back Side */}
-        <div className="flip-back rounded shadow-lg bg-sky-400 text-white flex flex-col items-center gap-5 mt-6 justify-center h-full">
-        
-          <a
-    href={country.link}
-    className="block bg-white text-blue-900 font-semibold px-4 py-2 rounded hover:bg-gray-200 transition"
-  >
-    country-info
-  </a>
-  <a
-    href={`${country.link}/visa-tips`}
-    className="block bg-white text-blue-900 font-semibold px-4 py-2 rounded hover:bg-gray-200 transition"
-  >
-    Visa Tips
-  </a>
+        <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+          <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">HOME</Link>
+          <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">ABOUT US</Link>
+          <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">SERVICES</Link>
+          <Link href="/countries" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">COUNTRIES</Link>
+          <Link href="/contact" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">CONTACT US</Link>
+          <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
+            Book Free Counselling
+          </Link>
         </div>
-      </div>
-    </div>
-  ))}
-</div>
 
-     {/* Footer */}
-           <footer className="bg-blue-900 text-white py-10" style={{marginTop:'70px'}}>
-             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 px-4">
-               <div>
-                 {/* <h2 className="text-xl font-bold mb-4">HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED</h2> */}
-                 <h2 className="text-4xl md:text-5xl font-bold flex items-center justify-center gap-2">
-  <span className="usa-text-footer">Study</span>{' '}
-  <span className="germany-text-footer">Visum</span>
-</h2>
-               </div>
-               <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Address</h3>
-                <p>Flat no.301, Okaz Complex</p>
-                <p>Opp. Pillar Number 5,Mehdipatnam</p>
-                {/* <p>Above Habitat Furniture</p>
-                <p>Royal Colony, Mehdipatnam</p> */}
-                <p>Hyderabad, Telangana 500028</p>
+        <button 
+          className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300" 
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <HiX /> : <HiMenu />}
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700">
+          <Link href="/" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">HOME</Link>
+          <Link href="/about" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">ABOUT US</Link>
+          <Link href="/services" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">SERVICES</Link>
+          <Link href="/countries" className="block text-white bg-gradient-to-r from-blue-600 to-purple-600 py-1.5 px-3 rounded-lg">COUNTRIES</Link>
+          <Link href="/contact" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">CONTACT US</Link>
+          <Link href="/counselling" className="block text-center bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full hover:from-red-600 hover:to-red-700 transition-all duration-300">Book Free Counselling</Link>
+        </div>
+      )}
+
+     <main className="relative bg-gradient-to-br from-white via-blue-50 to-purple-50 pb-10"> 
+        {/* Animated Background Elements */}
+        <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white py-16 lg:py-24 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 bg-[url('https://img.freepik.com/premium-photo/pin-marking-destination-colorful-travel-map_95891-21181.jpg')] bg-cover bg-center opacity-20"></div>
+          
+          {/* Background Decorations */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-16 left-8 w-12 h-12 bg-blue-400/20 rounded-full animate-bounce"></div>
+            <div className="absolute bottom-16 right-8 w-8 h-8 bg-purple-400/20 rounded-full animate-pulse"></div>
+            <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-yellow-400/20 rounded-full animate-ping"></div>
+          </div>
+
+          <div className="relative max-w-4xl mx-auto text-center px-4">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+               Popular Destinations
+            </h1>
+            <p className="text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+              Explore our curated list of top study destinations with comprehensive information and visa guidance
+            </p>
+            <div className="mt-6 flex justify-center">
+              <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 rounded-full"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Countries Grid - Updated Professional Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mt-10 mx-auto relative z-10">
+          {countries.map((country, index) => (
+            <div 
+              key={index} 
+              className={`country-card opacity-0  animate-scale-in animation-delay-${Math.min(100 + index * 100, 1500)}`}
+            >
+              <div className="country-image-container">
+                <img
+                  src={country.image}
+                  alt={country.name}
+                  className="country-image"
+                />
+                <h3 className="country-name">{country.name}</h3>
               </div>
-                    <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Navigation</h3>
-                <ul className="space-y-1">
-                  <li><a href="/about" className="hover:underline">About Us</a></li>
-                  <li><a href="/services" className="hover:underline">Services</a></li>
-                  <li><a href="/contact" className="hover:underline">Contact</a></li>
-                   <li><a href="/countries" className="hover:underline block">Countries</a></li>
-                </ul>
-              </div>
-                   <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Contact</h3>
-                <p className="flex items-center gap-2"><MdEmail className="text-lg" /><a href="mailto:studyvisa2000@gmail.com" className="hover:underline">studyvisa2000@gmail.com</a></p>
-                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+918374779361</a></p>
-                <p className="flex items-center gap-2 mt-2"><MdPhone className="text-lg" /><a href="tel:+919000065858" className="hover:underline">+919704879361</a></p>
-              </div>
-                     <div style={{marginInline:'28px'}}>
-                <h3 className="font-semibold mb-2">Follow Us</h3>
-                <div className="flex space-x-4 mt-2 text-xl">
-                  <a href="#" className="hover:text-blue-300"><FaFacebookF /></a>
-                  <a href="#" className="hover:text-pink-400"><FaInstagram /></a>
-                  <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
+              
+              <div className="country-content">
+                <p className="country-description">
+                  {country.description}
+                </p>
+                
+                <div className="button-group">
+                  <button 
+                    onClick={() => window.location.href = country.link}
+                    className="country-button info-button"
+                  >
+                    Country Information
+                  </button>
+                  <button 
+                    onClick={() => window.location.href = `${country.link}/visa-tips`}
+                    className="country-button visa-button"
+                  >
+                    Visa Guidance
+                  </button>
                 </div>
-               </div>
-             </div>
-             <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
-               &copy; 2025 hakeemconsultancy. All rights reserved.
-             </div>
-           </footer>
-           </section>
-         </div>
-       );
-     }
-     
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-20 text-center opacity-0 animate-fade-in-up animation-delay-1000">
+          <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Need Help Choosing a Destination?</h3>
+            <p className="text-white mb-6">Our expert counselors can guide you to the perfect country based on your academic goals and preferences.</p>
+            <button 
+              onClick={() => window.location.href = "/counselling"}
+              className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-md"
+            >
+              Book Free Consultation
+            </button>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer (unchanged) */}
+      <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-8 lg:py-10 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4">
+          <div className="lg:col-span-1 text-center lg:text-left">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-3">
+              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
+              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
+            </h2>
+          </div>
+
+          <div className="lg:col-span-1">
+            <h3 className="font-semibold mb-3 text-blue-300">Address</h3>
+            <div className="space-y-1 text-gray-300 text-sm">
+              <p>Flat no.301, Okaz Complex</p>
+              <p>Opp. Pillar Number 5, Mehdipatnam</p>
+              <p>Hyderabad, Telangana 500028</p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-1">
+            <h3 className="font-semibold mb-3 text-blue-300">Navigation</h3>
+            <ul className="space-y-1">
+              {[
+                { href: "/about", text: "About Us" },
+                { href: "/services", text: "Services" },
+                { href: "/contact", text: "Contact" },
+                { href: "/countries", text: "Countries" }
+              ].map((link, i) => (
+                <li key={i}>
+                  <Link href={link.href} className="text-gray-300 hover:text-white transition-all duration-300 text-sm hover:translate-x-1 inline-block">
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-1">
+            <h3 className="font-semibold mb-3 text-blue-300">Contact</h3>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
+                <MdEmail className="text-base text-blue-400 flex-shrink-0" />
+                <a href="mailto:studyvisa2000@gmail.com" className="hover:underline text-sm">studyvisa2000@gmail.com</a>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
+                <MdPhone className="text-base text-green-400 flex-shrink-0" />
+                <a href="tel:+918374779361" className="hover:underline text-sm">+91 8374779361</a>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
+                <MdPhone className="text-base text-green-400 flex-shrink-0" />
+                <a href="tel:+919704879361" className="hover:underline text-sm">+91 9704879361</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-1">
+            <h3 className="font-semibold mb-3 text-blue-300">Follow Us</h3>
+            <div className="flex space-x-3 text-xl">
+              <a href="#" className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
+                <FaFacebookF />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-pink-400 transition-all duration-300 hover:scale-110">
+                <FaInstagram />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-110">
+                <FaLinkedinIn />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative text-center text-gray-400 text-sm mt-8 pt-6 border-t border-gray-700">
+          <p>&copy; 2025 hakeemconsultancy. All rights reserved.</p>
+          <div className="w-24 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-2"></div>
+        </div>
+      </footer>
+    </div>
+  );
+}
