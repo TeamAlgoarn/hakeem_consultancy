@@ -196,13 +196,13 @@
     
   
 'use client';
-import Image from 'next/image';
-import React, { useState } from 'react';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { FaWhatsapp, FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
-import { MdEmail, MdPhone } from 'react-icons/md';
+import Image from 'next/image';
 import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { MdEmail, MdPhone } from 'react-icons/md';
 
 export default function ContactPage() {
   const [error, setError] = useState('');
@@ -231,6 +231,40 @@ export default function ContactPage() {
       form.reset();
     }
   };
+
+
+  const [showMeeting, setShowMeeting] = useState(false);
+  const jitsiContainerRef = useRef<HTMLDivElement>(null);
+
+  const [chatMode, setChatMode] = useState<'select' | 'text' | 'video'>('select');
+  const [messages, setMessages] = useState<string[]>([]);
+  const [currentMessage, setCurrentMessage] = useState('');
+
+
+   // Load Jitsi script and embed meeting
+  useEffect(() => {
+    if (chatMode === 'video') {
+      const script = document.createElement('script');
+      script.src = 'https://meet.jit.si/external_api.js';
+      script.async = true;
+      script.onload = () => {
+        const domain = 'meet.jit.si';
+        const options = {
+          roomName: `StudyVisum-${Date.now()}`,
+          parentNode: jitsiContainerRef.current,
+          width: '100%',
+          height: '100%',
+          configOverwrite: { startWithAudioMuted: true },
+          interfaceConfigOverwrite: {},
+          userInfo: { displayName: 'Guest User' }
+        };
+        new (window as any).JitsiMeetExternalAPI(domain, options);
+      };
+      document.body.appendChild(script);
+    }
+  }, [chatMode]);
+
+
 
   return (
     <div>
@@ -313,34 +347,100 @@ export default function ContactPage() {
                 <input
                   type="text"
                   placeholder="First name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  className="w-full text-gray-500 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                 />
                 <input
                   type="text"
                   placeholder="Last name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  className="w-full text-gray-500 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                 />
               </div>
               
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                className="w-full text-gray-500 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
               />
               
               <input
                 type="tel"
                 placeholder="Phone number"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                className="w-full text-gray-500 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
               />
               
               <textarea
                 placeholder="Message"
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                className="w-full text-gray-500 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
               ></textarea>
 
               {error && <p className="text-red-600 text-sm">{error}</p>}
+
+              {/* Chat Type Selector */}
+              <select
+                value={chatMode}
+                onChange={(e) => setChatMode(e.target.value as 'select' | 'text' | 'video')}
+                className="w-full text-gray-500 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 "
+              >
+                <option value="select">Select mode</option>
+                <option value="text">Text Chat</option>
+                <option value="video">Video Chat</option>
+              </select>
+
+              {chatMode === 'select' && (
+                <div className='text-center text-gray-500'>
+                  Select a mode for Conversation
+                </div>
+              )}
+
+              {chatMode === 'text' && (
+                <div className="mt-4 border border-gray-300 rounded-lg p-4 bg-white shadow-sm">
+                  <div className="h-40 overflow-y-auto border-b border-gray-200 mb-3 p-2 space-y-2">
+                    {messages.length === 0 ? (
+                      <p className="text-gray-500 text-1xl">No messages yet. Start chatting!</p>
+                    ) : (
+                      messages.map((msg, i) => (
+                        <div key={i} className="bg-blue-100 p-2 rounded-lg text-gray-800">
+                          {msg}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={currentMessage}
+                      onChange={(e) => setCurrentMessage(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && currentMessage.trim()) {
+                          setMessages([...messages, currentMessage.trim()]);
+                          setCurrentMessage('');
+                        }
+                      }}
+                      placeholder="Type a message..."
+                      className="flex-1 text-gray-500 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (currentMessage.trim()) {
+                          setMessages([...messages, currentMessage.trim()]);
+                          setCurrentMessage('');
+                        }
+                      }}
+                      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {chatMode === 'video' && (
+                <section className="w-full h-[90vh] bg-black mt-8">
+                  <div ref={jitsiContainerRef} className="w-full h-full"></div>
+                </section>
+              )}
 
               <button
                 type="submit"
