@@ -213,247 +213,322 @@ export default function VisaTipsAustralia() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-        <Image
-          src="/Australia.jpg"
-          alt="Australia PR Visa"
-          layout="fill"
-          objectFit="cover"
-          className="w-full h-full"
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-col justify-center items-center px-4 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2"
-          >
-            Australia Residency Visa
-          </motion.h1>
+      <div 
+        className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
+        style={{ backgroundImage: "url('/Australia.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 bg-black bg-opacity-60 text-white p-6 sm:p-10 rounded-lg max-w-2xl w-full text-center"
+        >
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3">
+            Australia <span className="text-blue-300">PR Visa</span>
+          </h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-white text-base sm:text-lg"
+            className="mb-4 text-base sm:text-lg"
           >
             Why apply for an Australian Residency Visa?
           </motion.p>
-        </div>
-      </section>
+        </motion.div>
+      </div>
 
-      {/* Main Content Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Left Content */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="md:col-span-2 space-y-8 text-gray-800"
-        >
-          <div>
-            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Why Study in Australia
-            </h2>
-            <p>Australia is consistently ranked as one of the best places to live, offering a vibrant culture and a welcoming atmosphere.</p>
-            <p>It is the third most popular destination for overseas education, known for its safe, inclusive, and supportive environment.</p>
-            <p>Our education consultants have helped students study in Australia since 2010, giving access to top institutions.</p>
-            <p>Australia offers globally ranked institutions, affordability, and a straightforward path to Permanent Residency (PR).</p>
-            <p>The country boasts over 1,000 academic institutions, helping international students meet their goals.</p>
-            <p>Australia offers excellent value for money and a high standard of living with lower costs compared to the UK or US.</p>
-            <h3 className="text-xl font-semibold mt-6">Top reasons to study in Australia:</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
-              {[
-                "Group of 8 elite institutions",
-                "Affordability",
-                "Work while studying",
-                "Extensive student support",
-                "Quality assurance",
-                "Diverse, inclusive society",
-                "High standard of living",
-                "Easy student visa process",
-                "No GRE/GMAT required"
-              ].map((item, index) => (
-                <motion.li 
-                  key={index}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
-                >
-                  <span className="font-medium">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
+      {/* Main Content */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Content */}
+          <div className="md:col-span-2 space-y-8">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Why Study in Australia
+              </h2>
+              <p className="mb-4 text-gray-700">
+                Australia is consistently ranked as one of the best places to live, offering a vibrant culture and a welcoming atmosphere.
+              </p>
+              <p className="mb-4 text-gray-700">
+                It is the third most popular destination for overseas education, known for its safe, inclusive, and supportive environment.
+              </p>
+              <p className="mb-4 text-gray-700">
+                Australia offers globally ranked institutions, affordability, and a straightforward path to Permanent Residency (PR).
+              </p>
+
+              <div className="mt-6">
+                <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Top reasons to study in Australia:
+                </h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    "Group of 8 elite institutions",
+                    "Affordability",
+                    "Work while studying",
+                    "Extensive student support",
+                    "Quality assurance",
+                    "Diverse, inclusive society",
+                    "High standard of living",
+                    "Easy student visa process",
+                    "No GRE/GMAT required",
+                    "Post-study work rights",
+                    "Pathway to permanent residency",
+                    "World-class research facilities"
+                  ].map((item, index) => (
+                    <motion.li 
+                      key={index}
+                      whileHover={{ scale: 1.02 }}
+                      className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+                    >
+                      <span className="font-medium text-gray-800">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* PR Process */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="bg-white p-6 rounded-lg shadow-sm"
+            >
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Australia PR Process
+              </h2>
+              <p className="text-gray-700 mb-4">The general PR process includes the following steps:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { title: "Skill Assessment", desc: "Through authorized assessment bodies" },
+                  { title: "Expression of Interest", desc: "Submit EOI through SkillSelect" },
+                  { title: "Visa Application", desc: "Submit complete application with documents" },
+                  { title: "Health & Character Checks", desc: "Medical exams and police clearance" },
+                  { title: "Visa Approval", desc: "Based on verified documentation" },
+                  { title: "Departure", desc: "Upon receiving the visa grant letter" }
+                ].map((step, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ y: -5 }}
+                    className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-all"
+                  >
+                    <h3 className="font-bold text-blue-600">{step.title}</h3>
+                    <p className="text-sm mt-1 text-gray-700">{step.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Google Maps Section */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="bg-white p-6 rounded-lg shadow-sm"
+            >
+              {/* <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Australia Location
+              </h2> */}
+              <div className="overflow-hidden rounded-lg shadow-md">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29692510.85625428!2d115.174038!3d-24.0855995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2b2bfd076787c5df%3A0x538267a1955b1352!2sAustralia!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="400" 
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  className="rounded-lg"
+                ></iframe>
+              </div>
+              <p className="mt-4 text-gray-600">
+                Australia is both a country and continent located in the Southern Hemisphere, surrounded by the Indian and Pacific Oceans.
+              </p>
+            </motion.div>
           </div>
 
-          {/* PR Process */}
-          <div>
-            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Australia PR Process
-            </h2>
-            <p>The general PR process includes the following steps:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-              {[
-                { title: "Skill Assessment", desc: "Through authorized assessment bodies" },
-                { title: "Visa Approval", desc: "Based on verified documentation" },
-                { title: "Departure", desc: "Upon receiving the visa grant letter" }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5 }}
-                  className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-all"
+          {/* Form */}
+          <div className="max-w-md mx-auto relative z-10">
+            <div className="bg-gradient-to-b from-blue-600 to-purple-600 text-white p-8 rounded-xl shadow-lg">
+              <h2 className="text-3xl font-bold mb-2">
+                Free PR Consultation
+              </h2>
+              <p className="text-blue-100 mb-6">Fill out the form below and our visa experts will contact you shortly</p>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Your Full Name" 
+                    value={formData.name} 
+                    onChange={handleChange} 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-800"
+                  />
+                  {errors.name && <p className="mt-1 text-sm text-yellow-200">{errors.name}</p>}
+                </div>
+
+                <div>
+                  <input 
+                    type="text" 
+                    name="phone" 
+                    placeholder="Your Mobile Number" 
+                    value={formData.phone} 
+                    onChange={handleChange} 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-800"
+                  />
+                  {errors.phone && <p className="mt-1 text-sm text-yellow-200">{errors.phone}</p>}
+                </div>
+
+                <div>
+                  <input 
+                    type="text" 
+                    name="email" 
+                    placeholder="Your Email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-800"
+                  />
+                  {errors.email && <p className="mt-1 text-sm text-yellow-200">{errors.email}</p>}
+                </div>
+
+                <div>
+                  <select 
+                    name="branch" 
+                    value={formData.branch} 
+                    onChange={handleChange} 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-800"
+                  >
+                    <option value="">-- Select Branch --</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                  </select>
+                  {errors.branch && <p className="mt-1 text-sm text-yellow-200">{errors.branch}</p>}
+                </div>
+
+                <div>
+                  <select 
+                    name="country" 
+                    value={formData.country} 
+                    onChange={handleChange} 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-800"
+                  >
+                    <option value="">-- Select Country --</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+                    <option value="Germany">Germany</option>
+                    <option value="USA">USA</option>
+                    <option value="Ireland">Ireland</option>
+                  </select>
+                  {errors.country && <p className="mt-1 text-sm text-yellow-200">{errors.country}</p>}
+                </div>
+
+                <div>
+                  <input 
+                    type="text" 
+                    name="time" 
+                    placeholder="Preferred Time (e.g., 10 AM - 12 PM)" 
+                    value={formData.time} 
+                    onChange={handleChange} 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-800"
+                  />
+                  {errors.time && <p className="mt-1 text-sm text-yellow-200">{errors.time}</p>}
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-all duration-300 hover:scale-[1.02] shadow-md"
                 >
-                  <h3 className="font-bold text-blue-600">{step.title}</h3>
-                  <p className="text-sm mt-1">{step.desc}</p>
-                </motion.div>
-              ))}
+                  Get Visa Consultation
+                </button>
+
+                {submitted && (
+                  <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
+                    Form submitted successfully! Our team will contact you shortly.
+                  </div>
+                )}
+              </form>
             </div>
           </div>
-        </motion.div>
-
-        {/* Right Form Section */}
-        <div className="max-w-2xl mx-auto relative z-10">
-          <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-            <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-              Book Free Consultation
-            </h2>
-            <p className="text-gray-600 mb-6">Fill out the form below and our experts will contact you shortly</p>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Your Full Name" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                />
-                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
-              </div>
-
-              <div>
-                <input 
-                  type="text" 
-                  name="phone" 
-                  placeholder="Your Mobile Number" 
-                  value={formData.phone} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                />
-                {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
-              </div>
-
-              <div>
-                <input 
-                  type="text" 
-                  name="email" 
-                  placeholder="Your Email" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                />
-                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
-              </div>
-
-              <div>
-                <select 
-                  name="branch" 
-                  value={formData.branch} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-700"
-                >
-                  <option value="">-- Select Branch --</option>
-                  <option value="Hyderabad">Hyderabad</option>
-                </select>
-                {errors.branch && <p className="mt-1 text-sm text-red-600">{errors.branch}</p>}
-              </div>
-
-              <div>
-                <select 
-                  name="country" 
-                  value={formData.country} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-700"
-                >
-                  <option value="">-- Select Country --</option>
-                  <option value="Canada">Canada</option>
-                  <option value="Australia">Australia</option>
-                  <option value="UK">UK</option>
-                  <option value="Germany">Germany</option>
-                  <option value="USA">USA</option>
-                  <option value="Ireland">Ireland</option>
-                </select>
-                {errors.country && <p className="mt-1 text-sm text-red-600">{errors.country}</p>}
-              </div>
-
-              <div>
-                <input 
-                  type="text" 
-                  name="time" 
-                  placeholder="Preferred Time (e.g., 10 AM - 12 PM)" 
-                  value={formData.time} 
-                  onChange={handleChange} 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                />
-                {errors.time && <p className="mt-1 text-sm text-red-600">{errors.time}</p>}
-              </div>
-
-              <button 
-                type="submit" 
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-[1.02] shadow-md"
-              >
-                Request Free Consultation
-              </button>
-
-              {submitted && (
-                <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
-                  Form submitted successfully! Our team will contact you shortly.
-                </div>
-              )}
-            </form>
-          </div>
         </div>
-        
-
       </section>
 
       {/* Final Info Section */}
-      <section className="bg-gray-50 py-10 px-4 sm:px-6">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-        >
-          {/* Text Content */}
-          <div className="bg-white p-6 sm:p-10 rounded-lg shadow-md w-full">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-900">
-              Study in Australia with Expert Guidance
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Let our expert consultants help you find the right course and university. We guide your entire journey from start to finish.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Our personalized consultations include career mapping, financial planning, university selection, and PR strategies.
-            </p>
-            <p className="text-gray-700">
-              Hakeem Consulting Services is a trusted <span className="text-blue-600 font-medium">AUSTRALIA study visa consultant in Hyderabad</span> 
-            </p>
-          </div>
-
-          {/* Image */}
+      <section className="bg-gray-50 py-12 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
           <motion.div 
-            whileHover={{ scale: 1.02 }}
-            className="flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
           >
-            <Image
-              src="/university.jpg"
-              alt="Student"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-md max-w-sm w-full object-cover"
-            />
+            {/* Left Image */}
+            <div className="flex justify-center">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="overflow-hidden rounded-xl shadow-lg"
+              >
+                <Image
+                  src="/university.jpg"
+                  alt="Study Abroad"
+                  width={600}
+                  height={400}
+                  className="w-full max-w-xs sm:max-w-md transition-transform duration-500 hover:scale-105"
+                />
+              </motion.div>
+            </div>
+
+            {/* Right Content */}
+            <div>
+              <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">How We Help You?</h2>
+              <p className="text-gray-700 mb-6">
+                We offer end-to-end expert guidance and services to help you achieve your Australian PR goals with ease.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "PR Eligibility Assessment",
+                  "SkillSelect Profile Creation",
+                  "Documentation Assistance",
+                  "Visa Application Support",
+                  "Interview Preparation",
+                  "Post-Landing Services"
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1)" }}
+                    className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-all"
+                  >
+                    <div className="flex items-center">
+                      <div className="bg-blue-100 p-2 rounded-full mr-3">
+                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                      <span className="font-medium text-gray-800">{item}</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-8"
+              >
+                <Link href="#form">
+                  <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all">
+                    Get Free PR Consultation
+                  </button>
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
     </div>
   );
