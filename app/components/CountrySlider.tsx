@@ -93,7 +93,7 @@ const countries = [
     image: '/ita-stu.jpg',
     flag: '/ita-ro.png',
     height: '320px',
-    link: 'countries/italy',
+    link: 'countries/Italy',
   },
   {
     name: 'Belgium',
