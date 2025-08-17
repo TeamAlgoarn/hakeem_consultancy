@@ -233,37 +233,55 @@ export default function ContactPage() {
   };
 
 
-  const [showMeeting, setShowMeeting] = useState(false);
   const jitsiContainerRef = useRef<HTMLDivElement>(null);
 
   const [chatMode, setChatMode] = useState<'select' | 'text' | 'video'>('select');
   const [messages, setMessages] = useState<string[]>([]);
   const [currentMessage, setCurrentMessage] = useState('');
+  
+  const [meetingRequested, setMeetingRequested] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [meetingDateTime, setMeetingDateTime] = useState('');
+  const [meetingReady, setMeetingReady] = useState(false);
 
 
    // Load Jitsi script and embed meeting
   useEffect(() => {
-    if (chatMode === 'video') {
-      const script = document.createElement('script');
-      script.src = 'https://meet.jit.si/external_api.js';
-      script.async = true;
-      script.onload = () => {
-        const domain = 'meet.jit.si';
-        const options = {
-          roomName: `StudyVisum-${Date.now()}`,
-          parentNode: jitsiContainerRef.current,
-          width: '100%',
-          height: '100%',
-          configOverwrite: { startWithAudioMuted: true },
-          interfaceConfigOverwrite: {},
-          userInfo: { displayName: 'Guest User' }
-        };
-        new (window as any).JitsiMeetExternalAPI(domain, options);
+  if (meetingReady && chatMode === 'video') {
+    const script = document.createElement('script');
+    script.src = 'https://meet.jit.si/external_api.js';
+    script.async = true;
+    script.onload = () => {
+      const domain = 'meet.jit.si';
+      const options = {
+        roomName: `StudyVisum-${Date.now()}`,
+        parentNode: jitsiContainerRef.current,
+        width: '100%',
+        height: '100%',
+        configOverwrite: { startWithAudioMuted: true },
+        interfaceConfigOverwrite: {},
+        userInfo: { displayName: userName }
       };
-      document.body.appendChild(script);
+      new (window as any).JitsiMeetExternalAPI(domain, options);
+    };
+    document.body.appendChild(script);
     }
-  }, [chatMode]);
+  }, [meetingReady, chatMode]);
 
+  useEffect(() => {
+    if (meetingRequested && meetingDateTime) {
+      const timer = setInterval(() => {
+        const now = new Date();
+        const scheduled = new Date(meetingDateTime);
+        if (now >= scheduled) {
+          setMeetingReady(true);
+          clearInterval(timer);
+        }
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [meetingRequested, meetingDateTime]);
 
 
   return (
@@ -436,7 +454,56 @@ export default function ContactPage() {
                 </div>
               )}
 
-              {chatMode === 'video' && (
+              {chatMode === 'video' && !meetingRequested && (
+                <div className="mt-6 p-6 border border-gray-300 rounded-xl bg-white shadow-md">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                    Schedule a Meeting
+                  </h3>
+
+                  {/* Name Input */}
+                  <input
+                    type="text"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    placeholder="Enter your name"
+                    className="w-full px-4 py-2 text-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
+                  />
+
+                  {/* Date & Time Input */}
+                  <input
+                    type="datetime-local"
+                    value={meetingDateTime}
+                    onChange={(e) => setMeetingDateTime(e.target.value)}
+                    className="w-full px-4 py-2 text-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
+                  />
+
+                  <button
+                    onClick={() => {
+                      if (!userName.trim()) {
+                        alert('Please enter your name.');
+                        return;
+                      }
+                      if (!meetingDateTime) {
+                        alert('Please select a meeting date & time.');
+                        return;
+                      }
+                      setMeetingRequested(true);
+                    }}
+                    className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-teal-600 transition-all"
+                  >
+                    Request Meeting
+                  </button>
+                </div>
+              )}
+
+              {chatMode === 'video' && meetingRequested && !meetingReady && (
+                <div className="mt-6 p-6 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-lg">
+                  ⏳ Your meeting is scheduled for {new Date(meetingDateTime).toLocaleString()}.
+                  Please wait until the scheduled time to join.
+                </div>
+              )}
+
+              {chatMode === 'video' && meetingReady && (
                 <section className="w-full h-[90vh] bg-black mt-8">
                   <div ref={jitsiContainerRef} className="w-full h-full"></div>
                 </section>
