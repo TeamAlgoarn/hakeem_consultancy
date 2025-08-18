@@ -474,6 +474,7 @@ export default function ContactPage() {
                     type="datetime-local"
                     value={meetingDateTime}
                     onChange={(e) => setMeetingDateTime(e.target.value)}
+                    min={new Date().toISOString().slice(0,16)}   // Restrict past times
                     className="w-full px-4 py-2 text-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
                   />
 
@@ -487,9 +488,19 @@ export default function ContactPage() {
                         alert('Please select a meeting date & time.');
                         return;
                       }
+
+                      const selectedTime = new Date(meetingDateTime);
+                      const now = new Date();
+
+                      if (selectedTime < now) {
+                        alert('Meeting cannot be scheduled for a past time. Please select current or future time.');
+                        return;
+                      }
+
                       setMeetingRequested(true);
                     }}
-                    className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-teal-600 transition-all"
+                    // className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-teal-600 transition-all"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-[1.02] shadow-md"
                   >
                     Request Meeting
                   </button>
