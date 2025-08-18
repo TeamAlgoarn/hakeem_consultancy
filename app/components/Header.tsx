@@ -130,15 +130,12 @@ export default function Header() {
     </div>
     
     {/* StudyVisum Text */}
-    <div className="flex flex-col">
-      <h1 className="text-xl lg:text-2xl font-extrabold leading-tight">
-        <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>
-        <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
-      </h1>
-      <p className="text-x lg:text-sm text-slate-300 font-medium leading-tight">
-        A unit of Hakeem Consultancy Services Private Limited
-      </p>
-    </div>
+     <div className="flex items-center">
+            <h1 className="text-2xl lg:text-3xl font-extrabold">
+              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
+              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
+            </h1>
+          </div>
   </div>
 
   {/* Desktop Navigation */}
