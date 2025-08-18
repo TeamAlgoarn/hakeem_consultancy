@@ -117,58 +117,60 @@ export default function Header() {
 
       {/* Main Navigation */}
       <nav className="bg-slate-900/95 backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
-        <div className="flex items-center space-x-2">
-          {/* Logo */}
-          <div className="transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/hakeem-logo.jpg"
-              alt="Logo"
-              width={80}
-              height={35}
-              className="object-contain drop-shadow-lg"
-            />
-          </div>
-          
-          {/* Brand Text */}
-          <div className="flex items-center">
-            <h1 className="text-2xl lg:text-3xl font-extrabold">
-              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
-              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
-            </h1>
-          </div>
-        </div>
+  <div className="flex items-center space-x-3">
+    {/* Logo */}
+    <div className="transform hover:scale-105 transition-transform duration-300">
+      <Image
+        src="/hakeem-logo.jpg"
+        alt="Logo"
+        width={80}
+        height={35}
+        className="object-contain drop-shadow-lg"
+      />
+    </div>
+    
+    {/* StudyVisum Text */}
+    <div className="flex flex-col">
+      <h1 className="text-xl lg:text-2xl font-extrabold leading-tight">
+        <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>
+        <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
+      </h1>
+      <p className="text-x lg:text-sm text-slate-300 font-medium leading-tight">
+        A unit of Hakeem Consultancy Services Private Limited
+      </p>
+    </div>
+  </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
-          <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
-            HOME
-          </Link>
-          <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
-            ABOUT US
-          </Link>
-          <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
-            SERVICES
-          </Link>
-          <Link href="/countries" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
-            COUNTRIES
-          </Link>
-          <Link href="/contact" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
-            CONTACT US
-          </Link>
-          <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
-            Book Free Counselling
-          </Link>
-        </div>
+  {/* Desktop Navigation */}
+  <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+    <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+      HOME
+    </Link>
+    <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+      ABOUT US
+    </Link>
+    <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+      SERVICES
+    </Link>
+    <Link href="/countries" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+      COUNTRIES
+    </Link>
+    <Link href="/contact" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+      CONTACT US
+    </Link>
+    <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
+      Book Free Counselling
+    </Link>
+  </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300" 
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <HiX /> : <HiMenu />}
-        </button>
-      </nav>
-
+  {/* Mobile Menu Button */}
+  <button 
+    className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    {menuOpen ? <HiX /> : <HiMenu />}
+  </button>
+</nav>
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700 shadow-xl">

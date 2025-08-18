@@ -24,7 +24,7 @@
 //         </Link>
 //       </nav>
 
-    
+
 //     <div className="min-h-screen bg-white px-4 sm:px-10 py-10 text-gray-800">
 //       {/* Hero Section */}
 //       <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20 text-center rounded-lg shadow-lg mb-12">
@@ -91,7 +91,7 @@
 //         </div>
 //       </section>
 
- 
+
 //       {/* <section className="max-w-6xl mx-auto py-16">
 //         <h2 className="text-3xl font-semibold text-center mb-10">Meet Our Team</h2>
 //         <div className="grid sm:grid-cols-2 gap-10">
@@ -114,12 +114,12 @@
 //       </div>
 //       <footer className="bg-blue-900 text-white px-6 py-10 text-sm w-full">
 //             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
-      
+
 //               {/* Column 1: Branding */}
 //               <div>
 //                 <h2 className="text-xl font-bold mb-4">HAKEEM CONSULTANCY</h2>
 //               </div>
-      
+
 //               {/* Column 2: Address */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Address</h3>
@@ -129,7 +129,7 @@
 //                 <p>Royal Colony, Mehdipatnam</p>
 //                 <p>Hyderabad, Telangana 500028</p>
 //               </div>
-      
+
 //               {/* Column 3: Navigation */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Navigation</h3>
@@ -139,7 +139,7 @@
 //                   <li><a href="/contact" className="hover:underline">Contact</a></li>
 //                 </ul>
 //               </div>
-      
+
 //               {/* Column 4: Contact with icons */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Contact</h3>
@@ -152,7 +152,7 @@
 //                   <a href="tel:+919000065858" className="hover:underline">+91- 097048 79361</a>
 //                 </p>
 //               </div>
-      
+
 //               {/* Column 5: Social Media */}
 //               <div>
 //                 <h3 className="font-semibold mb-2">Follow Us</h3>
@@ -163,7 +163,7 @@
 //                 </div>
 //               </div>
 //             </div>
-      
+
 //             {/* Bottom Note */}
 //             <div className="text-center text-gray-300 text-xs mt-10 pt-4 border-t border-gray-700">
 //               &copy; 2025 hakeemconsultancy. All rights reserved.
@@ -220,7 +220,7 @@ export default function AboutPage() {
               className="object-contain drop-shadow-lg"
             />
           </div>
-          
+
           {/* Brand Text */}
           <div className="flex items-center">
             <h1 className="text-2xl lg:text-3xl font-extrabold">
@@ -243,8 +243,8 @@ export default function AboutPage() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300" 
+        <button
+          className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <HiX /> : <HiMenu />}
@@ -269,7 +269,7 @@ export default function AboutPage() {
         <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white py-16 lg:py-24 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 bg-[url('https://studyinthestates.dhs.gov/sites/default/files/assets/images/content/photodune-2721464-group-of-college-students-m.jpg')] bg-cover bg-center opacity-20"></div>
-          
+
           {/* Background Decorations */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-16 left-8 w-12 h-12 bg-blue-400/20 rounded-full animate-bounce"></div>
@@ -278,11 +278,14 @@ export default function AboutPage() {
           </div>
 
           <div className="relative max-w-4xl mx-auto text-center px-4">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-              About Hakeem Consultancy
+            <h1 className="text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent tracking-wide pb-2">
+              StudyVisum
             </h1>
-            <p className="text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-              Empowering your global education journey since day one
+            <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-6 font-medium">
+              A unit of Hakeem Consultancy Services Private Limited
+            </p>
+            <p className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-gray-100 to-blue-300 bg-clip-text text-transparent max-w-4xl mx-auto leading-relaxed tracking-wide">
+              Empowering Careers Through Training & Guidance
             </p>
             <div className="mt-6 flex justify-center">
               <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 rounded-full"></div>
@@ -296,10 +299,17 @@ export default function AboutPage() {
             <h2 className="text-3xl lg:text-4xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Our Story and Values
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-12">
-              Based in Hyderabad, HCS is a trusted name in overseas education and study visa consulting where your journey begins. Through our dedicated division, Study Visum, we have helped countless students achieve their academic aspirations abroad.
-              From personalized university selection to hassle-free visa processing, we provide end-to-end guidance and support to make your global education dream a reality.
-            </p>
+            <div className="text-md text-gray-700 leading-relaxed mb-12 space-y-6">
+              <p className="text-justify">
+                Based in Hyderabad, <strong>Hakeem Consultancy Services Private Limited (HCS)</strong> is a trusted name in overseas education, skill development, and visa consulting, where your career journey begins.
+              </p>
+              <p className="text-justify">
+                Through our dedicated division, <strong>Study Visum</strong>, we have helped countless students and professionals shape their future by offering expert guidance, world-class training, and hassle-free visa support. Whether you're aiming for higher education or work opportunities abroad, we walk with you at every step from personalized university or job placement advice to complete documentation and interview preparation.
+              </p>
+              <p className="text-justify">
+                We are committed to <strong>shaping professionals and building futures</strong> through integrity, excellence, and innovation.
+              </p>
+            </div>
 
             {/* Values Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
