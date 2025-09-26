@@ -152,26 +152,25 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="bg-slate-900/95 backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
+      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
         <div className="flex items-center space-x-3">
           {/* Logo */}
           <div className="transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/hakeem-logo.jpg"
-              alt="Logo"
-              width={80}
-              height={35}
-              className="object-contain drop-shadow-lg"
-            />
-          </div>
-          
+                      <Image
+                        src="/Studyvisummp4logo (1) (1).gif"
+                        alt="StudyVisum Logo"
+                        width={300}
+                        height={35}
+                        className="object-contain drop-shadow-lg"
+                      />
+                    </div>
           {/* StudyVisum Text */}
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <h1 className="text-2xl lg:text-3xl font-extrabold">
               <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
               <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
             </h1>
-          </div>
+          </div> */}
         </div>
 
         {/* Center - Google Rating Component (Desktop) */}

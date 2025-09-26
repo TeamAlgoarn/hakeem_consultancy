@@ -12,17 +12,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
-import {MdEmail, MdPhone}from 'react-icons/md';
+import {MdEmail, MdPhone} from 'react-icons/md';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <div className='bg-white min-h-screen flex flex-col'>
-      {/* Top Navigation Bar */}
-      <Header />
+      {/* Top Navigation Bar - Made sticky/fixed */}
+      <div className="sticky top-0 z-50">
+        <Header />
+      </div>
+      
       <PopupForm/>
 
-      <main className="flex-grow">
+      <main className="flex-grow"> {/* Removed pt-16 padding */}
         {/* Hero Image Slider with Text and CTA */}
         <section className="relative">
           <HeroSlider />
@@ -47,18 +51,23 @@ export default function Home() {
         </div>
       </main>
 
-       <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-8 lg:py-10 relative overflow-hidden mt-16">
+       <footer className="bg-black text-white py-8 lg:py-10 relative overflow-hidden mt-16">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4">
-          {/* Brand */}
+          {/* Brand - Replaced text with GIF logo */}
           <div className="lg:col-span-1 text-center lg:text-left">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
-              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
-            </h2>
+            <div className="transform hover:scale-105 transition-transform duration-300">
+              <Image
+                src="/Studyvisummp4logo (1) (1).gif"
+                alt="StudyVisum Logo"
+                width={300}
+                height={35}
+                className="object-contain drop-shadow-lg"
+              />
+            </div>
           </div>
 
           {/* Address */}

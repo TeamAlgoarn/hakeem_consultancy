@@ -180,7 +180,6 @@ import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/f
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
 
-
 // Google Rating Component
 const GoogleRatingComponent: React.FC = () => {
   const handleGoogleClick = (): void => {
@@ -239,30 +238,29 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Navigation */}
-      <nav className="bg-slate-900/95 backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700 shadow-lg">
+      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700 shadow-lg">
         <div className="flex items-center space-x-2">
-          {/* Logo */}
+          {/* Logo - Updated path */}
           <div className="transform hover:scale-105 transition-transform duration-300">
             <Image
-              src="/hakeem-logo.jpg"
-              alt="Logo"
-              width={80}
+              src="/Studyvisummp4logo (1) (1).gif"
+              alt="StudyVisum Logo"
+              width={300}
               height={35}
               className="object-contain drop-shadow-lg"
             />
           </div>
 
           {/* Brand Text */}
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <h1 className="text-2xl lg:text-3xl font-extrabold">
               <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
               <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
             </h1>
-          </div>
+          </div> */}
         </div>
 
-
-{/* Center - Google Rating Component (Desktop) */}
+        {/* Center - Google Rating Component (Desktop) */}
         <div className="hidden lg:flex">
           <GoogleRatingComponent />
         </div>
@@ -290,10 +288,10 @@ export default function AboutPage() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700">
-          {/* Center - Google Rating Component (Desktop) */}
-        <div className="hidden lg:flex">
-          <GoogleRatingComponent />
-        </div>
+          {/* Center - Google Rating Component (Mobile) */}
+          <div className="flex justify-center mb-4">
+            <GoogleRatingComponent />
+          </div>
           <Link href="/" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">HOME</Link>
           <Link href="/about" className="block text-white bg-gradient-to-r from-blue-600 to-purple-600 py-1.5 px-3 rounded-lg">ABOUT US</Link>
           <Link href="/services" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">SERVICES</Link>
@@ -435,18 +433,23 @@ export default function AboutPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-8 lg:py-10 relative overflow-hidden">
+      <footer className="bg-black text-white py-8 lg:py-10 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4">
-          {/* Brand */}
+          {/* Brand - Updated path */}
           <div className="lg:col-span-1 text-center lg:text-left">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
-              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
-            </h2>
+            <div className="transform hover:scale-105 transition-transform duration-300">
+            <Image
+              src="/Studyvisummp4logo (1) (1).gif"
+              alt="StudyVisum Logo"
+              width={300}
+              height={35}
+              className="object-contain drop-shadow-lg"
+            />
+          </div>
           </div>
 
           {/* Address */}
