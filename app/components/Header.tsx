@@ -128,12 +128,12 @@ export default function Header() {
   return (
     <div className="w-full z-50">
       {/* Top Contact Bar */}
-      <div className="bg-slate-800 text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
+      <div className="bg-black text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
         <div className="flex items-center gap-4">
           <span className="text-blue-200">📞 +91 8374779361, +91 9704879361</span>
         </div>
         <div className="flex gap-3 items-center">
-          <span className="text-blue-200">📧 studyvisa2000@gmail.com</span>
+          <span className="text-blue-200">📧 info@studyvisum.com </span>
           <div className="flex gap-2">
             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
               <FaLinkedinIn className="w-3 h-3 text-blue-400" />

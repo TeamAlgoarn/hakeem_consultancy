@@ -500,7 +500,7 @@ export default function CountriesPage() {
           <div className="lg:col-span-1">
             <h3 className="font-semibold mb-3 text-blue-300">Address</h3>
             <div className="space-y-1 text-gray-300 text-sm">
-              <p>Flat no.301, Okaz Complex</p>
+              <p>Flat No. 301 A Block, Okaz Complex</p>
               <p>Opp. Pillar Number 5, Mehdipatnam</p>
               <p>Hyderabad, Telangana 500028</p>
             </div>
@@ -529,7 +529,7 @@ export default function CountriesPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdEmail className="text-base text-blue-400 flex-shrink-0" />
-                <a href="mailto:studyvisa2000@gmail.com" className="hover:underline text-sm">studyvisa2000@gmail.com</a>
+                <a href="mailto:info@studyvisum.com " className="hover:underline text-sm">info@studyvisum.com </a>
               </div>
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdPhone className="text-base text-green-400 flex-shrink-0" />

@@ -506,9 +506,9 @@ export default function ServicesPage() {
             <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-800 transition-colors duration-300">{service.desc}</p>
             
             {/* Hover Effect Arrow */}
-            <div className="mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            {/* <div className="mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
               <span className="text-blue-600 text-sm font-medium">Learn More →</span>
-            </div>
+            </div> */}
           </div>
         </div>
       ))}
@@ -540,9 +540,9 @@ export default function ServicesPage() {
     <div className="lg:col-span-1">
       <h3 className="font-semibold mb-3 text-blue-300">Address</h3>
       <div className="space-y-1 text-gray-300 text-sm">
-        <p>Flat no.301, Okaz Complex</p>
+        <p>Flat No. 301 A Block,Okaz Complex</p>
         <p>Opp. Pillar Number 5, Mehdipatnam</p>
-        <p>Hyderabad, Telangana 500028</p>
+        <p>Hyderabad, India-500028.</p>
       </div>
     </div>
 
@@ -571,7 +571,7 @@ export default function ServicesPage() {
       <div className="space-y-2">
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdEmail className="text-base text-blue-400 flex-shrink-0" />
-          <a href="mailto:studyvisa2000@gmail.com" className="hover:underline text-sm">studyvisa2000@gmail.com</a>
+          <a href="mailto:info@studyvisum.com" className="hover:underline text-sm">info@studyvisum.com </a>
         </div>
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdPhone className="text-base text-green-400 flex-shrink-0" />

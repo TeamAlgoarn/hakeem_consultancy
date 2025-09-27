@@ -454,12 +454,12 @@ export default function CounsellingForm() {
   return (
     <div>
       {/* Top Contact Bar */}
-      <div className="bg-slate-800 text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
+      <div className="bg-black text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
         <div className="flex items-center gap-4">
           <span className="text-blue-200">📞 +91 8374779361, +91 9704879361</span>
         </div>
         <div className="flex gap-3 items-center">
-          <span className="text-blue-200">📧 studyvisa2000@gmail.com</span>
+          <span className="text-blue-200">📧 info@studyvisum.com</span>
           <div className="flex gap-2">
             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
               <FaLinkedinIn className="w-3 h-3 text-blue-400" />
@@ -678,7 +678,7 @@ export default function CounsellingForm() {
     <div className="lg:col-span-1">
       <h3 className="font-semibold mb-3 text-blue-300">Address</h3>
       <div className="space-y-1 text-gray-300 text-sm">
-        <p>Flat no.301, Okaz Complex</p>
+        <p>Flat No. 301 A Block, Okaz Complex</p>
         <p>Opp. Pillar Number 5, Mehdipatnam</p>
         <p>Hyderabad, Telangana 500028</p>
       </div>
@@ -709,7 +709,7 @@ export default function CounsellingForm() {
       <div className="space-y-2">
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdEmail className="text-base text-blue-400 flex-shrink-0" />
-          <a href="mailto:studyvisa2000@gmail.com" className="hover:underline text-sm">studyvisa2000@gmail.com</a>
+          <a href="mailto:info@studyvisum.com" className="hover:underline text-sm">info@studyvisum.com</a>
         </div>
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdPhone className="text-base text-green-400 flex-shrink-0" />

@@ -320,7 +320,7 @@ export default function AboutPage() {
               StudyVisum
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-6 font-medium">
-              A unit of Hakeem Consultancy Services Private Limited
+              Hakeem Consultancy Services
             </p>
             <p className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-gray-100 to-blue-300 bg-clip-text text-transparent max-w-4xl mx-auto leading-relaxed tracking-wide">
               Empowering Careers Through Training & Guidance
@@ -339,7 +339,7 @@ export default function AboutPage() {
             </h2>
             <div className="text-md text-gray-700 leading-relaxed mb-12 space-y-6">
               <p className="text-justify">
-                Based in Hyderabad, <strong>Hakeem Consultancy Services Private Limited (HCS)</strong> is a trusted name in overseas education, skill development, and visa consulting, where your career journey begins.
+                Headquartered in Hyderabad, with trusted partners across India, Germany, UK and the Middle East, <strong>Hakeem Consultancy Services Private Limited (HCS)</strong> is a trusted name in overseas education, skill development, and visa consulting, where your career journey begins.
               </p>
               <p className="text-justify">
                 Through our dedicated division, <strong>Study Visum</strong>, we have helped countless students and professionals shape their future by offering expert guidance, world-class training, and hassle-free visa support. Whether you're aiming for higher education or work opportunities abroad, we walk with you at every step from personalized university or job placement advice to complete documentation and interview preparation.
@@ -416,7 +416,7 @@ export default function AboutPage() {
                 <div className="text-5xl lg:text-6xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300">
                   {count2}+
                 </div>
-                <p className="text-blue-100 font-medium text-lg">Students Guided</p>
+                <p className="text-blue-100 font-medium text-lg">Applications done</p>
                 <div className="w-16 h-1 bg-green-400 mx-auto mt-2 rounded-full"></div>
               </div>
 
@@ -456,9 +456,9 @@ export default function AboutPage() {
           <div className="lg:col-span-1">
             <h3 className="font-semibold mb-3 text-blue-300">Address</h3>
             <div className="space-y-1 text-gray-300 text-sm">
-              <p>Flat no.301, Okaz Complex</p>
+              <p>Flat No. 301 A Block, Okaz Complex</p>
               <p>Opp. Pillar Number 5, Mehdipatnam</p>
-              <p>Hyderabad, Telangana 500028</p>
+              <p>Hyderabad, India-500028.</p>
             </div>
           </div>
 
@@ -487,7 +487,7 @@ export default function AboutPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdEmail className="text-base text-blue-400 flex-shrink-0" />
-                <a href="mailto:studyvisa2000@gmail.com" className="hover:underline text-sm">studyvisa2000@gmail.com</a>
+                <a href="mailto:info@studyvisum.com " className="hover:underline text-sm">info@studyvisum.com </a>
               </div>
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdPhone className="text-base text-green-400 flex-shrink-0" />

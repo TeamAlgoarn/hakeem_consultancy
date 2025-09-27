@@ -93,7 +93,7 @@ export default function HeroSlider() {
                 STUDY ABROAD DREAMS
               </span>
               <span className="text-lg sm:text-2xl lg:text-3xl font-light bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent block mt-4 animate-text-glow delay-200">
-                HAKEEM CONSULTANCY SERVICES PRIVATE LIMITED
+                Hakeem Consultancy Services
               </span>
             </h1>
           </div>
