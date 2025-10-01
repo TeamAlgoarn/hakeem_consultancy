@@ -376,7 +376,7 @@ export default function ServicesPage() {
 
     <div className="relative max-w-4xl mx-auto text-center px-4">
       <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-        Services in Hakeem Consultancy
+        Services at HCS
       </h1>
       <p className="text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
         Empowering your global education journey since day one

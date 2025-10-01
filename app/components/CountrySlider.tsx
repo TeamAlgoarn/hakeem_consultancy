@@ -12,18 +12,19 @@ import Link from 'next/link';
 
 const countries = [
   {
-    name: 'Germany',
-    image: '/f0.jpg',
-    flag: '/ger.png',
-    height: '320px',
-    link: '/countries/germany',
-  },
-  {
     name: 'United Kingdom',
     image: '/uk.jpg',
     flag: '/ukk.png',
     height: '320px',
     link: '/countries/uk',
+  },
+  {
+    name: 'Germany',
+    image: '/f0.jpg',
+    flag: '/ger.png',
+    height: '320px',
+    link: '/countries/germany',
+    
   },
   {
     name: 'Canada',

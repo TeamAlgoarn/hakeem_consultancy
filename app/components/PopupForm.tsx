@@ -137,9 +137,9 @@ export default function PopupCounsellingForm() {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 rounded-xl shadow-lg w-full max-w-md relative">
         <button
-          className="absolute top-2 right-2 text-gray-600 hover:text-black text-3xl"
+          className="absolute top-4 right-4 text-white hover:text-gray-200 text-3xl transition-all duration-300"
           onClick={() => {
             setShowPopup(false);
             sessionStorage.setItem('popupDismissed', 'true');
@@ -147,60 +147,92 @@ export default function PopupCounsellingForm() {
         >
           &times;
         </button>
-        <h2 className="text-lg font-bold text-red-600 mb-4">Book Free Consultation to Study Abroad</h2>
+        <h2 className="text-2xl font-bold text-white mb-4">
+          Book Free <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">Consultation</span> to Study Abroad
+        </h2>
+        <p className="text-blue-100 mb-6">Fill out the form below and our visa experts will contact you shortly</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <input {...register('name', { required: 'Name is required' })} placeholder="Your Full Name" className="w-full p-2 border rounded" />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+          <div>
+            <input
+              {...register('name', { required: 'Name is required' })}
+              placeholder="Your Full Name"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 text-gray-800 bg-white"
+            />
+            {errors.name && <p className="mt-1 text-sm text-yellow-200">{errors.name.message}</p>}
+          </div>
 
-          <input
-            {...register('phone', {
-              required: 'Phone number is required',
-              pattern: {
-                value: /^[0-9]{10}$/,
-                message: 'Phone number must be 10 digits',
-              },
-            })}
-            placeholder="Your Mobile No."
-            className="w-full p-2 border rounded"
-          />
-          {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
+          <div>
+            <input
+              {...register('phone', {
+                required: 'Phone number is required',
+                pattern: {
+                  value: /^[0-9]{10}$/,
+                  message: 'Phone number must be 10 digits',
+                },
+              })}
+              placeholder="Your Mobile No."
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 text-gray-800 bg-white"
+            />
+            {errors.phone && <p className="mt-1 text-sm text-yellow-200">{errors.phone.message}</p>}
+          </div>
 
-          <input
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'Invalid email address',
-              },
-            })}
-            placeholder="Your Email"
-            className="w-full p-2 border rounded"
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          <div>
+            <input
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: 'Invalid email address',
+                },
+              })}
+              placeholder="Your Email"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 text-gray-800 bg-white"
+            />
+            {errors.email && <p className="mt-1 text-sm text-yellow-200">{errors.email.message}</p>}
+          </div>
 
-          <select {...register('branch', { required: 'Please select a branch' })} className="w-full p-2 border rounded">
-            <option value="">--Please choose a branch--</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Bangalore">Bangalore</option>
-          </select>
-          {errors.branch && <p className="text-red-500 text-sm">{errors.branch.message}</p>}
+          <div>
+            <select
+              {...register('branch', { required: 'Please select a branch' })}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 text-gray-800 bg-white"
+            >
+              <option value="">-- Select Branch --</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Bangalore">Bangalore</option>
+            </select>
+            {errors.branch && <p className="mt-1 text-sm text-yellow-200">{errors.branch.message}</p>}
+          </div>
 
-          <select {...register('country', { required: 'Please select a country' })} className="w-full p-2 border rounded">
-            <option value="">--Please choose a country--</option>
-            <option value="Canada">Canada</option>
-            <option value="Germany">Germany</option>
-            <option value="Australia">Australia</option>
-            <option value="USA">USA</option>
-            <option value="UK">UK</option>
-            <option value="Ireland">Ireland</option>
-          </select>
-          {errors.country && <p className="text-red-500 text-sm">{errors.country.message}</p>}
+          <div>
+            <select
+              {...register('country', { required: 'Please select a country' })}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 text-gray-800 bg-white"
+            >
+              <option value="">-- Select Country --</option>
+              <option value="Canada">Canada</option>
+              <option value="Germany">Germany</option>
+              <option value="Australia">Australia</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+              <option value="Ireland">Ireland</option>
+            </select>
+            {errors.country && <p className="mt-1 text-sm text-yellow-200">{errors.country.message}</p>}
+          </div>
 
-          <input {...register('time', { required: 'Preferred time is required' })} placeholder="Preferred Time" className="w-full p-2 border rounded" />
-          {errors.time && <p className="text-red-500 text-sm">{errors.time.message}</p>}
+          <div>
+            <input
+              {...register('time', { required: 'Preferred time is required' })}
+              placeholder="Preferred Time (e.g., 10 AM - 12 PM)"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 text-gray-800 bg-white"
+            />
+            {errors.time && <p className="mt-1 text-sm text-yellow-200">{errors.time.message}</p>}
+          </div>
 
-          <button type="submit" className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
+          <button
+            type="submit"
+            className="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-all duration-300 hover:scale-[1.02] shadow-md"
+          >
             Request Free Consultation
           </button>
         </form>

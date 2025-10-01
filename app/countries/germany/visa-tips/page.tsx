@@ -374,7 +374,7 @@ export default function GermanyVisaPage() {
           className="relative z-10 bg-black bg-opacity-60 text-white p-6 sm:p-10 rounded-lg max-w-2xl w-full text-center"
         >
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">
-            Germany Residency <span className="text-blue-300">Visa Guide</span>
+            Germany & Schengen <span className="text-blue-300">Visa Guide</span>
           </h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -382,7 +382,7 @@ export default function GermanyVisaPage() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="mb-4 text-base sm:text-lg"
           >
-            Why apply for a Germany Visa?
+            Explore visa options for studying, working, or visiting Germany and Europe
           </motion.p>
         </motion.div>
       </div>
@@ -399,22 +399,25 @@ export default function GermanyVisaPage() {
               className="bg-white p-6 rounded-lg shadow-sm"
             >
               <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Why Study in Germany
+                Germany Visa Options (2025)
               </h2>
               <p className="mb-4 text-gray-700">
-                Germany offers top-tier education, affordable tuition, and strong job prospects. Many programs are taught in English, and students benefit from an 18-month post-study work permit.
+                Germany, a Schengen Area member, offers visas for tourism, study, work, and family reunification. With the 2025 Entry/Exit System (EES) and ETIAS for visa-exempt travelers, planning is key. Apply early and consult experts like Hakeem Consulting Services.
               </p>
 
               <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Academic Excellence
+                  Why Choose Germany?
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    "Top-Ranked Universities: Globally recognized for research and teaching",
-                    "Diverse Programs: Wide subject range across top universities",
-                    "English-Taught Courses: Many programs available without German fluency",
-                    "Practical Learning: Applied sciences and real-world focus"
+                    "Top-Ranked Universities: Globally recognized for research",
+                    "Affordable Education: Tuition-free public universities",
+                    "Strong Economy: High-demand jobs in tech, engineering",
+                    "Cultural Hub: 2,000+ museums, 1,400+ festivals",
+                    "Schengen Access: Travel 29 countries visa-free",
+                    "Post-Study Work: 18-month job search visa",
+                    "Quality of Life: Safe, modern, and diverse"
                   ].map((item, index) => (
                     <motion.li 
                       key={index}
@@ -425,55 +428,61 @@ export default function GermanyVisaPage() {
                     </motion.li>
                   ))}
                 </ul>
+                <p className="text-gray-700 mt-6">
+                  Organize documents (passport, financial proof, insurance) and prepare for interviews. Check auswaertiges-amt.de for updates.
+                </p>
               </div>
 
               <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Affordability & Accessibility
-                </h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    "No Tuition Fees: Most public universities are tuition-free",
-                    "Affordable Living: Lower costs than the US/UK",
-                    "Scholarships: Available to support international students"
-                  ].map((item, index) => (
-                    <motion.li 
-                      key={index}
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
-                    >
-                      <span className="font-medium text-gray-800">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-8">
-                <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Types of German Student Visas
+                  Types of Germany & Schengen Visas
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-lg text-blue-600">Student Visa</h3>
-                    <p className="text-gray-700">For those admitted to a university.</p>
+                    <h3 className="font-semibold text-lg text-blue-600">Schengen Tourist Visa</h3>
+                    <p className="text-gray-700">For tourism in Germany/29 Schengen countries; up to 90 days in 180. Requires €45/day funds, €30,000 insurance. Fee: €90.</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-lg text-blue-600">Applicant Visa</h3>
-                    <p className="text-gray-700">If applying to a university from within Germany.</p>
+                    <h3 className="font-semibold text-lg text-blue-600">Schengen Business Visa</h3>
+                    <p className="text-gray-700">For meetings/conferences; up to 90 days in 180. Needs company invitation, same funds/insurance. Fee: €90.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-lg text-blue-600">Student Visa</h3>
+                    <p className="text-gray-700">For university studies; requires DLI admission, €13,092/year funds, A1 German (some exemptions). Fee: €75.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-lg text-blue-600">Student Applicant Visa</h3>
+                    <p className="text-gray-700">For applying to universities in Germany; short-term, same funds. Fee: €75.</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <h3 className="font-semibold text-lg text-blue-600">Language Course Visa</h3>
-                    <p className="text-gray-700">For German language preparation.</p>
+                    <p className="text-gray-700">For German language programs; short-term, same funds. Fee: €75.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-lg text-blue-600">Opportunity Card Visa (Chancenkarte)</h3>
+                    <p className="text-gray-700">Job search for skilled workers; 1-year, points-based (degree, experience). €13,092/year funds. Fee: €75.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-lg text-blue-600">Spouse Visa</h3>
+                    <p className="text-gray-700">For partners of residents; A1 German, €1,200+/month sponsor income. Immediate work rights. Fee: €75.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-lg text-blue-600">Dependent Visa</h3>
+                    <p className="text-gray-700">For children under 18; €1,000+/month per dependent. Education access. Fee: €75 (free for under 6).</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-lg text-blue-600">Employment Visa</h3>
+                    <p className="text-gray-700">For skilled workers with job offers; €43,470+ salary (Blue Card €48,300). Fast-track PR. Fee: €75-100.</p>
                   </div>
                 </div>
+                <p className="text-gray-700 mt-4">
+                  2025 Updates: EES tracks biometrics; ETIAS (€7) for visa-exempt travelers starts mid-2025. Apply 3-6 months early via German missions or VFS Global.
+                </p>
               </div>
             </motion.div>
 
             {/* Google Maps Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              {/* <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Germany Location
-              </h2> */}
               <div className="overflow-hidden rounded-lg shadow-md">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432524.9604775496!2d8.6821267!3d51.1656910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479a721ec2b1be6b%3A0x75e85d6b8e91e55b!2sGermany!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
@@ -626,16 +635,16 @@ export default function GermanyVisaPage() {
             {/* Right Content */}
             <div>
               <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                Study Abroad with Germany Consultancy
+                Germany Visa Consultancy
               </h2>
               <p className="text-gray-700 mb-4">
-                Our experts help Indian students choose the right universities, plan finances, and prepare for German residency or study visas.
+                Our experts guide you through Schengen, study, work, and family visas, ensuring a smooth application process.
               </p>
               <p className="text-gray-700 mb-4">
-                From university shortlisting to post-arrival guidance, our team supports your full study abroad journey in Germany.
+                From document preparation to interview coaching, we support your journey to Germany and Europe.
               </p>
               <p className="text-gray-700 mb-6">
-                Hakeem Consulting Services is a trusted <span className="text-blue-600 font-medium">GERMANY study visa consultant in Hyderabad</span>
+                Hakeem Consulting Services is a trusted <span className="text-blue-600 font-medium">Germany visa consultant in Hyderabad</span>
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

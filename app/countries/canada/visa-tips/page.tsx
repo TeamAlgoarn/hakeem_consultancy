@@ -311,7 +311,7 @@ export default function VisaTipsCanada() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="mb-4 text-base sm:text-lg"
           >
-            Everything you need to know before applying for your Canadian student visa
+            Everything you need to know before applying for your Canadian study permit
           </motion.p>
         </motion.div>
       </div>
@@ -328,25 +328,25 @@ export default function VisaTipsCanada() {
               className="bg-white p-6 rounded-lg shadow-sm"
             >
               <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Canada Student Visa Tips
+                Canada Study Permit Tips
               </h2>
               <p className="mb-4 text-gray-700">
-                Canada offers world-class education, diverse culture, and a welcoming environment for international students. Here are some visa-related tips and benefits to keep in mind.
+                Canada offers world-class education at over 1,500 Designated Learning Institutions (DLIs), a diverse culture, and pathways to post-graduation work. Here are key tips and benefits for securing a study permit in 2025.
               </p>
 
               <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Why Apply for a Canada Tourist Visa?
+                  Why Study in Canada?
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    "Visit 48 parks including Banff and Jasper",
-                    "See Niagara Falls and Northern Lights",
-                    "Drive 4,860 miles on the Trans-Canada Highway",
-                    "Spot 200,000 species like polar bears",
-                    "Attend 5,000+ events yearly",
-                    "Explore 20 World Heritage Sites",
-                    "Enjoy the views of 31,700+ lakes like Lake Louise"
+                    "Access 48 national parks like Banff and Jasper",
+                    "Witness Niagara Falls and Northern Lights",
+                    "Explore 4,860 miles on the Trans-Canada Highway",
+                    "Spot 200,000 species, including polar bears",
+                    "Enjoy 5,000+ cultural events yearly",
+                    "Visit 20 UNESCO World Heritage Sites",
+                    "Discover 31,700+ lakes like Lake Louise"
                   ].map((item, index) => (
                     <motion.li 
                       key={index}
@@ -358,38 +358,41 @@ export default function VisaTipsCanada() {
                   ))}
                 </ul>
                 <p className="text-gray-700 mt-6">
-                  Always keep your documents organized and answer visa officer questions confidently. Expert guidance makes the journey smoother.
+                  Organize documents (e.g., acceptance letter, proof of funds) meticulously and answer visa officer questions confidently. Consult a registered immigration consultant for expert guidance.
                 </p>
               </div>
 
               <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Types of Canada Tourist Visa
+                  Types of Canada Visitor Visa (for Short-Term Visits)
                 </h2>
                 <div className="space-y-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <h3 className="font-semibold text-lg text-blue-600">Single Entry Visa</h3>
-                    <p className="text-gray-700">Allows one entry for up to 6 months.</p>
+                    <p className="text-gray-700">Permits one entry for up to 6 months; suitable for short courses or visits.</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <h3 className="font-semibold text-lg text-blue-600">Multiple Entry Visa</h3>
-                    <p className="text-gray-700">Allows multiple entries, each up to 6 months.</p>
+                    <p className="text-gray-700">Allows multiple entries over up to 10 years, each stay up to 6 months.</p>
                   </div>
                 </div>
+                <p className="text-gray-700 mt-4">
+                  Note: A visitor visa is required for entry alongside a study permit for most nationalities. Short courses (&lt;6 months) can be taken on a visitor visa without a study permit.
+                </p>
               </div>
 
               <div className="mt-8">
                 <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Benefits of Visit Visa
+                  Benefits of a Study Permit
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    "Stay up to 6 months",
-                    "Travel freely across Canada",
-                    "Bring dependents or children",
-                    "Attend short-term programs",
-                    "Understand Canada's education and job system",
-                    "Qualify for in-Canada study permits"
+                    "Study at DLIs for your program’s duration",
+                    "Work up to 24 hours/week off-campus during terms",
+                    "Travel freely across Canada with valid permit",
+                    "Bring dependents (spousal work permits for some)",
+                    "Attend short-term courses (&lt;6 months) without permit",
+                    "Apply for Post-Graduation Work Permit (up to 3 years)"
                   ].map((item, index) => (
                     <motion.li 
                       key={index}
@@ -400,14 +403,14 @@ export default function VisaTipsCanada() {
                     </motion.li>
                   ))}
                 </ul>
+                <p className="text-gray-700 mt-4">
+                  2025 Updates: Study permits capped at 437,000; require Provincial Attestation Letter (PAL) for most applicants. Spousal work permits limited to master’s/PhD students or undergrads in programs ≥16 months. Minimum funds: CAD $20,635/year.
+                </p>
               </div>
             </motion.div>
 
             {/* Google Maps Section */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              {/* <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Canada Location
-              </h2> */}
               <div className="overflow-hidden rounded-lg shadow-md">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23825394.311025985!2d-135.6128808!3d56.130366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0d03d337cc6ad9%3A0x9968b72aa2438fa5!2sCanada!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
