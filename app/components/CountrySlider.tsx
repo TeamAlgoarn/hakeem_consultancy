@@ -14,9 +14,16 @@ const countries = [
   {
     name: 'United Kingdom',
     image: '/uk.jpg',
-    flag: '/ukk.png',
+    flag: '/uk.jpg',
     height: '320px',
     link: '/countries/uk',
+  },
+  {
+    name: 'USA',
+    image: '/usa2.jpg',
+    flag: '/usa2.webp',
+    height: '320px',
+    link: '/countries/usa',
   },
   {
     name: 'Germany',
@@ -152,7 +159,7 @@ export default function CountrySlider() {
               768: { slidesPerView: 2, spaceBetween: 28 },
               1024: { slidesPerView: 3, spaceBetween: 32 },
             }}
-            className="px-2" // Added padding to prevent cards from touching edges
+            className="px-2"
           >
             {countries.map((country, idx) => (
               <SwiperSlide key={idx}>
@@ -168,13 +175,6 @@ export default function CountrySlider() {
                         className="w-full h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
-                      {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white p-1 rounded-full shadow-lg border-2 border-white z-10">
-                        <img 
-                          src={country.image} 
-                          alt={`${country.name} flag`} 
-                          className="w-16 h-16 object-contain rounded-full"
-                        />
-                      </div> */}
                     </div>
                     <div className="p-6 pt-10 text-center flex-grow">
                       <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
@@ -214,4 +214,3 @@ export default function CountrySlider() {
     </section>
   );
 }
-

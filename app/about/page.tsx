@@ -176,7 +176,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF,FaPhone,FaEnvelope } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
 
@@ -188,6 +188,7 @@ const GoogleRatingComponent: React.FC = () => {
   };
 
   return (
+     
     <div className="flex items-center bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50">
       <div className="flex items-center space-x-2">
         <span className="font-bold text-gray-800 text-sm">Rated 4.9</span>
@@ -237,6 +238,32 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      
+             <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
+               <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
+                 <FaPhone className="w-4 h-4 text-blue-400" />
+                 <span className="text-blue-200">+91 8374779361</span>
+                 <span className="text-blue-200">+91 9704879361</span>
+           
+               </div>
+               <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-auto sm:flex-1">
+                 <div className="flex items-center gap-2">
+                   <FaEnvelope className="w-4 h-4 text-blue-400" />
+                   <span className="text-blue-200">info@studyvisum.com</span>
+                 </div>
+                 <div className="flex gap-2">
+                   <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                     <FaLinkedinIn className="w-3.5 h-3.5 text-blue-400" />
+                   </a>
+                   <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                     <FaInstagram className="w-3.5 h-3.5 text-pink-400" />
+                   </a>
+                   <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                     <FaFacebookF className="w-3.5 h-3.5 text-blue-400" />
+                   </a>
+                 </div>
+               </div>
+             </div>
       {/* Navigation */}
       <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700 shadow-lg">
         <div className="flex items-center space-x-2">

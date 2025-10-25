@@ -1,90 +1,8 @@
-// 'use client';
-// import Image from 'next/image';
-// import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
-
-// export default function Header() {
-//   return (
-//     <div className="w-full z-50">
-
-//       {/* Top Bar */}
-//       <div className="bg-[#0c0c2c] text-white text-sm flex justify-between items-center px-6 py-2">
-//         <div>
-//           📞 +91-9000065858, +91-9000022655
-//         </div>
-//         <div className="flex gap-3 items-center">
-//   📧 info@i20fever.com
-
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaLinkedinIn className="text-white w-7 h-7" style={{ color: '#0A66C2' }} />
-//   </a>
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaInstagram className="text-white w-7 h-7" style={{ color: '#C13584' }} />
-//   </a>
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaYoutube className="text-white w-7 h-7"  style={{ color: 'red' }} />
-//   </a>
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaFacebookF className="text-white w-7 h-7" style={{ color: 'blue' }} /> 
-//   </a>
-// </div>
-
-
-//       </div>
-
-//       {/* Main Navbar */}
-//       <nav className="bg-white shadow-md w-full px-6 py-3 flex justify-between items-center">
-//         {/* Logo */}
-//         <div className="flex items-center gap-2">
-//           <Image src="/logo.png" alt="Logo" width={140} height={40} />
-//         </div>
-
-//         {/* Menu Items */}
-//         <ul className="hidden lg:flex gap-2 text-sm text-[#000] font-medium items-center">
-//   <li>
-   
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       ABOUT US
-//     </a>
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       SERVICES
-//     </a>
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       COUNTRY PAGES
-//     </a>
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       CONTACT US
-//     </a>
-//   </li>
-  
-  
-// </ul>
-
-
-//         {/* CTA Button */}
-//         <a
-//           href="#"
-//           className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold ml-4"
-//         >
-//           Book Free Counselling
-//         </a>
-//       </nav>
-//     </div>
-//   );
-// }
-
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF,FaPhone,FaEnvelope } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -126,26 +44,28 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="w-full z-50">
-      {/* Top Contact Bar */}
-      <div className="bg-black text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
-        <div className="flex items-center gap-4">
-          <span className="text-blue-200">📞 +91 8374779361, +91 9704879361</span>
+    <div>
+      <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
+        <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
+          <FaPhone className="w-4 h-4 text-blue-400" />
+          <span className="text-blue-200">+91 8374779361</span>
+          <span className="text-blue-200">+91 9704879361</span>
+    
         </div>
-        <div className="flex gap-3 items-center">
-          <span className="text-blue-200">📧 info@studyvisum.com </span>
+        <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-auto sm:flex-1">
+          <div className="flex items-center gap-2">
+            <FaEnvelope className="w-4 h-4 text-blue-400" />
+            <span className="text-blue-200">info@studyvisum.com</span>
+          </div>
           <div className="flex gap-2">
-            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-              <FaLinkedinIn className="w-3 h-3 text-blue-400" />
+            <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaLinkedinIn className="w-3.5 h-3.5 text-blue-400" />
             </a>
-            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-              <FaInstagram className="w-3 h-3 text-pink-400" />
+            <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaInstagram className="w-3.5 h-3.5 text-pink-400" />
             </a>
-            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-              <FaYoutube className="w-3 h-3 text-red-400" />
-            </a>
-            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-              <FaFacebookF className="w-3 h-3 text-blue-400" />
+            <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaFacebookF className="w-3.5 h-3.5 text-blue-400" />
             </a>
           </div>
         </div>

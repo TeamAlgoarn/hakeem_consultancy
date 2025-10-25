@@ -180,7 +180,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF,FaPhone,FaEnvelope } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
 
@@ -304,6 +304,31 @@ export default function ServicesPage() {
           animation-delay: 1000ms;
         }
       `}</style>
+      <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
+                     <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
+                       <FaPhone className="w-4 h-4 text-blue-400" />
+                       <span className="text-blue-200">+91 8374779361</span>
+                       <span className="text-blue-200">+91 9704879361</span>
+                 
+                     </div>
+                     <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-auto sm:flex-1">
+                       <div className="flex items-center gap-2">
+                         <FaEnvelope className="w-4 h-4 text-blue-400" />
+                         <span className="text-blue-200">info@studyvisum.com</span>
+                       </div>
+                       <div className="flex gap-2">
+                         <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                           <FaLinkedinIn className="w-3.5 h-3.5 text-blue-400" />
+                         </a>
+                         <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                           <FaInstagram className="w-3.5 h-3.5 text-pink-400" />
+                         </a>
+                         <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                           <FaFacebookF className="w-3.5 h-3.5 text-blue-400" />
+                         </a>
+                       </div>
+                     </div>
+                   </div>
      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700 shadow-lg">
   {/* Logo Only - Removed Study Visum Text and old logo */}
   <div className="flex items-center">
@@ -390,7 +415,7 @@ export default function ServicesPage() {
   {/* Services Description */}
   <div className="max-w-6xl mx-auto px-4 py-12 space-y-6 animate-fade-in-up">
     <p className="text-lg text-justify opacity-0 animate-slide-in-left animation-delay-200 hover:text-blue-700 transition-colors duration-300">
-      At <strong className="text-blue-800 hover:text-blue-600 transition-colors duration-300">HCS</strong>, our overseas education consultants in provide expert assistance to Indian students, who are seeking admission to the top universities across the world.
+      At <strong className="text-blue-800 hover:text-blue-600 transition-colors duration-300">HCS</strong>, our overseas education consultants provide expert assistance to Indian students, who are seeking admission to the top universities across the world.
     </p>
     <p className="text-lg text-justify opacity-0 animate-slide-in-right animation-delay-400 hover:text-blue-700 transition-colors duration-300">
       Our team understands the challenges that you might face, including test preparation, visa approval, scholarships, accommodation abroad, and so on.
