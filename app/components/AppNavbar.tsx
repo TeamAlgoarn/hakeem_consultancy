@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+// import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
 
 const GoogleRatingComponent: React.FC = () => {
   const handleGoogleClick = () => {
@@ -44,7 +44,7 @@ const AppNavbar: React.FC = () => {
           <Link href="/billing/login" className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/20 transition">
             <span>🔒</span> Admin Login
           </Link>
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition hover:scale-110">
               <FaLinkedinIn className="w-3 h-3 text-blue-400" />
             </a>
@@ -57,7 +57,7 @@ const AppNavbar: React.FC = () => {
             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition hover:scale-110">
               <FaFacebookF className="w-3 h-3 text-blue-400" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 

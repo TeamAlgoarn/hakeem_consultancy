@@ -193,8 +193,9 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn,FaPhone,FaEnvelope } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { MdEmail, MdPhone } from 'react-icons/md';
 
+import { MdEmail, MdPhone } from 'react-icons/md';
+import Header from '../components/Header';
 const GoogleRatingComponent: React.FC = () => {
   const handleGoogleClick = (): void => {
     window.open('https://share.google/sgZIfNjCMD2PZyENv', '_blank');
@@ -417,7 +418,8 @@ export default function ContactPage() {
 
   return (
    <div>
-  <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
+    <Header/>
+  {/* <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
     <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
       <FaPhone className="w-4 h-4 text-blue-400" />
       <span className="text-blue-200">+91 8374779361</span>
@@ -441,9 +443,9 @@ export default function ContactPage() {
         </a>
       </div>
     </div>
-  </div>
+  </div> */}
 
-      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
+      {/* <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
         <div className="flex items-center space-x-3">
           <div className="transform hover:scale-105 transition-transform duration-300">
             <Image src="/Studyvisummp4logo (1) (1).gif" alt="StudyVisum Logo" width={300} height={35} className="object-contain drop-shadow-lg" />
@@ -465,7 +467,7 @@ export default function ContactPage() {
         <button className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
-      </nav>
+      </nav> */}
 
       {menuOpen && (
         <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700">

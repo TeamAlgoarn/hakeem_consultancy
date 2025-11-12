@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { FaInstagram, FaLinkedinIn, FaFacebookF, FaStar,FaPhone ,FaEnvelope } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
-
+import Header from '../components/Header';
 // Google Rating Component
 const GoogleRatingComponent: React.FC = () => {
   const handleGoogleClick = (): void => {
@@ -140,7 +140,8 @@ export default function CounsellingForm() {
 
   return (
    <div>
-         <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
+    <Header/>
+         {/* <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
            <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
              <FaPhone className="w-4 h-4 text-blue-400" />
              <span className="text-blue-200">+91 8374779361</span>
@@ -164,13 +165,13 @@ export default function CounsellingForm() {
                </a>
              </div>
            </div>
-         </div>
+         </div> */}
    
       {/* Navbar - Matching the previous pages */}
-      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
-    <div className="flex items-center space-x-3">
+      {/* <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
+    <div className="flex items-center space-x-3"> */}
     {/* Logo - Updated with GIF */}
-    <div className="transform hover:scale-105 transition-transform duration-300">
+    {/* <div className="transform hover:scale-105 transition-transform duration-300">
                <Image
                  src="/Studyvisummp4logo (1) (1).gif"
                  alt="StudyVisum Logo"
@@ -179,15 +180,15 @@ export default function CounsellingForm() {
                  className="object-contain drop-shadow-lg"
                />
              </div>
-  </div>
+  </div> */}
 
   {/* Center - Google Rating Component (Desktop) */}
-  <div className="hidden lg:flex">
+  {/* <div className="hidden lg:flex">
     <GoogleRatingComponent />
-  </div>
+  </div> */}
 
   {/* Desktop Navigation */}
-  <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+  {/* <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
     <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">HOME</Link>
     <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">ABOUT US</Link>
     <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">SERVICES</Link>
@@ -196,16 +197,16 @@ export default function CounsellingForm() {
     <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
       Book Free Counselling
     </Link>
-  </div>
+  </div> */}
 
   {/* Mobile Menu Button */}
-  <button 
+  {/* <button 
     className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300" 
     onClick={() => setMenuOpen(!menuOpen)}
   >
     {menuOpen ? <HiX /> : <HiMenu />}
   </button>
-</nav>
+</nav> */}
 
 {/* Mobile Menu */}
 {menuOpen && (

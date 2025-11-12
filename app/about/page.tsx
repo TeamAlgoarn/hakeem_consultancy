@@ -179,6 +179,7 @@ import Link from 'next/link';
 import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF,FaPhone,FaEnvelope } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
+import Header from '../components/Header';
 
 // Google Rating Component
 const GoogleRatingComponent: React.FC = () => {
@@ -209,6 +210,7 @@ const GoogleRatingComponent: React.FC = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 export default function AboutPage() {
@@ -237,96 +239,10 @@ export default function AboutPage() {
   }, []);
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       
-             <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
-               <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
-                 <FaPhone className="w-4 h-4 text-blue-400" />
-                 <span className="text-blue-200">+91 8374779361</span>
-                 <span className="text-blue-200">+91 9704879361</span>
-           
-               </div>
-               <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-auto sm:flex-1">
-                 <div className="flex items-center gap-2">
-                   <FaEnvelope className="w-4 h-4 text-blue-400" />
-                   <span className="text-blue-200">info@studyvisum.com</span>
-                 </div>
-                 <div className="flex gap-2">
-                   <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                     <FaLinkedinIn className="w-3.5 h-3.5 text-blue-400" />
-                   </a>
-                   <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                     <FaInstagram className="w-3.5 h-3.5 text-pink-400" />
-                   </a>
-                   <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                     <FaFacebookF className="w-3.5 h-3.5 text-blue-400" />
-                   </a>
-                 </div>
-               </div>
-             </div>
-      {/* Navigation */}
-      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700 shadow-lg">
-        <div className="flex items-center space-x-2">
-          {/* Logo - Updated path */}
-          <div className="transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/Studyvisummp4logo (1) (1).gif"
-              alt="StudyVisum Logo"
-              width={300}
-              height={35}
-              className="object-contain drop-shadow-lg"
-            />
-          </div>
-
-          {/* Brand Text */}
-          {/* <div className="flex items-center">
-            <h1 className="text-2xl lg:text-3xl font-extrabold">
-              <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
-              <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
-            </h1>
-          </div> */}
-        </div>
-
-        {/* Center - Google Rating Component (Desktop) */}
-        <div className="hidden lg:flex">
-          <GoogleRatingComponent />
-        </div>
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
-          <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">HOME</Link>
-          <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">ABOUT US</Link>
-          <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">SERVICES</Link>
-          <Link href="/countries" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">COUNTRIES</Link>
-          <Link href="/contact" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">CONTACT US</Link>
-          <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
-            Book Free Counselling
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <HiX /> : <HiMenu />}
-        </button>
-      </nav>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700">
-          {/* Center - Google Rating Component (Mobile) */}
-          <div className="flex justify-center mb-4">
-            <GoogleRatingComponent />
-          </div>
-          <Link href="/" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">HOME</Link>
-          <Link href="/about" className="block text-white bg-gradient-to-r from-blue-600 to-purple-600 py-1.5 px-3 rounded-lg">ABOUT US</Link>
-          <Link href="/services" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">SERVICES</Link>
-          <Link href="/countries" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">COUNTRIES</Link>
-          <Link href="/contact" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">CONTACT US</Link>
-          <Link href="/counselling" className="block text-center bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full hover:from-red-600 hover:to-red-700 transition-all duration-300">Book Free Counselling</Link>
-        </div>
-      )}
+             <Header/>
 
       {/* Main Content */}
       <main className="relative bg-gradient-to-br from-white via-blue-50 to-purple-50">
