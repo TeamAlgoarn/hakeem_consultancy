@@ -1,212 +1,646 @@
+// // 'use client';
+// // import Link from 'next/link';
+// // import { useState, useEffect } from 'react';
+// // import Image from 'next/image';
+// // import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF,FaPhone,FaEnvelope } from 'react-icons/fa';
+// // import { HiMenu, HiX } from 'react-icons/hi';
+// // import { useRouter } from 'next/navigation';
+// // import React from 'react';
+
+// // // Google Rating Component
+// // const GoogleRatingComponent: React.FC = () => {
+// //   const router = useRouter();
+
+// //   const handleGoogleClick = (): void => {
+// //     // Open the Google review link in a new tab
+// //     window.open('https://share.google/sgZIfNjCMD2PZyENv', '_blank');
+// //   };
+
+// //   return (
+// //     <div className="flex items-center bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50">
+// //       <div className="flex items-center space-x-2">
+// //         <span className="font-bold text-gray-800 text-sm">Rated 4.9</span>
+// //         <div className="flex items-center space-x-1">
+// //           {/* Google Logo SVG */}
+// //           <svg className="w-4 h-4" viewBox="0 0 24 24">
+// //             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+// //             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+// //             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+// //             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+// //           </svg>
+// //           <button 
+// //             onClick={handleGoogleClick}
+// //             className="text-gray-600 font-medium hover:text-blue-600 transition-colors cursor-pointer bg-transparent border-none outline-none text-sm"
+// //           >
+// //             Google
+// //           </button>
+// //         </div>
+// //       </div>
+// //     </div>
+// //   );
+// // };
+
+// // export default function Header() {
+// //   const [menuOpen, setMenuOpen] = useState(false);
+
+// //   return (
+// //     <div>
+// //       <div className="bg-black text-white text-base flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3">
+// //         <div className="flex items-center gap-3 justify-center w-full sm:w-auto sm:flex-1">
+// //           <FaPhone className="w-4 h-4 text-blue-400" />
+// //           <span className="text-blue-200">+91 8374779361</span>
+// //           <span className="text-blue-200">+91 9704879361</span>
+    
+// //         </div>
+// //         <div className="flex gap-4 items-center justify-center sm:justify-end w-full sm:w-auto sm:flex-1">
+// //           <div className="flex items-center gap-2">
+// //             <FaEnvelope className="w-4 h-4 text-blue-400" />
+// //             <span className="text-blue-200">info@studyvisum.com</span>
+// //           </div>
+// //           <div className="flex gap-2">
+// //             <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+// //               <FaLinkedinIn className="w-3.5 h-3.5 text-blue-400" />
+// //             </a>
+// //             <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+// //               <FaInstagram className="w-3.5 h-3.5 text-pink-400" />
+// //             </a>
+// //             <a href="#" className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+// //               <FaFacebookF className="w-3.5 h-3.5 text-blue-400" />
+// //             </a>
+// //           </div>
+// //         </div>
+// //       </div>
+
+// //       {/* Main Navigation */}
+// //       <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
+// //         <div className="flex items-center space-x-3">
+// //           {/* Logo */}
+// //           <div className="transform hover:scale-105 transition-transform duration-300">
+// //                       <Image
+// //                         src="/Studyvisummp4logo (1) (1).gif"
+// //                         alt="StudyVisum Logo"
+// //                         width={300}
+// //                         height={35}
+// //                         className="object-contain drop-shadow-lg"
+// //                       />
+// //                     </div>
+// //           {/* StudyVisum Text */}
+// //           {/* <div className="flex items-center">
+// //             <h1 className="text-2xl lg:text-3xl font-extrabold">
+// //               <span className="bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">Study</span>{' '}
+// //               <span className="bg-gradient-to-r from-yellow-400 to-red-400 bg-clip-text text-transparent">Visum</span>
+// //             </h1>
+// //           </div> */}
+// //         </div>
+
+// //         {/* Center - Google Rating Component (Desktop) */}
+// //         <div className="hidden lg:flex">
+// //           <GoogleRatingComponent />
+// //         </div>
+
+// //         {/* Desktop Navigation */}
+// //         <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+// //           <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+// //             HOME
+// //           </Link>
+// //           <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+// //             ABOUT US
+// //           </Link>
+// //           <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+// //             SERVICES
+// //           </Link>
+// //           <Link href="/countries" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+// //             COUNTRIES
+// //           </Link>
+// //           <Link href="/contact" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+// //             CONTACT US
+// //           </Link>
+// //           <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
+// //             Book Free Counselling
+// //           </Link>
+// //         </div>
+
+// //         {/* Mobile Menu Button */}
+// //         <button 
+// //           className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300"
+// //           onClick={() => setMenuOpen(!menuOpen)}
+// //         >
+// //           {menuOpen ? <HiX /> : <HiMenu />}
+// //         </button>
+// //       </nav>
+
+// //       {/* Mobile Menu */}
+// //       {menuOpen && (
+// //         <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700 shadow-xl">
+// //           {/* Google Rating Component (Mobile) */}
+// //           <div className="flex justify-center mb-4">
+// //             <GoogleRatingComponent />
+// //           </div>
+          
+// //           <Link href="/" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">
+// //             HOME
+// //           </Link>
+// //           <Link href="/about" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">
+// //             ABOUT US
+// //           </Link>
+// //           <Link href="/services" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">
+// //             SERVICES
+// //           </Link>
+// //           <Link href="/countries" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">
+// //             COUNTRIES
+// //           </Link>
+// //           <Link href="/contact" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">
+// //             CONTACT US
+// //           </Link>
+// //           <Link href="/counselling" className="block text-center bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full hover:from-red-600 hover:to-red-700 transition-all duration-300 mt-2">
+// //             Book Free Counselling
+// //           </Link>
+// //         </div>
+// //       )}
+// //     </div>
+// //   );
+// // }
 // 'use client';
+// import Link from 'next/link';
+// import { useState } from 'react';
 // import Image from 'next/image';
 // import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+// import { HiMenu, HiX } from 'react-icons/hi';
+// import { useRouter } from 'next/navigation';
+// import React from 'react';
+
+// // Google Rating Component
+// const GoogleRatingComponent: React.FC = () => {
+//   const router = useRouter();
+
+//   const handleGoogleClick = (): void => {
+//     window.open('https://share.google/sgZIfNjCMD2PZyENv', '_blank');
+//   };
+
+//   return (
+//     <div className="flex items-center bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50">
+//       <div className="flex items-center space-x-2">
+//         <span className="font-bold text-gray-800 text-sm">Rated 4.9</span>
+//         <div className="flex items-center space-x-1">
+//           <svg className="w-4 h-4" viewBox="0 0 24 24">
+//             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+//             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+//             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+//             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+//           </svg>
+//           <button 
+//             onClick={handleGoogleClick}
+//             className="text-gray-600 font-medium hover:text-blue-600 transition-colors cursor-pointer bg-transparent border-none outline-none text-sm"
+//           >
+//             Google
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 // export default function Header() {
+//   const [menuOpen, setMenuOpen] = useState(false);
+
 //   return (
 //     <div className="w-full z-50">
-
-//       {/* Top Bar */}
-//       <div className="bg-[#0c0c2c] text-white text-sm flex justify-between items-center px-6 py-2">
-//         <div>
-//           📞 +91-9000065858, +91-9000022655
+//       {/* Top Contact Bar */}
+//       <div className="bg-black text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
+//         <div className="flex items-center gap-4">
+//           <span className="text-blue-200">📞 +91 8374779361, +91 9704879361</span>
 //         </div>
+
 //         <div className="flex gap-3 items-center">
-//   📧 info@i20fever.com
+//           {/* email (clickable) */}
+//           <a href="mailto:info@studyvisum.com" className="text-blue-200 hover:text-white">
+//             📧 info@studyvisum.com
+//           </a>
 
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaLinkedinIn className="text-white w-7 h-7" style={{ color: '#0A66C2' }} />
-//   </a>
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaInstagram className="text-white w-7 h-7" style={{ color: '#C13584' }} />
-//   </a>
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaYoutube className="text-white w-7 h-7"  style={{ color: 'red' }} />
-//   </a>
-//   <a href="#" className="p-2 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-//     <FaFacebookF className="text-white w-7 h-7" style={{ color: 'blue' }} /> 
-//   </a>
-// </div>
+//           {/* separator */}
+//           <span className="h-4 w-px bg-white/20" aria-hidden="true"></span>
 
+//           {/* NEW: Admin Login button */}
+//           <Link
+//             href="/billing/login"
+//             className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/20 transition"
+//             title="Admin Login"
+//           >
+//             <span aria-hidden="true">🔒</span>
+//             <span>Admin Login</span>
+//           </Link>
 
+//           {/* socials */}
+//           <div className="flex gap-2">
+//             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+//               <FaLinkedinIn className="w-3 h-3 text-blue-400" />
+//             </a>
+//             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+//               <FaInstagram className="w-3 h-3 text-pink-400" />
+//             </a>
+//             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+//               <FaYoutube className="w-3 h-3 text-red-400" />
+//             </a>
+//             <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+//               <FaFacebookF className="w-3 h-3 text-blue-400" />
+//             </a>
+//           </div>
+//         </div>
 //       </div>
 
-//       {/* Main Navbar */}
-//       <nav className="bg-white shadow-md w-full px-6 py-3 flex justify-between items-center">
-//         {/* Logo */}
-//         <div className="flex items-center gap-2">
-//           <Image src="/logo.png" alt="Logo" width={140} height={40} />
+//       {/* Main Navigation */}
+//       <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
+//         <div className="flex items-center space-x-3">
+//           {/* Logo */}
+//           <div className="transform hover:scale-105 transition-transform duration-300">
+//             <Image
+//               src="/Studyvisummp4logo (1) (1).gif"
+//               alt="StudyVisum Logo"
+//               width={300}
+//               height={35}
+//               className="object-contain drop-shadow-lg"
+//             />
+//           </div>
 //         </div>
 
-//         {/* Menu Items */}
-//         <ul className="hidden lg:flex gap-2 text-sm text-[#000] font-medium items-center">
-//   <li>
-   
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       ABOUT US
-//     </a>
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       SERVICES
-//     </a>
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       COUNTRY PAGES
-//     </a>
-//   </li>
-//   <li>
-//     <a href="#" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-//       CONTACT US
-//     </a>
-//   </li>
-  
-  
-// </ul>
+//         {/* Center - Google Rating Component (Desktop) */}
+//         <div className="hidden lg:flex">
+//           <GoogleRatingComponent />
+//         </div>
 
+//         {/* Desktop Navigation */}
+//         <div className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+//           <Link href="/" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">HOME</Link>
+//           <Link href="/about" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">ABOUT US</Link>
+//           <Link href="/services" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">SERVICES</Link>
+//           <Link href="/countries" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">COUNTRIES</Link>
+//           <Link href="/contact" className="px-3 py-1.5 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">CONTACT US</Link>
+//           <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md animate-pulse">
+//             Book Free Counselling
+//           </Link>
+//         </div>
 
-//         {/* CTA Button */}
-//         <a
-//           href="#"
-//           className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold ml-4"
+//         {/* Mobile Menu Button */}
+//         <button
+//           className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300"
+//           onClick={() => setMenuOpen(!menuOpen)}
+//         >
+//           {menuOpen ? <HiX /> : <HiMenu />}
+//         </button>
+//       </nav>
+
+//       {/* Mobile Menu */}
+//       {menuOpen && (
+//         <div className="lg:hidden fixed inset-0 z-[60]">
+//     {/* Backdrop */}
+//     <div
+//       className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+//       onClick={() => setMenuOpen(false)}
+//       aria-hidden="true"
+//     />
+
+//     {/* Card */}
+//     <div className="relative mx-auto mt-3 w-[92%] max-w-sm rounded-2xl overflow-hidden border border-white/10 bg-slate-900/90 shadow-2xl">
+//       {/* Top row: logo + close */}
+//       <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+//         <Image
+//           src="/Studyvisummp4logo (1) (1).gif"
+//           alt="StudyVisum"
+//           width={140}
+//           height={28}
+//           className="object-contain"
+//         />
+//         <button
+//           className="text-white/80 hover:text-white text-xl leading-none"
+//           aria-label="Close menu"
+//           onClick={() => setMenuOpen(false)}
+//         >
+//           ×
+//         </button>
+//       </div>
+
+//       {/* Rating */}
+//       <div className="px-4 pt-3">
+//         <div className="flex justify-center">
+//           <GoogleRatingComponent />
+//         </div>
+//       </div>
+
+//       {/* Links */}
+//       <div className="px-3 py-3 space-y-2">
+//         <Link
+//           href="/"
+//           onClick={() => setMenuOpen(false)}
+//           className="block text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10"
+//         >
+//           HOME
+//         </Link>
+//         <Link
+//           href="/about"
+//           onClick={() => setMenuOpen(false)}
+//           className="block text-white px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500"
+//         >
+//           ABOUT US
+//         </Link>
+//         <Link
+//           href="/services"
+//           onClick={() => setMenuOpen(false)}
+//           className="block text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10"
+//         >
+//           SERVICES
+//         </Link>
+//         <Link
+//           href="/countries"
+//           onClick={() => setMenuOpen(false)}
+//           className="block text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10"
+//         >
+//           COUNTRIES
+//         </Link>
+//         <Link
+//           href="/contact"
+//           onClick={() => setMenuOpen(false)}
+//           className="block text-white/90 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10"
+//         >
+//           CONTACT US
+//         </Link>
+
+//         {/* CTA */}
+//         <Link
+//           href="/counselling"
+//           onClick={() => setMenuOpen(false)}
+//           className="block text-center bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium mt-2"
 //         >
 //           Book Free Counselling
-//         </a>
-//       </nav>
+//         </Link>
+//       </div>
+//     </div>
+//   </div>
+// )}
+//         {/* // <div className="lg:hidden bg-slate-900/95 backdrop-blur-sm px-4 py-4 space-y-2 border-b border-slate-700 shadow-xl">
+//         // <div className="lg:hidden bg-black/40 backdrop-blur-md px-4 py-4 space-y-2 border-b border-transparent shadow-xl">
+//         //   <div className="flex justify-center mb-4">
+//         //     <GoogleRatingComponent />
+//         //   </div> */}
+// {/* 
+//           // <Link href="/" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">HOME</Link>
+//           // <Link href="/about" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">ABOUT US</Link>
+//           // <Link href="/services" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">SERVICES</Link>
+//           // <Link href="/countries" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">COUNTRIES</Link>
+//           // <Link href="/contact" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">CONTACT US</Link> */}
+
+//           {/* NEW: Admin Login in mobile menu */}
+//           {/* // <Link href="/billing/login" className="block text-white hover:text-blue-400 py-1.5 px-3 rounded-lg hover:bg-white/10 transition-all duration-300">
+//           //   🔒 Admin Login
+//           // </Link> */}
+
+//       {/* //     <Link href="/counselling" className="block text-center bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full hover:from-red-600 hover:to-red-700 transition-all duration-300 mt-2">
+//       //       Book Free Counselling
+//       //     </Link>
+//       //   </div> */}
+      
 //     </div>
 //   );
 // }
+
+
+
+
+
 'use client';
+
 import Link from 'next/link';
-import { useState } from 'react';
 import Image from 'next/image';
-import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
-import { FiMenu, FiX } from 'react-icons/fi';
+import React, { useEffect, useState, MouseEvent } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
+// import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+import { usePathname, useRouter } from 'next/navigation';
+
+/* ---------------- Google Rating ---------------- */
+const GoogleRatingComponent: React.FC = () => {
+  const handleGoogleClick = (): void => {
+    window.open('https://share.google/sgZIfNjCMD2PZyENv', '_blank');
+  };
+
+  return (
+    <div className="flex items-center bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50">
+      <div className="flex items-center space-x-2">
+        <span className="font-bold text-gray-800 text-sm">Rated 4.9</span>
+        <div className="flex items-center space-x-1">
+          <svg className="w-4 h-4" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          <button
+            onClick={handleGoogleClick}
+            className="text-gray-600 font-medium hover:text-blue-600 transition-colors cursor-pointer bg-transparent border-none outline-none text-sm"
+          >
+            Google
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ---------------- Header ---------------- */
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Lock/unlock body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  // Close drawer on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // active states: exact match or subpath
+  const _pathname = usePathname() ?? '';  // <-- normalize to empty string
+
+const isActive = (href: string) =>
+  _pathname === href || _pathname.startsWith(href + '/');
+
+  // const itemClass = (href: string) =>
+  //   `block px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+  //     isActive(href)
+  //       ? 'bg-indigo-600 text-white'
+  //       : 'text-white/90 hover:text-white hover:bg-white/10'
+  //   }`;
+const itemClassMobile = (href: string) =>
+  `block px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+    isActive(href)
+      ? 'bg-indigo-600 text-white'                        // MOBILE active: indigo bar
+      : 'text-white/90 hover:text-white hover:bg-white/10'
+  }`;
+  const itemClassDesktop = (href: string) =>
+  `px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+    isActive(href)
+      ? 'text-white font-semibold'                        // DESKTOP active: no indigo bg
+      : 'text-white/90'
+  } hover:bg-white/10`;
+  // Optional: support #hash smooth-scroll (currently all your links are pages)
+  const handleHashOrRoute = (href: string) => (e: MouseEvent) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setMenuOpen(false);
+      return;
+    }
+    setMenuOpen(false);
+    router.push(href);
+  };
 
   return (
     <div className="w-full z-50">
-      {/* Top Bar */}
-      <div className="bg-[#0c0c2c] text-white text-sm flex justify-between items-center px-6 py-2 flex-wrap" style={{padding:'14px'}}>
-        <div>
-          📞 +918374779361 , +919704879361
+      {/* Top Contact Bar */}
+      <div className="bg-black text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
+        <div className="flex items-center gap-4">
+          <span className="text-blue-200">📞 +91 8374779361, +91 9704879361</span>
         </div>
-        <div className="flex gap-2 items-center mt-2 sm:mt-0">
-          📧 studyvisa2000@gmail.com
-          <a href="#" className="p-1 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-            <FaLinkedinIn className="w-5 h-5" style={{ color: '#0A66C2' }} />
-          </a>
-          <a href="#" className="p-1 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-            <FaInstagram className="w-5 h-5" style={{ color: '#C13584' }} />
-          </a>
-          <a href="#" className="p-1 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-            <FaYoutube className="w-5 h-5" style={{ color: 'red' }} />
-          </a>
-          <a href="#" className="p-1 rounded-full hover:bg-blue-100 active:bg-blue-200 transition">
-            <FaFacebookF className="w-5 h-5" style={{ color: 'blue' }} />
-          </a>
+
+        <div className="flex gap-3 items-center">
+          <a href="mailto:info@studyvisum.com" className="text-blue-200 hover:text-white">📧 info@studyvisum.com</a>
+          <span className="h-4 w-px bg-white/20" aria-hidden="true"></span>
+          <Link
+            href="/billing/login"
+            className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/20 transition"
+            title="Admin Login"
+            onClick={handleHashOrRoute('/billing/login')}
+          >
+            <span aria-hidden="true">🔒</span>
+            <span>Admin Login</span>
+          </Link>
+
+          {/* <div className="flex gap-2">
+            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaLinkedinIn className="w-3 h-3 text-blue-400" />
+            </a>
+            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaInstagram className="w-3 h-3 text-pink-400" />
+            </a>
+            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaYoutube className="w-3 h-3 text-red-400" />
+            </a>
+            <a href="#" className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <FaFacebookF className="w-3 h-3 text-blue-400" />
+            </a>
+          </div> */}
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className="bg-white shadow-md w-full px-6 py-3 flex justify-between items-center relative">
+      {/* Main Navigation */}
+      <nav className="bg-black backdrop-blur-sm shadow-lg px-4 py-2 lg:px-6 flex justify-between items-center sticky top-0 z-50 border-b border-slate-700">
         {/* Logo */}
-        {/* <div className="flex items-center ">
-          <Image src="/hakeem-logo.jpg" alt="Logo" width={160} height={50} />
-        
+        <div className="flex items-center space-x-3">
+          <div className="transform hover:scale-105 transition-transform duration-300">
+            <Image
+              src="/Studyvisummp4logo (1) (1).gif"
+              alt="StudyVisum Logo"
+              width={300}
+              height={35}
+              className="object-contain drop-shadow-lg"
+            />
+          </div>
         </div>
 
-  <div className="flex flex-col leading-tight" style={{marginTop:'30px', marginLeft:'-180px'}}>
-   <h1 className="text-4xl font-bold text-center" style={{fontSize:'45px'}}>
-      <span className="usa-text-header">Study</span>{' '}
-      <span className="germany-text-header">Visum</span>
-      </h1> */}
-      {/* <div className="flex flex-col sm:flex-row items-center gap-1">
-        <div className="mt-[-24px] sm:mt-0">
-  <Image
-    src="/hakeem-logo.jpg"
-    alt="Logo"
-    width={160}
-    height={50}
-    className="object-contain"
-  />
-  <h1 className="text-4xl font-bold text-center" style={{fontSize:'47px', marginLeft:'-13px'}}>
-      <span className="usa-text-header">Study</span>{' '}
-      <span className="germany-text-header">Visum</span>
-      </h1> */}
-      {/* <div className="flex flex-col sm:flex-row items-center justify-between">
-  
+        {/* Center - Google Rating (Desktop) */}
+        <div className="hidden lg:flex">
+          <GoogleRatingComponent />
+        </div>
 
-   {/* <p className="text-sm md:text-base text-gray-600 italic mt-1" >
-        (A unit of HCS – Where your career journey begins)
-      </p> */}
-      <div className="flex items-center gap-1 sm:gap-3">
-  {/* Logo */}
-   <Image
-    src="/hakeem-logo.jpg"
-    alt="Logo"
-    width={160}
-    height={50}
-    className="object-contain"
-  />
-
-  {/* Study Visum */}
-  <h1 className="text-4xl sm:text-4xl font-bold text-center" style={{fontSize:'47px', marginLeft:'-13px'}}>
-      <span className="usa-text-header">Study</span>{' '}
-      <span className="germany-text-header">Visum</span>
-      </h1> 
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center space-x-1">
+  <Link href="/"         className={itemClassDesktop('/')}>HOME</Link>
+  <Link href="/about"    className={itemClassDesktop('/about')}>ABOUT US</Link>
+  <Link href="/services" className={itemClassDesktop('/services')}>SERVICES</Link>
+  <Link href="/countries"className={itemClassDesktop('/countries')}>COUNTRIES</Link>
+  <Link href="/contact"  className={itemClassDesktop('/contact')}>CONTACT US</Link>
+  <Link href="/counselling" className="ml-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-1.5 rounded-full font-medium hover:scale-105 transition-all duration-300 shadow-md">
+    Book Free Counselling
+  </Link>
 </div>
-  
 
-  
 
-       
-       
-  {/* Desktop Nav */}
-            <div className="hidden md:flex space-x-6 text-sm font-medium items-center" style={{fontWeight:'bold',fontSize:'large'}}>
-              
-                <a href="/" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">
-                  HOME
-                </a>
-              
-              <a href="/about" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">ABOUT US</a>
-              <a href="/services" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">SERVICES</a>
-              <a href="/countries" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">COUNTRIES</a>
-              <a href="/contact" className="px-3 py-2 rounded hover:bg-blue-100 active:bg-blue-200 transition">CONTACT US</a>
-              <a href="/counselling"  className="block bg-red-600 hover:bg-red-700 text-white text-center py-2 rounded-full mt-2" style={{padding:'10px',width:'200px', marginTop:'-4px'}}>
-  Book Free Counselling
-</a>
-            </div>
-    
-            {/* Mobile Hamburger Button */}
-            <button className="md:hidden text-5xl" onClick={() => setMenuOpen(!menuOpen)}>
-              {menuOpen ? <HiX /> : <HiMenu />}
-            </button>
-          </nav>
-    
-          {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="md:hidden bg-white px-4 py-4 space-y-3 text-sm font-medium shadow">
-              
-                <a href="/" className="block">
-                  HOME
-                </a>
-              
-              <a href="/about" className="block">ABOUT US</a>
-              <a href="/services" className="block">SERVICES</a>
-              <a href="/countries" className="block">COUNTRIES</a>
-              <a href="/contact" className="block">CONTACT US</a>
-              <Link href="/counselling" className="block text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Book Free Counselling</Link>
-            </div>
-          )}
+        {/* Mobile Menu Button */}
+        <button
+          className="lg:hidden text-white text-2xl hover:text-blue-400 transition-colors duration-300"
+          onClick={() => setMenuOpen(v => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <HiX /> : <HiMenu />}
+        </button>
+      </nav>
+
+      {/* Mobile Drawer (floating card) */}
+      {/* Mobile Drawer — full-width like image #2 */}
+{menuOpen && (
+  <div className="lg:hidden fixed inset-0 z-[60]">
+    {/* Backdrop */}
+    <div
+      className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+      onClick={() => setMenuOpen(false)}
+      aria-hidden="true"
+    />
+
+    {/* Full-width panel */}
+    <div className="relative w-full max-w-none rounded-none border-0 bg-slate-900/95 shadow-xl">
+      {/* Top row: logo + close */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+        <Image
+          src="/Studyvisummp4logo (1) (1).gif"
+          alt="StudyVisum"
+          width={160}
+          height={32}
+          className="object-contain"
+        />
+        <button
+          className="text-white/80 hover:text-white text-xl leading-none"
+          aria-label="Close menu"
+          onClick={() => setMenuOpen(false)}
+        >
+          ×
+        </button>
+      </div>
+
+      {/* Rating */}
+      <div className="px-4 pt-3">
+        <div className="flex justify-center">
+          <GoogleRatingComponent />
         </div>
-      )}
-      
-    
-    
-  
+      </div>
+
+      {/* Links */}
+<div className="px-3 py-3 space-y-2 lg:hidden">
+  <Link href="/"         onClick={handleHashOrRoute('/')}         className={itemClassMobile('/')}>HOME</Link>
+  <Link href="/about"    onClick={handleHashOrRoute('/about')}    className={itemClassMobile('/about')}>ABOUT US</Link>
+  <Link href="/services" onClick={handleHashOrRoute('/services')} className={itemClassMobile('/services')}>SERVICES</Link>
+  <Link href="/countries"onClick={handleHashOrRoute('/countries')}className={itemClassMobile('/countries')}>COUNTRIES</Link>
+  <Link href="/contact"  onClick={handleHashOrRoute('/contact')}  className={itemClassMobile('/contact')}>CONTACT US</Link>
+
+
+        
+
+        <Link
+          href="/counselling"
+          onClick={handleHashOrRoute('/counselling')}
+          className="block text-center bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium mt-2"
+        >
+          Book Free Counselling
+        </Link>
+      </div>
+    </div>
+  </div>
+)}
+
+    </div>
+  );
+}
