@@ -221,7 +221,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
+import AppNavbar from '../../../components/AppNavbar';
 export default function VisaTipsCanada() {
   const [formData, setFormData] = useState({
     name: '',
@@ -290,6 +290,7 @@ export default function VisaTipsCanada() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"

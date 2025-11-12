@@ -8,13 +8,13 @@ const canadaLogos = [
     "Centennial College.png",
     "Durham College.png",
     "Georgian College of Applied Arts Technology.png",
-  
+  "St Lawrence College of Applied Arts and Technology.png",
     "Kwantlen Polytechnic University.png",
     "Niagara College Canada.png",
     "North Island College.png",
     "Sault College.png",
     "Seneca College.png",
-   
+   "Humber Institute of Technology Advanced Learning.png",
     "Thompson Rivers University.png",
     "Royal Roads University.png"
   ];

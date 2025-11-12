@@ -157,7 +157,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function ItalyPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -226,6 +226,7 @@ export default function ItalyPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -256,7 +257,7 @@ export default function ItalyPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -300,7 +301,54 @@ export default function ItalyPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Italy?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      Italy is a cradle of art, culture, and innovation — home to some of the world’s oldest universities and most forward-thinking research institutions. From architecture and fashion to engineering and business, Italy combines heritage with modern excellence.
+    </p>
+    <p className="mb-4">
+      Studying in Italy means learning in a country where creativity drives progress. Universities here emphasize both academic depth and hands-on experience, preparing students to thrive in global industries.
+    </p>
+    <p className="mb-4">
+      Each year, thousands of international students choose Italy not only for its affordable, high-quality education but also for its welcoming lifestyle, Mediterranean climate, and vibrant cities like Milan, Rome, and Florence.
+    </p>
+    <p className="mb-4">
+      For Indian students, Italy offers access to globally recognized degrees, generous scholarships, and an international community that values cultural exchange and innovation.
+    </p>
+    <p className="mb-4 font-bold italic">
+      Italy offers distinctive advantages for students:
+    </p>
+    
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "Historic universities with modern research focus",
+        "Globally recognized degrees and accreditations",
+        "Affordable tuition and extensive scholarships",
+        "Thriving fields: design, engineering, architecture, business & arts",
+        "English-taught programs across top institutions",
+        "Vibrant culture, cuisine, and lifestyle",
+        "Strategic location for travel across Europe (Schengen access)",
+        "Active Italy Alumni and global career networks"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

@@ -133,6 +133,12 @@ const countries = [
     description: 'Tuition-free education in Norway with exceptional quality of life.',
     link: '/countries/norway',
   },
+   {
+    name: 'Dubai',
+    image: '/dubai.jpg',
+    description: 'Dubai is rapidly emerging as a global education hub offering world-class universities cities in the world.',
+    link: '/countries/dubai',
+  },
 ];
 
 export default function CountriesPage() {

@@ -158,7 +158,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function BelgiumPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -227,6 +227,7 @@ export default function BelgiumPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -257,7 +258,7 @@ export default function BelgiumPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -301,7 +302,54 @@ export default function BelgiumPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Belgium?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      At the crossroads of Europe, Belgium blends renowned universities with a high-innovation economy. From engineering and biosciences to business and EU policy, you’ll study where ideas meet real-world impact.
+    </p>
+    <p className="mb-4">
+      Belgian degrees are internationally recognized and industry-connected, offering research opportunities, internships, and access to organizations headquartered in Brussels and beyond.
+    </p>
+    <p className="mb-4">
+      Each year, thousands of international students choose Belgium for its multicultural cities, excellent public transport, safety, and a vibrant food and arts scene.
+    </p>
+    <p className="mb-4">
+      For Indian students, Belgium delivers strong value: practical learning, diverse English-taught programs, and pathways into EU careers.
+    </p>
+    <p className="mb-4 font-bold italic">
+      Belgium offers standout advantages for students:
+    </p>
+    
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "EU & international hub (Brussels: EU, NGOs, global firms)",
+        "Multilingual environment (Dutch, French, German; English widely used)",
+        "Research-driven universities with strong industry links",
+        "Affordable public tuition and living-cost options",
+        "Booming sectors: life sciences, logistics, fintech, clean tech",
+        "Wide range of English-taught programs",
+        "Internships & networking across the EU",
+        "Active alumni and mentoring communities"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

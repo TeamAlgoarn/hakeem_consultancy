@@ -1,11 +1,12 @@
 'use client';
-
+import AppNavbar from './components/AppNavbar';
 import Header from './components/Header';
 import HeroSlider from './components/HeroSlider';
 import CountrySlider from './components/CountrySlider';
 import MBBSSection from "./components/MBBSSection";
 import ReviewsSection from './components/ReviewsSection';
 import PopupForm from './components/PopupForm';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -15,22 +16,32 @@ import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/f
 import {MdEmail, MdPhone} from 'react-icons/md';
 import Link from 'next/link';
 import Image from 'next/image';
+// import NewsSection from './components/NewsSection';
+
+
+
 
 export default function Home() {
   return (
     <div className='bg-white min-h-screen flex flex-col'>
       {/* Top Navigation Bar - Made sticky/fixed */}
       <div className="sticky top-0 z-50">
-        <Header />
+         <AppNavbar />  
+        {/* <Header /> */}
+      
+         
       </div>
       
+       
       <PopupForm/>
 
       <main className="flex-grow"> {/* Removed pt-16 padding */}
         {/* Hero Image Slider with Text and CTA */}
         <section className="relative">
           <HeroSlider />
+           {/* <NewsSection /> */}
         </section>
+      
 
         {/* Sections with consistent spacing and max-width */}
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 space-y-20 py-12">

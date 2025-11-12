@@ -89,6 +89,36 @@ export default function USAUniversities() {
   "Valencia College.png",
   "Washington State University.png",
   "Texas Wesleyan University.png",
+  "Saint Norbert College.png",
+  "San Barbara Business College.png",
+  "San Jose State University.png",
+  "Seattle Central College.png",
+  "St. Marys University Minneapolis.png",
+  "Texas A&M University-Corpus Christi.png",
+  "Texas Wesleyan University.png",
+  "The Art Institute of Ft. Lauderdale.png",
+  "The University of Kansas.png",
+  "University of Bridgeport.png",
+  "University of Colorado Denver.png",
+  "University of Dayton.png",
+  "University of Findlay.png",
+  "University of Illinois-Chicago.png",
+  "University of New Mexico.png",
+  "University of South Carolina.png",
+  "University of St. Francis.png",
+  "University of The Pacific.png",
+  "University of Utah.png",
+  "University of Wisconsin Stevens Point.png",
+  "Valencia College.png",
+  "Washington State University.png",
+  "Wayman American Flight Training.png",
+  "West Texas A&M.png",
+  "Westcliff University.png",
+  "Western New England.png",
+  "Woodbury University.png"
+
+
+
 ];
 
 

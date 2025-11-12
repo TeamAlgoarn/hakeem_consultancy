@@ -306,6 +306,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import AppNavbar from '../../components/AppNavbar';
 
 export default function AustriaPage() {
   const [formData, setFormData] = useState({
@@ -375,6 +376,7 @@ export default function AustriaPage() {
 
   return (
     <div className="bg-white">
+        <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -402,9 +404,9 @@ export default function AustriaPage() {
       </div>
 
       {/* Content + Form Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Content */}
+          
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -449,8 +451,58 @@ export default function AustriaPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
-
+          </motion.div> */}
+<div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {/* Left Content */}
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+    >
+      <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+        Why Study in Austria?
+      </h2>
+      <div className="space-y-4 text-gray-700">
+        <p className="mb-4">
+          Austria blends centuries of scholarship with a modern, research-driven ecosystem. From engineering and data science to music and the arts, you’ll learn in universities known for academic rigor and real-world impact.
+        </p>
+        <p className="mb-4">
+          Degrees from Austrian universities are internationally recognized and industry-linked—so your classroom learning translates into internships, labs, and global careers.
+        </p>
+        <p className="mb-4">
+          Every year, thousands of international students choose Austria for its high standards, safe cities, efficient public transport, and vibrant culture.
+        </p>
+        <p className="mb-4">
+          For Indian students, Austria offers excellent value, welcoming campuses, and strong post-study opportunities across the EU.
+        </p>
+        <p className="mb-4 font-bold italic ">
+          Austria offers standout advantages for students:
+        </p>
+        
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+          {[
+            "Globally recognized degrees",
+            "Research & innovation at the cutting edge",
+            "Low or no tuition at many public universities",
+            "Scholarships tailored for international students",
+            "Strong, high-skill job market",
+            "Wide range of English-taught programs",
+            "Post-study work options across the EU",
+            "Austria Alumni Programme & mentoring network"
+          ].map((item, index) => (
+            <motion.li 
+              key={index}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+            >
+              <span className="font-medium">{item}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+ 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">
           <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200">

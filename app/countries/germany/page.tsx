@@ -313,7 +313,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import GermanyUniversities from "../../components/universities/GermanyUniversities";
-
+import AppNavbar from '../../components/AppNavbar';
 export default function GermanyPage()  {
   const [formData, setFormData] = useState({
     name: '',
@@ -382,6 +382,7 @@ export default function GermanyPage()  {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -412,7 +413,7 @@ export default function GermanyPage()  {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -456,8 +457,54 @@ export default function GermanyPage()  {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+    >
+      <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+        Why Study in Germany?
+      </h2>
+      <div className="space-y-4 text-gray-700">
+        <p className="mb-4">
+          Germany is where precision engineering meets bold innovation. From automotive and robotics to green energy, data, and design, you’ll learn in a system built for real-world impact and research at scale.
+        </p>
+        <p className="mb-4">
+          Universities and Universities of Applied Sciences offer practice-driven curricula, modern labs, and close ties to the Mittelstand and global leaders—so projects, internships, and career pathways aren’t an afterthought.
+        </p>
+        <p className="mb-4">
+          International students choose Germany for its exceptional value, safe and well-connected cities, and Europe-wide access. English-taught programs are widespread at the master’s level, with German language support to boost employability.
+        </p>
+        <p className="mb-4">
+          For Indian students, it’s a compelling mix of affordability, academic rigor, and industry exposure—an ideal launchpad for high-skill careers across the EU.
+        </p>
+        <p className="mb-4 font-bold italic">
+          Standout advantages for students in Germany:
+        </p>
 
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+          {[
+            "Public universities with little to no tuition",
+           
+            "Deep industry links: internships, co-ops & research projects",
+            "World-leading sectors: automotive, AI, renewables, manufacturing etc",
+            
+            "Wide range of English-taught  programs",
+            "High quality of life, safety & efficient public transport",
+            "Scholarships and funding opportunities"
+          ].map((item, index) => (
+            <motion.li 
+              key={index}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+            >
+              <span className="font-medium">{item}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">
           <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200">

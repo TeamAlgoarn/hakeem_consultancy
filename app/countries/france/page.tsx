@@ -156,7 +156,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function FrancePage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -225,6 +225,7 @@ export default function FrancePage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -255,7 +256,7 @@ export default function FrancePage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -299,7 +300,54 @@ export default function FrancePage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in France?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      France blends centuries of academic excellence with a cutting-edge innovation ecosystem. From AI and aerospace to luxury management, gastronomy, and the arts, you’ll learn where research, creativity, and industry intersect.
+    </p>
+    <p className="mb-4">
+      Study at world-ranked universities and Grandes Écoles known for rigorous curricula and strong employer connections. Programs increasingly offer English-taught pathways alongside French-medium options.
+    </p>
+    <p className="mb-4">
+      Each year, thousands of international students choose France for its high quality of life, safe and walkable cities, efficient public transport, and a vibrant cultural scene.
+    </p>
+    <p className="mb-4">
+      For Indian students, France delivers excellent value through merit-based scholarships, industry projects, and pathways into internships and careers across Europe.
+    </p>
+    <p className="mb-4 font-bold italic">
+      France offers standout advantages for students:
+    </p>
+    
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "Globally recognized universities & Grandes Écoles",
+        "Strong sectors: AI, aerospace, energy, luxury & design",
+        "Wide range of English-taught programs",
+        "Competitive tuition with generous scholarships",
+        "Industry projects, internships & apprenticeships",
+        "High quality of life and public transport",
+        "French + English bilingual environment",
+        "Active France Alumni network worldwide"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

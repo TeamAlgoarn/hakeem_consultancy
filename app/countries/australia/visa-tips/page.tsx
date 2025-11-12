@@ -139,10 +139,14 @@
 //   );
 // }
 'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import AppNavbar from "../../../components/AppNavbar"
+
+
 
 export default function VisaTipsAustralia() {
   const [formData, setFormData] = useState({

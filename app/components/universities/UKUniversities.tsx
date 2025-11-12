@@ -95,13 +95,62 @@ export default function UKUniversities() {
     "University of Stirling.png",
     "University of Strathclyde.png",
     "University of the West of Scotland.png",
-    "Queen Mary University of London.png"
+    "Queen Mary University of London.png",
+    "Royal Holloway, University of London.png",
+    "Royal Veterinary College.png",
+    "University of Amsterdam, Holland.png",
+    "University of Central Lancashire.png",
+    "University of Hull.png",
+    "University of Sunderland.png",
+    "City University of London.png",
+    "Newcastle university.png",
+    "Queen’s University Belfast.png",
+    "ST George’s, University of London.png",
+    "University of East Anglia.png",
+    "University of Exeter.png",
+    "University of Manchester.png",
+    "Bellerbys College.png",
+    "Dublin International Study Centre.png",
+    "Durham University.png",
+    "Imperial College London.png",
+    "Keele University.png",
+    "Lancaster University.png",
+    "Leeds Beckett University.png",
+    "Liverpool John Moores University.png",
+    "Trinity College Dublin.png",
+    "University College Dublin.png",
+    "University of Leicester.png",
+    "University of Lincoln.png",
+    "University of Surrey.png",
+    "University of Sussex.png",
+    "Anglia Ruskin University.png",
+    "University of Hertfordshire.png",
+    "University of Portsmouth.png",
+    "University of Roehampton.png",
+    "Bournemouth University.png",
+    "Cranfield University.png",
+    "University of Aberdeen.png",
+    "University of Birmingham.png",
+    "University of Brighton.png",
+    "University of Bristol.png",
+    "University of Essex.png",
+    "University of Glasgow.png",
+    "University of Liverpool.png",
+    "University of Salford.png",
+    "University of Westminster.png",
+    "University of York.png",
+    "UWE Bristol.png",
+    "University of Dundee.png",
+    "University of Greenwich.png"
+
+
+
   ];
 
 
   return (
     <div className="my-16 text-center animate-fade-in">
-      <h2 className="text-3xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">Our Partner Universities in United Kingdom</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">Top  Universities in United Kingdom</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 max-w-7xl mx-auto">
         {ukLogos.map((logo, index) => (
           <div 

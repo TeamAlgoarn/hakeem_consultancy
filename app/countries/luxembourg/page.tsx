@@ -156,7 +156,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function luxembourgPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -225,6 +225,7 @@ export default function luxembourgPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -255,7 +256,7 @@ export default function luxembourgPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -298,7 +299,54 @@ export default function luxembourgPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Luxembourg?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      Nestled in the heart of Europe, Luxembourg combines global business, innovation, and multiculturalism like few others. Known for its stability and prosperity, this small yet powerful nation offers a uniquely international education experience.
+    </p>
+    <p className="mb-4">
+      The University of Luxembourg and other institutions emphasize multilingual learning, research excellence, and strong collaboration with industries, especially in finance, technology, and law.
+    </p>
+    <p className="mb-4">
+      With over half its residents being international, Luxembourg provides a truly global classroom where students learn in English, French, and German—perfect preparation for a career anywhere in Europe.
+    </p>
+    <p className="mb-4">
+      For Indian and international students alike, Luxembourg offers a strategic gateway to the EU job market, affordable education, and access to world-leading organizations headquartered just minutes from campus.
+    </p>
+    <p className="mb-4 font-bold italic">
+      Luxembourg offers remarkable benefits for students:
+    </p>
+    
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "Multilingual education (English, French, German)",
+        "EU headquarters hub with strong internship links",
+        "Innovative research in finance, law, and ICT",
+        "Affordable tuition and cost of living",
+        "High employability and post-study options in the EU",
+        "Safe, modern, and globally connected cities",
+        "Scholarships and student funding opportunities",
+        "Access to Europe’s major economic centers"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

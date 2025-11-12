@@ -47,9 +47,30 @@ export default function GermanyUniversities() {
     "Cologne Business School.png",
     "Ernst Abbe Hochschule Jena.png",
     "Fachhochschule Erfurt University of Applied Sciences.png",
-
+     "Technical University of Munich.png",
     "Hochschule Zittau_Görlitz University of Applied Sciences.png",
-   
+    "TU Berlin.png",
+    "Freie Universität Berlin.png",
+    "TU Dresden.png",
+    "TU Darmstadt.png",
+    "FAU Erlangen.png",
+    "Heidelberg University.png",
+    "University of Hamburg.png",
+    "University of Stuttgart.png",
+    "University of Bonn.png",
+    "Albert Ludwigs University of Freiburg.png",
+    "RWTH Aachen.png",
+    "Karlsruhe Institute of Technology.png",
+    "University of Tubingen.png",
+    "University of Gottingen.png",
+    "University of Duisburg-Essen.png",
+    "TU Dortmund.png",
+    "RU Bochum.png",
+    "Martin-Luther-Universität Halle-Wittenberg.png",
+    "TUHH.png",
+    
+
+
     
     "Praxis Hochschule University of Applied Sciences.png",
     "Technical University of Applied Sciences.png",

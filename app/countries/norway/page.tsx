@@ -157,7 +157,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function NorwayPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -226,6 +226,7 @@ export default function NorwayPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -256,7 +257,7 @@ export default function NorwayPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -300,7 +301,54 @@ export default function NorwayPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Norway?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      Norway blends world-class universities with a culture of sustainability, innovation, and equality. From energy and ocean technology to AI, design, and public policy, you’ll study where research directly shapes society.
+    </p>
+    <p className="mb-4">
+      Teaching is collaborative and project-based, with strong industry links and access to cutting-edge labs. Expect small groups, close faculty mentorship, and real-world problem solving.
+    </p>
+    <p className="mb-4">
+      International students choose Norway for its high quality of life, safety, and breathtaking outdoors—think fjords, northern lights, and weekend hikes—plus excellent English proficiency across campuses and cities.
+    </p>
+    <p className="mb-4">
+      For Indian students, Norway offers rigorous academics, practical learning, and exposure to Nordic work culture—an ideal springboard into careers across the region and the wider EU market.
+    </p>
+    <p className="mb-4 font-bold italic">
+      Norway offers standout advantages for students:
+    </p>
+    
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "Research-led teaching with real industry projects",
+        "Global strengths: renewables, marine & ocean tech, data & AI",
+        "Wide range of English-taught programs",
+        "High quality of life, safety & sustainability focus",
+        "Strong links to Nordic employers & internships",
+        "Supportive student services and inclusive campus culture",
+        "Spectacular nature & outdoor lifestyle year-round",
+        "Active alumni networks across the Nordics"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

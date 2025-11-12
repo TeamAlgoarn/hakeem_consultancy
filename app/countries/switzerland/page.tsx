@@ -158,7 +158,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function SwitzerlandPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -227,6 +227,7 @@ export default function SwitzerlandPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -257,7 +258,7 @@ export default function SwitzerlandPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -301,7 +302,54 @@ export default function SwitzerlandPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Switzerland?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      Switzerland represents precision, excellence, and innovation — home to world-leading universities, cutting-edge research, and breathtaking natural beauty. Its education system combines rigorous academics with strong industry collaboration, especially in business, hospitality, science, and technology.
+    </p>
+    <p className="mb-4">
+      Swiss universities are consistently ranked among the world’s best, offering globally recognized degrees that emphasize both theory and application. Students benefit from small class sizes, multicultural environments, and world-class infrastructure.
+    </p>
+    <p className="mb-4">
+      Located at the heart of Europe, Switzerland offers a high standard of living, safety, and an unparalleled quality of life. International students enjoy easy access to global organizations, including the UN, WHO, and major multinational corporations.
+    </p>
+    <p className="mb-4">
+      For Indian students, Switzerland provides an incredible mix of academic excellence, international exposure, and professional growth — supported by generous scholarships and post-study opportunities in research and innovation.
+    </p>
+    <p className="mb-4 font-bold italic">
+      Switzerland offers exceptional advantages for students:
+    </p>
+
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "World-ranked universities & research institutes",
+        "Hub for business, finance, and innovation",
+        "Leaders in hospitality, science & engineering",
+        "Highly international & multilingual society",
+        "Excellent internship and networking opportunities",
+        "High quality of life and global exposure",
+        "English-taught programs with global accreditation",
+        "Generous scholarships & career pathways"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

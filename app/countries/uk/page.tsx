@@ -257,7 +257,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function UKPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -326,6 +326,7 @@ export default function UKPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -357,42 +358,51 @@ export default function UKPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">Why Study in United Kingdom?</h2>
-            <div className="space-y-4 text-gray-700">
-              <p className="mb-4">
-                The UK has a rich royal heritage of education dating back centuries ago...
-              </p>
-              <p className="mb-4">
-                When you choose to study in the UK you will be placed in universities that boast high levels of academic excellence...
-              </p>
-              <p className="mb-4 font-bold italic">
-                Here are some reasons why studying in UK is prevalent:
-              </p>
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in the United Kingdom?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      The UK blends centuries of academic heritage with modern research power. From AI, fintech, and engineering to creative arts, law, and public policy, you’ll study in a system renowned for rigor, critical thinking, and global impact.
+    </p>
+    <p className="mb-4">
+      Universities—including the Russell Group—offer industry-linked teaching, world-class labs, and career support. One-year master’s programs and flexible pathways (foundation years, integrated master’s, and sandwich placements) help you move faster and graduate career-ready.
+    </p>
+    <p className="mb-4">
+      Multicultural campuses, vibrant cities, and extensive student societies make the UK a welcoming home. With London’s global finance & creative hubs and innovation clusters across Manchester, Birmingham, Edinburgh, and beyond, opportunities are never far away.
+    </p>
 
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
-                {[
-                  "Higher Standard of Education",
-                  "World’s Top Universities",
-                  "Requires no GRE/GMAT",
-                  "Access world-leading research",
-                  "Affordable Education at a Global Level",
-                  "Post-study Visa now available for international students"
-                ].map((item, index) => (
-                  <motion.li 
-                    key={index}
-                    whileHover={{ scale: 1.02 }}
-                    className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
-                  >
-                    <span className="font-medium">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+    <p className="mb-4 font-bold italic">
+      Standout advantages for students in the UK:
+    </p>
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "World-ranked universities & research intensity",
+        "One-year master’s programs (fast, focused, cost-efficient)",
+        "Industry projects, placements & strong employer links",
+        "Global hubs for finance, tech, health & creative industries",
+
+        "Rich student life: clubs, societies, professional networks",
+        "Scholarships & funding (e.g., Chevening, university awards)",
+        "Excellent transport links & access to Europe"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
+
+
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

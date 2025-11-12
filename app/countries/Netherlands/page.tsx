@@ -157,7 +157,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function NeatherlandsPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -226,6 +226,7 @@ export default function NeatherlandsPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -256,7 +257,7 @@ export default function NeatherlandsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -300,7 +301,54 @@ export default function NeatherlandsPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in the Netherlands?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      The Netherlands stands at the intersection of creativity, innovation, and academic excellence. Known for its forward-thinking education system and international mindset, it has become one of Europe’s most popular destinations for global students.
+    </p>
+    <p className="mb-4">
+      Dutch universities consistently rank among the world’s best, offering a strong mix of research and applied sciences. Programs emphasize collaboration, critical thinking, and real-world problem-solving—skills valued worldwide.
+    </p>
+    <p className="mb-4">
+      With over 2,000 English-taught programs, affordable tuition, and a high quality of life, the Netherlands attracts ambitious learners from every corner of the world.
+    </p>
+    <p className="mb-4">
+      For Indian students, studying in the Netherlands means access to a multicultural environment, global industry connections, and post-study work opportunities through the Netherlands Orientation Year visa.
+    </p>
+    <p className="mb-4 font-bold italic">
+      The Netherlands offers powerful advantages for students:
+    </p>
+    
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "World-ranked universities & innovative teaching methods",
+        "Over 2,000 English-taught programs across disciplines",
+        "Affordable tuition compared to other Western countries",
+        "Strong focus on research, sustainability & entrepreneurship",
+        "Excellent post-study work visa (Orientation Year)",
+        "Multicultural, inclusive, and English-friendly society",
+        "Gateway to Europe’s job market & start-up scene",
+        "Generous scholarships for international students"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

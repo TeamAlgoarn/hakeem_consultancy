@@ -157,7 +157,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function DenmarkPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -226,6 +226,7 @@ export default function DenmarkPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -256,7 +257,7 @@ export default function DenmarkPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -300,7 +301,54 @@ export default function DenmarkPage() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Denmark?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      Denmark pairs world-class universities with a culture of design thinking, sustainability, and innovation. You’ll study in a place where research meets real-world impact—especially in tech, green energy, life sciences, and design.
+    </p>
+    <p className="mb-4">
+      Degrees are internationally recognized and project-based, with close links to industry and start-ups. Expect collaborative classrooms, small groups, and a strong focus on creativity and problem-solving.
+    </p>
+    <p className="mb-4">
+      Each year, students from around the world choose Denmark for its high quality of life, safe cities, and efficient public transport—plus some of the highest English-proficiency levels globally.
+    </p>
+    <p className="mb-4">
+      For Indian students, Denmark offers a practical pathway: industry-relevant learning, diverse English-taught programs, and strong connections to Nordic and EU job markets.
+    </p>
+    <p className="mb-4">
+      Denmark offers numerous benefits for students:
+    </p>
+
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "Project-based, innovation-driven teaching",
+        "Global reputation in green tech & wind energy",
+        "Strong life sciences, data, design & UX ecosystems",
+        "Wide range of English-taught programs",
+        "Industry links, internships & career fairs",
+        "Scholarships and tuition-waiver opportunities",
+        "Excellent quality of life & work-life balance",
+        "Active alumni & mentoring networks in the Nordics"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

@@ -117,6 +117,12 @@ const countries = [
     height: '320px',
     link: 'countries/norway',
   },
+  {
+    name: 'Dubai',
+    image: '/dubai.jpg',
+    flag:'/dubai_flag.png',
+    link: '/countries/dubai',
+  },
 ];
 
 

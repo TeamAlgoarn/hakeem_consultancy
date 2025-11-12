@@ -336,7 +336,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function IrelandPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -405,6 +405,7 @@ export default function IrelandPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -435,7 +436,7 @@ export default function IrelandPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Content */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -474,7 +475,55 @@ export default function IrelandPage() {
                 Irish campuses are dynamic and diverse, offering modern facilities, international student clubs, and career support services. Cities like Dublin, Cork, and Galway are known for their friendly communities, music, festivals, and historic charm.
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
+<motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+>
+  <h2 className="text-2xl font-bold mb-4 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-500">
+    Why Study in Ireland?
+  </h2>
+  <div className="space-y-4 text-gray-700">
+    <p className="mb-4">
+      Ireland is one of Europe’s most welcoming study destinations—an English-speaking, innovation-driven economy with globally ranked universities and over 5,000 internationally recognized programs.
+    </p>
+    <p className="mb-4">
+      Study in a buzzing tech hub: Dublin and other cities host European HQs and R&amp;D centers for leading companies, creating strong pipelines for projects, internships, and graduate roles.
+    </p>
+    <p className="mb-4">
+      Beyond classrooms, you’ll join a multicultural community, vibrant societies, and a rich cultural scene—while Ireland’s coastline and countryside offer space to recharge.
+    </p>
+    <p className="mb-4">
+      For Indian students, Ireland delivers practical learning, extensive English-taught options, supportive career services, and attractive post-study work opportunities.
+    </p>
+
+    <p className="font-bold italic">Popular Courses in Ireland:</p>
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-6">
+      {[
+        "Computer Science, AI & Data Analytics",
+        "Engineering & Renewable Energy",
+        "Life Sciences, Biotechnology & Pharma",
+        "Wide range of English-taught programs",
+        "Finance, Business & Management",
+        "Media, Communication & Digital Marketing"
+      ].map((item, index) => (
+        <motion.li 
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-white via-blue-50 to-purple-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-all"
+        >
+          <span className="font-medium">{item}</span>
+        </motion.li>
+      ))}
+    </ul>
+
+    <p className="text-xl font-semibold italic mt-6">Student Life in Ireland:</p>
+    <p>
+      Modern campuses, active international clubs, and strong employability support define the student experience. Cities like Dublin, Cork, and Galway combine friendly communities with music, festivals, and historic charm—plus excellent public transport and easy connections across Europe.
+    </p>
+  </div>
+</motion.div>
 
           {/* Right Form */}
          <div className="max-w-2xl mx-auto relative z-10">

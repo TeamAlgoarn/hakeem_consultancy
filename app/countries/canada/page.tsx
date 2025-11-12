@@ -154,7 +154,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
+import AppNavbar from '../../components/AppNavbar';
 export default function CanadaPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -223,6 +223,7 @@ export default function CanadaPage() {
 
   return (
     <div className="bg-white">
+      <AppNavbar />
       {/* Hero Section */}
       <div 
         className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
@@ -279,7 +280,7 @@ export default function CanadaPage() {
                   "World-class education at affordable costs",
                   "Low to no tuition in some universities",
                   "Opportunities to live and explore",
-                  "English-taught courses",
+                 "Strong, high-skill job market",
                   "Opportunity to explore North America",
                   "Scholarship opportunities"
                 ].map((item, index) => (
