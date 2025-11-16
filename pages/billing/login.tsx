@@ -63,7 +63,7 @@ export default function BillingLogin() {
       setIsResetting(true);
 
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/billing/reset-password`,
+        redirectTo: "https://www.studyvisum.com/billing/reset-password"
       });
 
       if (error) {
