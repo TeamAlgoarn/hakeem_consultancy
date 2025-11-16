@@ -6,6 +6,7 @@ import { FaInstagram, FaLinkedinIn, FaFacebookF, FaStar,FaPhone ,FaEnvelope } fr
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { HiMenu, HiX } from 'react-icons/hi';
 import Header from '../components/Header';
+import { SITE_CONFIG } from "@/lib/siteConfig";
 // Google Rating Component
 const GoogleRatingComponent: React.FC = () => {
   const handleGoogleClick = (): void => {
@@ -410,9 +411,7 @@ export default function CounsellingForm() {
     <div className="lg:col-span-1">
       <h3 className="font-semibold mb-3 text-blue-300">Address</h3>
       <div className="space-y-1 text-gray-300 text-sm">
-        <p>Flat No. 301 A Block, Okaz Complex</p>
-        <p>Opp. Pillar Number 5, Mehdipatnam</p>
-        <p>Hyderabad, Telangana 500028</p>
+        <p>{SITE_CONFIG.address}</p>
       </div>
     </div>
 
@@ -441,15 +440,15 @@ export default function CounsellingForm() {
       <div className="space-y-2">
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdEmail className="text-base text-blue-400 flex-shrink-0" />
-          <a href="mailto:info@studyvisum.com" className="hover:underline text-sm">info@studyvisum.com</a>
+          <a href={`mailto:${SITE_CONFIG.email}`} className="hover:underline text-sm">{SITE_CONFIG.email}</a>
         </div>
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdPhone className="text-base text-green-400 flex-shrink-0" />
-          <a href="tel:+918374779361" className="hover:underline text-sm">+91 8374779361</a>
+          <a href="tel:+918374779361" className="hover:underline text-sm">{SITE_CONFIG.phone1}</a>
         </div>
         <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
           <MdPhone className="text-base text-green-400 flex-shrink-0" />
-          <a href="tel:+919704879361" className="hover:underline text-sm">+91 9704879361</a>
+          <a href="tel:+919704879361" className="hover:underline text-sm">{SITE_CONFIG.phone2}</a>
         </div>
       </div>
     </div>

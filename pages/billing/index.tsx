@@ -76,11 +76,7 @@ const setStatus = (id: string, status: "PAID" | "UNPAID") => {
 };
 
 /* ---------------- Share links ---------------- */
-// const whatsappUrl = (phone: string, name: string, id: string, amount: number) => {
-//   const msg = `Dear ${name}, your invoice #${id} of Rs. ${amount.toLocaleString("en-IN")} is ready.`;
-//   const to = phone.replace(/[^0-9]/g, "");
-//   return `https://wa.me/91${to}?text=${encodeURIComponent(msg)}`;
-// };
+
 const whatsappUrl = (phone: string, name: string, id: string, amount: number) => {
   const msg = `✅ Invoice #${id} for ₹${amount.toLocaleString("en-IN")} has been successfully generated.`;
   const to = phone.replace(/[^0-9]/g, "");
@@ -139,51 +135,7 @@ async function loadAsPngDataUrl(src: string): Promise<string | null> {
     img.src = src;
   });
 }
-// function svgIconDataUrl(type: "email" | "phone" | "location", color = "#FFFFFF") {
-//   let path = "";
-//   switch (type) {
-//     case "email":
-//       path = `<rect x="2" y="5" width="20" height="14" rx="2" ry="2"/>
-//               <path d="M3 6l9 7 9-7" stroke="${color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-//       break;
-//     case "phone":
-//       path = `<path d="M6 2h4l2 5-3 2a16 16 0 007 7l2-3 5 2v4c0 1-1 2-2 2A18 18 0 014 8c0-1 1-2 2-2z"/>`;
-//       break;
-//     case "location":
-//       path = `<path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/>
-//               <circle cx="12" cy="9" r="2.3" fill="#0D2E57"/>`;
-//       break;
-//   }
-//   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"
-//                viewBox="0 0 24 24" fill="${color}">${path}</svg>`;
-//   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-// }
-// function svgIconDataUrl(
-//   type: "email" | "phone" | "location" | "globe",
-//   color = "#6B7280"
-// ) {
-//   let path = "";
-//   switch (type) {
-//     case "email":
-//       path = `<rect x="2" y="5" width="20" height="14" rx="2" ry="2"/>
-//               <path d="M3 6l9 7 9-7" stroke="${color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-//       break;
-//     case "phone":
-//       path = `<path d="M6 2h4l2 5-3 2a16 16 0 007 7l2-3 5 2v4c0 1-1 2-2 2A18 18 0 014 8c0-1 1-2 2-2z"/>`;
-//       break;
-//     case "location":
-//       path = `<path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/>
-//               <circle cx="12" cy="9" r="2.3" fill="${color}"/>`;
-//       break;
-//     case "globe":
-//       path = `<circle cx="12" cy="12" r="9" stroke="${color}" stroke-width="2" fill="none"/>
-//               <ellipse cx="12" cy="12" rx="6" ry="9" stroke="${color}" stroke-width="2" fill="none"/>
-//               <path d="M3 12h18M12 3v18" stroke="${color}" stroke-width="2" fill="none" stroke-linecap="round"/>`;
-//       break;
-//   }
-//   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="${color}">${path}</svg>`;
-//   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-// }
+
 function svgIconDataUrl(
   type: "email" | "phone" | "location" | "globe",
   color = "#B88A55"       // warm gold, like your reference
@@ -262,10 +214,7 @@ async function generateInvoicePDF(i: Invoice) {
   const GREY:  RGB = [145, 145, 145]; // faint label grey
   const setRGB = (c: RGB) => doc.setTextColor(c[0], c[1], c[2]);
 
-  /* ── Top: centered LOGO + underline ── */
-  /* ── Top: RIGHT-ALIGNED LOGO + underline ── */
-// Try transparent PNG first, then your GIF path; fallback to text.
-// const logoPng = await loadAsPngDataUrl("/studyvisum-logo.png");
+
 const logoPng = await loadAsPngDataUrl("/logo.png");
 const logoGif = await loadAsPngDataUrl("/Studyvisummp4logo%20(1)%20(1).gif");
 
@@ -429,146 +378,7 @@ doc.line(L, underlineY, R, underlineY);
   doc.save(`Invoice-${i.id}.pdf`);
 }
 
-  /* ── Status tag ── */
-  // const pillY = metaY + 11.2;
-  // doc.setFont("helvetica", "bold");
-  // doc.setFontSize(9.3);
-  // const status = i.status === "PAID" ? "PAID" : "UNPAID";
-  // const statusColor: RGB = status === "PAID" ? [0, 130, 60] : [160, 120, 0];
-  // setRGB(statusColor);
-  // doc.text(status, R, pillY, { align: "right" });
-  // setRGB(BLACK);
 
-
-
-
-
-/* ======================= LETTER HEAD PDF ======================= */
-/* ======================= LETTER HEAD PDF (Exact to reference) ======================= */
-// export async function generateLetterHeadPDF(name: string, phone: string, content: string) {
-//   const doc = new jsPDF({ unit: "mm", format: "a4" });
-//   const W = 210, H = 297;
-
-//   const MARGIN = 12;
-//   const L = MARGIN, R = W - MARGIN;
-//   const LEFT_RAIL = L + 9.0;
-
-//   const BLACK: [number, number, number] = [20, 20, 20];
-//   const HAIR:  [number, number, number] = [112, 112, 112];
-//   const GOLD:  [number, number, number] = [184, 138, 85];
-//   const ICONHEX = "#B88A55";               // gold icons
-
-//   const EPS = 0.35;
-//   // @ts-ignore
-//   doc.setLineCap?.("butt");
-//   // @ts-ignore
-//   doc.setLineJoin?.("miter");
-
-//   /* ── Wordmark ── */
-//   const logoPng = await loadAsPngDataUrl("/logos/studyvisum-wordmark.png");
-//   const logoGif = await loadAsPngDataUrl("/Studyvisummp4logo%20(1)%20(1).gif");
-
-//   const LOGO_GAP = 3.0; // gap between gold rail and logo
-//   const logoX = LEFT_RAIL + LOGO_GAP, logoY = 24.0, logoW = 63.0, logoH = 15.0;
-
-//   if (logoPng)      doc.addImage(logoPng, "PNG", logoX, logoY, logoW, logoH);
-//   else if (logoGif) doc.addImage(logoGif, "PNG", logoX, logoY, logoW, logoH);
-//   else {
-//     doc.setFont("times", "bold");
-//     doc.setFontSize(18);
-//     doc.setTextColor(...BLACK);
-//     doc.text("STUDYVISUM", logoX + 1, logoY + 11);
-//   }
-
-//   /* ── Hairline ── */
-//   const hairY = logoY + logoH + 3.4;
-//   doc.setDrawColor(...HAIR);
-//   doc.setLineWidth(0.3);
-//   doc.line(0 - EPS, hairY, W + EPS, hairY);
-
-//   /* ── Contact block (RIGHT, HIGHER) ── */
-//   const iPhone = await loadAsPngDataUrl(svgIconDataUrl("phone", ICONHEX));
-//   const iEmail = await loadAsPngDataUrl(svgIconDataUrl("email", ICONHEX));
-//   const iLoc   = await loadAsPngDataUrl(svgIconDataUrl("location", ICONHEX));
-//   const iWeb   = await loadAsPngDataUrl(svgIconDataUrl("globe", ICONHEX));
-
-//   const phoneTxt = phone?.trim() || "+91 9704879361";
-
-//   // Right-side text box (keeps nice rag and wraps long address)
-//   const BLOCK_RIGHT_X = R;                     // right align to page margin
-//   const BLOCK_LEFT_X  = logoX + logoW + 10;    // left edge of the contact block
-//   const ICON_S   = 3.6;
-//   const ICON_PAD = 2.6;
-//   const TEXT_WIDTH = Math.max(35, BLOCK_RIGHT_X - BLOCK_LEFT_X - ICON_S - ICON_PAD);
-
-//   const ROW_GAP = 4.0;
-//   // ↑ Move the whole block higher by increasing CONTACT_RAISE
-//   const CONTACT_RAISE = 6.0;   // mm moved UP relative to the previous version
-//   const webBaseline = hairY - 2.2 - CONTACT_RAISE;
-
-//   doc.setFont("helvetica", "normal");
-//   doc.setFontSize(8.3);
-//   doc.setTextColor(...BLACK);
-
-//   type Row = { icon: string | null; text: string };
-//   const rows: Row[] = [
-//     { icon: iPhone, text: `+91 8374779361 / ${phoneTxt}` },
-//     { icon: iEmail, text: "info@studyvisum.com" },
-//     { icon: iLoc,   text: "Flat No. 301, A Block, Okaz Complex, Opp. Pillar No. 5, Mehdipatnam, Hyderabad 500028" },
-//     { icon: iWeb,   text: "www.studyvisum.com" }, // sits on/near hairline (optically)
-//   ];
-
-//   function drawRightIconRow(yBase: number, r: Row) {
-//     const lines = doc.splitTextToSize(r.text, TEXT_WIDTH) as string[];
-//     const tW = doc.getTextWidth(lines[0]);
-//     const firstStartX = BLOCK_RIGHT_X - tW;
-//     const iconX = Math.max(BLOCK_LEFT_X, firstStartX - ICON_PAD - ICON_S);
-//     const iconY = yBase - ICON_S + 0.9;
-//     if (r.icon) doc.addImage(r.icon, "PNG", iconX, iconY, ICON_S, ICON_S);
-
-//     lines.forEach((ln, i) => {
-//       const y = yBase + i * (ROW_GAP - 0.2);
-//       doc.text(ln, BLOCK_RIGHT_X, y, { align: "right" });
-//     });
-//     return ROW_GAP * Math.max(1, lines.length);
-//   }
-
-//   // stack rows so the last row’s baseline (website) is at webBaseline
-//   const rowHeights = rows.map(r => {
-//     const lines = doc.splitTextToSize(r.text, TEXT_WIDTH) as string[];
-//     return ROW_GAP * Math.max(1, lines.length);
-//   });
-//   const totalHeightMinusLast = rowHeights.slice(0, -1).reduce((a, b) => a + b, 0);
-//   let yTop = webBaseline - totalHeightMinusLast;
-//   rows.forEach(r => { yTop += drawRightIconRow(yTop, r); });
-
-//   /* ── Footer bar ── */
-//   const barH = 6.0;
-//   // const barY = H - 13.8;
-//   // doc.setFillColor(...GOLD);
-//   // doc.rect(0, barY, W, barH, "F");
-// const barY = H - barH;
-
-// doc.setFillColor(...GOLD);
-// doc.rect(0, barY, W, barH, "F");
-//   /* ── Vertical gold rule ── */
-//   doc.setDrawColor(...GOLD);
-//   doc.setLineWidth(1.0);
-//   doc.line(LEFT_RAIL, 0 - EPS, LEFT_RAIL, barY);  // stop at top of footer
-
-//   /* ── Body text ── */
-//   const bodyX = LEFT_RAIL + 6.3;
-//   const bodyTop = hairY + 24;
-//   if (content?.trim()) {
-//     doc.setFont("helvetica", "normal");
-//     doc.setTextColor(...BLACK);
-//     doc.setFontSize(11.2);
-//     const lines = doc.splitTextToSize(content.trim(), R - bodyX);
-//     doc.text(lines, bodyX, bodyTop);
-//   }
-
-//   doc.save("studyvisumLetterhead.pdf");
-// }
 export async function generateLetterHeadPDF(
   name: string,
   phone: string,
@@ -627,9 +437,6 @@ const iWeb   = await loadAsPngDataUrl(svgIconDataUrl("globe", ICONHEX));
 const phoneTxt = phone?.trim() || "+91 9704879361";
 
 // We want the block on the RIGHT:
-// [ICON][PAD][TEXT...............][small gap][right margin]
-// const ICON_S   = 3.6;
-// const ICON_PAD = 2.6;
 const ICON_S   = 5.0;   // bigger icons
 const ICON_PAD = 3.0;   // more breathing room
 
@@ -651,17 +458,6 @@ doc.setFontSize(8.3);
 doc.setTextColor(...BLACK);
 
 type Row = { icon: string | null; text: string };
-// const rows: Row[] = [
-//   { icon: iPhone, text: `+919704879361/ ${phoneTxt}` },
-//   { icon: iEmail, text: "info@studyvisum.com" },
-//   {
-//     icon: iLoc,
-//     text: "Flat No. 301, A Block, Okaz Complex, Opp. Pillar No. 5, Mehdipatnam, Hyderabad 500028",
-//   },
-//   { icon: iWeb, text: "www.studyvisum.com" },
-// ];
-// you can keep phoneTxt if you want for something else, but it won't be used here
-// const phoneTxt = phone?.trim() || "+91 9704879361";
 
 const rows: Row[] = [
   // ONLY your official numbers now, no form input
@@ -697,72 +493,7 @@ function drawRightSideRow(yBase: number, r: Row) {
 // draw all rows
 let y = CONTACT_TOP;
 rows.forEach(r => { y += drawRightSideRow(y, r); });
-  /* ── Contact block (LEFT-JUSTIFIED like reference) ── */
-  // const iPhone = await loadAsPngDataUrl(svgIconDataUrl("phone", ICONHEX));
-  // const iEmail = await loadAsPngDataUrl(svgIconDataUrl("email", ICONHEX));
-  // const iLoc   = await loadAsPngDataUrl(svgIconDataUrl("location", ICONHEX));
-  // const iWeb   = await loadAsPngDataUrl(svgIconDataUrl("globe", ICONHEX));
 
-  // const phoneTxt = phone?.trim() || "+91 9704879361";
-
-  // // [ICON][PAD][TEXT...............]
-  // const BLOCK_LEFT_X = logoX + logoW + 6;      // icon column X
-  // const ICON_S       = 3.6;
-  // const ICON_PAD     = 2.6;
-  // const TEXT_X       = BLOCK_LEFT_X + ICON_S + ICON_PAD;
-  // const TEXT_WIDTH   = R - TEXT_X;
-
-  // const ROW_GAP     = 4.0;
-  // const CONTACT_TOP = hairY - 2.0;             // baseline of first row
-
-  // doc.setFont("helvetica", "normal");
-  // doc.setFontSize(8.3);
-  // doc.setTextColor(...BLACK);
-
-  // type Row = { icon: string | null; text: string };
-  // const rows: Row[] = [
-  //   { icon: iPhone, text: `+91 8374779361 / ${phoneTxt}` },
-  //   { icon: iEmail, text: "info@studyvisum.com" },
-  //   {
-  //     icon: iLoc,
-  //     text: "Flat No. 301, A Block, Okaz Complex, Opp. Pillar No. 5, Mehdipatnam, Hyderabad 500028",
-  //   },
-  //   { icon: iWeb, text: "www.studyvisum.com" },
-  // ];
-
-  // function drawLeftRow(yBase: number, r: Row) {
-  //   const lines = doc.splitTextToSize(r.text, TEXT_WIDTH) as string[];
-
-  //   // icon (aligned with first line)
-  //   if (r.icon) {
-  //     const iconY = yBase - ICON_S + 0.9;
-  //     doc.addImage(r.icon, "PNG", BLOCK_LEFT_X, iconY, ICON_S, ICON_S);
-  //   }
-
-  //   // left-aligned text, all lines start at TEXT_X
-  //   lines.forEach((ln, i) => {
-  //     const y = yBase + i * (ROW_GAP - 0.2);
-  //     doc.text(ln, TEXT_X, y);
-  //   });
-
-  //   return ROW_GAP * Math.max(1, lines.length);
-  // }
-
-  // // draw rows and track max width for underline
-  // let y = CONTACT_TOP;
-  // const widths: number[] = [];
-  // rows.forEach(r => {
-  //   const lines = doc.splitTextToSize(r.text, TEXT_WIDTH) as string[];
-  //   const widest = Math.max(...lines.map(ln => doc.getTextWidth(ln)));
-  //   widths.push(widest);
-  //   y += drawLeftRow(y, r);
-  // });
-
-  // short gold underline under contact block
-  // const underlineEndX = Math.min(R, TEXT_X + Math.max(...widths) + 1.5);
-  // doc.setDrawColor(...GOLD);
-  // doc.setLineWidth(0.4);
-  // doc.line(LEFT_RAIL + 0.5, y - 1.3, underlineEndX, y - 1.3);
 
   /* ── Footer bar (touching bottom) ── */
   const barH = 6.0;

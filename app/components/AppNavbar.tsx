@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { SITE_CONFIG } from "@/lib/siteConfig";
 // import { FaInstagram, FaYoutube, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
 
 const GoogleRatingComponent: React.FC = () => {
@@ -35,11 +36,11 @@ const AppNavbar: React.FC = () => {
       {/* Top Contact Bar */}
       <div className="bg-black text-white text-sm flex flex-col sm:flex-row justify-between items-center px-4 py-2 gap-2">
         <div className="flex items-center gap-4">
-          <span className="text-blue-200">📞 +91 8374779361, +91 9704879361</span>
+          <span className="text-blue-200">📞 {SITE_CONFIG.phone1}, {SITE_CONFIG.phone2}</span>
         </div>
 
         <div className="flex gap-3 items-center">
-          <a href="mailto:info@studyvisum.com" className="text-blue-200 hover:text-white">📧 info@studyvisum.com</a>
+          <a href={`mailto:${SITE_CONFIG.email}`} className="text-blue-200 hover:text-white">📧 {SITE_CONFIG.email}</a>
           <span className="h-4 w-px bg-white/20" />
           <Link href="/billing/login" className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1.5 text-sm font-medium text-white hover:bg-white/20 transition">
             <span>🔒</span> Admin Login

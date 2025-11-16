@@ -6,6 +6,7 @@ import CountrySlider from './components/CountrySlider';
 import MBBSSection from "./components/MBBSSection";
 import ReviewsSection from './components/ReviewsSection';
 import PopupForm from './components/PopupForm';
+import { SITE_CONFIG } from "@/lib/siteConfig";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -116,15 +117,15 @@ export default function Home() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdEmail className="text-base text-blue-400 flex-shrink-0" />
-                <a href="mailto:info@studyvisum.com " className="hover:underline text-sm">info@studyvisum.com </a>
+                <a href={`mailto:${SITE_CONFIG.email}`} className="hover:underline text-sm">{SITE_CONFIG.email} </a>
               </div>
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdPhone className="text-base text-green-400 flex-shrink-0" />
-                <a href="tel:+918374779361" className="hover:underline text-sm">+91 8374779361</a>
+                <a href={`tel:${SITE_CONFIG.phone1}`} className="hover:underline text-sm">{SITE_CONFIG.phone1}</a>
               </div>
               <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300">
                 <MdPhone className="text-base text-green-400 flex-shrink-0" />
-                <a href="tel:+919704879361" className="hover:underline text-sm">+91 9704879361</a>
+                <a href={`tel:${SITE_CONFIG.phone2}`} className="hover:underline text-sm">{SITE_CONFIG.phone2}</a>
               </div>
             </div>
           </div>
