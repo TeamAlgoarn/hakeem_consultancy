@@ -15,37 +15,37 @@ export default async function handler(
     return res.status(400).json({ message: "Missing accessToken or newPassword" });
   }
 
-  // BACKEND CLIENT (service role)
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
+  try {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY! // service role required
+    );
 
-  // STEP 1 — Exchange recovery token -> session (v1 syntax)
-  const { data: sessionData, error: sessionErr } =
-    await supabase.auth.exchangeCodeForSession(accessToken);
+    // 1️⃣ Exchange token → session
+    const { data: sessionData, error: sessionErr } =
+      await supabase.auth.exchangeCodeForSession(accessToken);
 
-  if (sessionErr || !sessionData?.session?.access_token) {
-    console.error("exchangeCodeForSession error:", sessionErr);
-    return res.status(400).json({ message: "Invalid or expired token" });
-  }
-
-  const recoveredAccessToken = sessionData.session.access_token;
-
-  // STEP 2 — Update password (v1 syntax)
-  const { data: updateRes, error: updateErr } = await supabase.auth.update(
-    {
-      password: newPassword,
-    },
-    {
-      accessToken: recoveredAccessToken,
+    if (sessionErr || !sessionData?.session?.access_token) {
+      console.error("exchangeCodeForSession error:", sessionErr);
+      return res.status(400).json({ message: "Invalid or expired token" });
     }
-  );
 
-  if (updateErr) {
-    console.error("Password update error:", updateErr);
-    return res.status(400).json({ message: updateErr.message });
+    const userAccessToken = sessionData.session.access_token;
+
+    // 2️⃣ Update password using v0 API
+    const { data: updateData, error: updateErr } =
+      await supabase.auth.api.updateUser(userAccessToken, {
+        password: newPassword,
+      });
+
+    if (updateErr) {
+      console.error("Password update error:", updateErr);
+      return res.status(400).json({ message: updateErr.message });
+    }
+
+    return res.status(200).json({ message: "Password reset successful" });
+  } catch (err: any) {
+    console.error("Server error:", err);
+    return res.status(500).json({ message: "Internal server error" });
   }
-
-  return res.status(200).json({ message: "Password reset successful" });
 }
