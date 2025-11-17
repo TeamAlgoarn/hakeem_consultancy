@@ -467,10 +467,19 @@ export default function CountriesPage() {
               className={`country-card opacity-0  animate-scale-in animation-delay-${Math.min(100 + index * 100, 1500)}`}
             >
               <div className="country-image-container">
-                <img
+                {/* <img
                   src={country.image}
                   alt={country.name}
                   className="country-image"
+                /> */}
+                <Image
+                  src={country.image}
+                  alt={country.name}
+                  width={400}
+                  height={250}
+                  className="country-image"
+                  loading="lazy"
+                  priority={false}
                 />
                 <h3 className="country-name">{country.name}</h3>
               </div>
