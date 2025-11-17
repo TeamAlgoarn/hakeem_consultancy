@@ -1,10 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "@supabase/supabase-js";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
@@ -18,29 +15,33 @@ export default async function handler(
   try {
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY! // service role required
+      process.env.SUPABASE_SERVICE_ROLE_KEY! // service role – required
     );
 
-    // 1️⃣ Exchange token → session
-    const { data: sessionData, error: sessionErr } =
+    // 1️⃣ Exchange token for a real session (v2 accepts ONLY a string)
+    const { data: sessionData, error: exchangeError } =
       await supabase.auth.exchangeCodeForSession(accessToken);
 
-    if (sessionErr || !sessionData?.session?.access_token) {
-      console.error("exchangeCodeForSession error:", sessionErr);
+    if (exchangeError || !sessionData?.session) {
+      console.error("exchangeCodeForSession error:", exchangeError);
       return res.status(400).json({ message: "Invalid or expired token" });
     }
 
     const userAccessToken = sessionData.session.access_token;
 
-    // 2️⃣ Update password using v0 API
-    const { data: updateData, error: updateErr } =
-      await supabase.auth.api.updateUser(userAccessToken, {
+    // 2️⃣ Update password (v2 syntax)
+    const { data, error: updateError } = await supabase.auth.updateUser(
+      {
         password: newPassword,
-      });
+      },
+      {
+        accessToken: userAccessToken,
+      }
+    );
 
-    if (updateErr) {
-      console.error("Password update error:", updateErr);
-      return res.status(400).json({ message: updateErr.message });
+    if (updateError) {
+      console.error("Password update error:", updateError);
+      return res.status(400).json({ message: updateError.message });
     }
 
     return res.status(200).json({ message: "Password reset successful" });
