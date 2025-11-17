@@ -1,15 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "@supabase/supabase-js";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
-    }
+  }
 
   const { accessToken, newPassword } = req.body;
 
   if (!accessToken || !newPassword) {
-    return res.status(400).json({ message: "Missing accessToken or newPassword" });
+    return res.status(400).json({ message: "Missing token or password" });
   }
 
   try {
@@ -18,32 +21,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    // STEP 1 — Exchange recovery token for session
-    const { data: sessionRes, error: sessionErr } = await supabase.auth.exchangeCodeForSession({
-      type: "recovery",
-      token: accessToken,
-    });
+    // STEP 1 — Exchange for session (v1 syntax)
+    const { data: sessionData, error: exchangeError } =
+      await supabase.auth.api.exchangeCodeForSession(accessToken);
 
-    if (sessionErr || !sessionRes?.session) {
-      console.error("Token exchange error:", sessionErr);
+    if (exchangeError || !sessionData?.access_token) {
+      console.error("exchangeCodeForSession error:", exchangeError);
       return res.status(400).json({ message: "Invalid or expired token" });
     }
 
-    // STEP 2 — Update password
-    const { error: updateErr } = await supabase.auth.updateUser(
-      { password: newPassword },
-      { accessToken: sessionRes.session.access_token } // IMPORTANT
-    );
+    // Authenticate super-admin user temporarily
+    supabase.auth.setAuth(sessionData.access_token);
 
-    if (updateErr) {
-      console.error("Password update error:", updateErr);
-      return res.status(400).json({ message: updateErr.message });
+    // STEP 2 — Update password
+    const { error: updateError } = await supabase.auth.update({
+      password: newPassword,
+    });
+
+    if (updateError) {
+      console.error(updateError);
+      return res.status(400).json({ message: "Password update failed" });
     }
 
     return res.status(200).json({ message: "Password reset successful" });
-
   } catch (err: any) {
-    console.error("Server error:", err);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error(err);
+    return res.status(500).json({ message: "Server error" });
   }
 }
