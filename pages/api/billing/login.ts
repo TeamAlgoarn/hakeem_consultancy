@@ -1,8 +1,8 @@
 // pages/api/billing/login.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
-import cookie from 'cookie';
-
+// import cookie from 'cookie';
+import { serialize } from 'cookie';
 // Create a simple server-side Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -97,7 +97,7 @@ export default async function handler(
     // Set the cookie
     res.setHeader(
       'Set-Cookie',
-      cookie.serialize('billing_auth', token, cookieOptions)
+      serialize('billing_auth', token, cookieOptions)
     );
 
     // Success response
