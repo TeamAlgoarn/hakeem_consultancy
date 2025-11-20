@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // Images in /public
-const images = ["/passports_image_studyvisum.png", "/star_design_studyvisum.png"];
+const images = ["/passports_image_studyvisum 1.png", "/star_design_studyvisum.png"];
 
 type News = { id: string; title: string; body: string; updatedAt: string };
 const readNews = (): News[] => {

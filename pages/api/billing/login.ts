@@ -12,7 +12,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.error('❌ Supabase env vars missing in login API', {
     hasUrl: !!supabaseUrl,
     hasKey: !!supabaseAnonKey,
-  });
+  }); 
 }
 
 const supabase =
