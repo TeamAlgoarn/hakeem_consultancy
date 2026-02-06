@@ -566,10 +566,7 @@ export default function Billing() {
   const pillActiveIn = (el: HTMLButtonElement) => (el.style.filter = "brightness(0.95)");
   const pillActiveOut= (el: HTMLButtonElement) => (el.style.filter = "brightness(1.10)");
 
-  // useEffect(() => {
-  //   setItems(listInvoices());
-  //   setLetterHeads(listLetterHeads());
-  // }, []);
+ 
 useEffect(() => {
   async function init() {
     if (navigator.storage?.persist) {
