@@ -189,7 +189,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Images in /public
-const images = ["/passports_image_canada_studyvisum.png", "/star_design_studyvisum.png"];
+const images = [
+  "/passports_image_canada_studyvisum.png",
+  "/star_design_studyvisum.png",
+];
 
 type News = {
   id: string;
@@ -213,8 +216,7 @@ export default function HeroSlider() {
   const [idx, setIdx] = useState(0);
   const [hover, setHover] = useState(false);
   const [news, setNews] = useState<News[]>([]);
-const [loadingNews, setLoadingNews] = useState(true);
-
+  const [loadingNews, setLoadingNews] = useState(true);
 
   const pairsCount = Math.ceil(images.length / 2);
   const currentPair = Math.floor(idx / 2);
@@ -226,14 +228,13 @@ const [loadingNews, setLoadingNews] = useState(true);
   }, [hover]);
 
   useEffect(() => {
-  (async () => {
-    setLoadingNews(true);
-    const items = await fetchNews();
-    setNews(items);
-    setLoadingNews(false);
-  })();
-}, []);
-
+    (async () => {
+      setLoadingNews(true);
+      const items = await fetchNews();
+      setNews(items);
+      setLoadingNews(false);
+    })();
+  }, []);
 
   const next = () => setIdx((v) => (v + 2) % images.length);
   const prev = () => setIdx((v) => (v - 2 + images.length) % images.length);
@@ -242,7 +243,8 @@ const [loadingNews, setLoadingNews] = useState(true);
   const leftSrc = images[idx % images.length];
   const rightSrc = images[(idx + 1) % images.length];
 
-  const CARD_H = "h-[240px] md:h-[280px] lg:h-[320px] xl:h-[360px]";
+  const CARD_H =
+    "h-[240px] md:h-[280px] lg:h-[320px] xl:h-[360px]";
   const GRID_COLS = "lg:grid-cols-[1fr_1fr_360px]";
 
   return (
@@ -268,7 +270,7 @@ const [loadingNews, setLoadingNews] = useState(true);
               />
             </figure>
 
-            {/* Star card — clickable -> /contact */}
+            {/* Star card */}
             <Link
               href="/contact"
               className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl"
@@ -289,8 +291,6 @@ const [loadingNews, setLoadingNews] = useState(true);
               </figure>
             </Link>
           </div>
-
-          {/* arrows / dots are commented in your code - kept same */}
         </div>
 
         {/* RIGHT: Latest News */}
@@ -304,46 +304,35 @@ const [loadingNews, setLoadingNews] = useState(true);
           <hr className="border-gray-200 mb-3" />
 
           <div className="space-y-4 overflow-auto">
-           {loadingNews ? (
-  <p className="text-gray-500 text-center py-6">Loading...</p>
-) : (
-  (news.length ? news : demoNews).slice(0, 3).map((n) => (
-    <div key={n.id} className="group transition-all duration-300 hover:translate-x-1">
-      <h4 className="font-semibold text-gray-900 group-hover:text-red-600 transition-all duration-300 text-justify underline-offset-4 group-hover:underline">
-        {n.title}
-      </h4>
-      <p
-        className="text-sm text-gray-600 mt-1 leading-relaxed transition-all duration-300"
-        style={{ textAlign: "justify" }}
-      >
-        {n.body}
-      </p>
-    </div>
-  ))
-)}
-
+            {loadingNews ? (
+              <p className="text-gray-500 text-center py-6">
+                Loading...
+              </p>
+            ) : news.length === 0 ? (
+              <p className="text-gray-500 text-center py-6">
+                No news available.
+              </p>
+            ) : (
+              news.slice(0, 3).map((n) => (
+                <div
+                  key={n.id}
+                  className="group transition-all duration-300 hover:translate-x-1"
+                >
+                  <h4 className="font-semibold text-gray-900 group-hover:text-red-600 transition-all duration-300 text-justify underline-offset-4 group-hover:underline">
+                    {n.title}
+                  </h4>
+                  <p
+                    className="text-sm text-gray-600 mt-1 leading-relaxed transition-all duration-300"
+                    style={{ textAlign: "justify" }}
+                  >
+                    {n.body}
+                  </p>
+                </div>
+              ))
+            )}
           </div>
         </aside>
       </div>
     </section>
   );
 }
-
-// Fallback demo items if Supabase empty
-const demoNews: News[] = [
-  {
-    id: "1",
-    title: "New Study Programs Available",
-    body: "Explore our latest study abroad programs in top universities.",
-  },
-  {
-    id: "2",
-    title: "Upcoming Counselling Sessions",
-    body: "Join our expert counsellors for guidance on your study abroad journey.",
-  },
-  {
-    id: "3",
-    title: "Visa Success Stories",
-    body: "Read about our recent successful visa applications.",
-  },
-];
