@@ -566,10 +566,24 @@ export default function Billing() {
   const pillActiveIn = (el: HTMLButtonElement) => (el.style.filter = "brightness(0.95)");
   const pillActiveOut= (el: HTMLButtonElement) => (el.style.filter = "brightness(1.10)");
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   setItems(listInvoices());
+  //   setLetterHeads(listLetterHeads());
+  // }, []);
+useEffect(() => {
+  async function init() {
+    if (navigator.storage?.persist) {
+      const granted = await navigator.storage.persist();
+      console.log("Persistent granted:", granted);
+    }
+
     setItems(listInvoices());
     setLetterHeads(listLetterHeads());
-  }, []);
+  }
+
+  init();
+}, []);
+
 
   const filtered = useMemo(() => {
     const f = filter.trim().toLowerCase();
