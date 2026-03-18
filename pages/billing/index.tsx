@@ -615,7 +615,9 @@ useEffect(() => {
       dueDate: dueDate || undefined,
       remarks: remarks || undefined,
       status: "UNPAID",
-      createdAt: now, updatedAt: now
+      createdAt: dueDate ? new Date(dueDate).toISOString() : new Date().toISOString(), 
+      updatedAt: new Date().toISOString()
+      
     };
     upsertInvoice(inv);
     setItems(listInvoices());
