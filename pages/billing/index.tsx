@@ -74,7 +74,15 @@ const setStatus = (id: string, status: "PAID" | "UNPAID") => {
   item.updatedAt = new Date().toISOString();
   saveInvoices(all);
 };
+const deleteInvoice = (id: string) => {
+  const ok = confirm("Are you sure you want to delete this invoice?");
+  if (!ok) return;
 
+  const all = listInvoices();
+  const updated = all.filter((a) => a.id !== id);
+
+  saveInvoices(updated);
+};
 /* ---------------- Share links ---------------- */
 
 const whatsappUrl = (phone: string, name: string, id: string, amount: number) => {
@@ -215,7 +223,7 @@ async function generateInvoicePDF(i: Invoice) {
   const setRGB = (c: RGB) => doc.setTextColor(c[0], c[1], c[2]);
 
 
-const logoPng = await loadAsPngDataUrl("/logo.png");
+// const logoPng = await loadAsPngDataUrl("/logo.png");
 const logoGif = await loadAsPngDataUrl("/Studyvisummp4logo%20(1)%20(1).gif");
 
 // Right alignment
@@ -224,18 +232,21 @@ const logoW = 82;          // adjust ±2 if you want it a bit bigger/smaller
 const logoH = 18;
 const logoX = R - logoW;   // <— right aligned to the margin
 
-if (logoPng) {
-  doc.addImage(logoPng, "PNG", logoX, logoY, logoW, logoH);
-} else if (logoGif) {
-  doc.addImage(logoGif, "PNG", logoX, logoY, logoW, logoH);
-} else {
-  // fallback text placed at the right
-  doc.setFont("times", "bold");
-  doc.setFontSize(24);
-  doc.setTextColor(20,20,20);
-  doc.text("STUDYVISUM", R, logoY + 12, { align: "right" });
-}
-
+// if (logoPng) {
+//   doc.addImage(logoPng, "PNG", logoX, logoY, logoW, logoH);
+// } else if (logoGif) {
+//   doc.addImage(logoGif, "PNG", logoX, logoY, logoW, logoH);
+// } else {
+//   // fallback text placed at the right
+//   doc.setFont("times", "bold");
+//   doc.setFontSize(24);
+//   doc.setTextColor(20,20,20);
+//   doc.text("STUDYVISUM", R, logoY + 12, { align: "right" });
+// }
+doc.setFont("helvetica", "bold");
+doc.setFontSize(18);
+doc.setTextColor(20, 20, 20);
+doc.text("Hakeem Consultancy Services", R, logoY + 12, { align: "right" });
 // Hairline UNDER the logo (spans across the page like your screenshot)
 const underlineY = logoY + logoH + 4.5;
 doc.setDrawColor(35);
@@ -349,7 +360,8 @@ doc.line(L, underlineY, R, underlineY);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9.3);
   const paymentLines = [
-    "UPI: studyvisum@upi  ·  Ref: " + i.id,
+    // "UPI: studyvisum@upi  ·  Ref: " + i.id,
+    // "UPI: hakeemconsultancy@upi  ·  Ref: " + i.id,
     "Email: info@studyvisum.com  ·  Phone: +91 9704879361",
     "Address: Flat No. 301 A Block, Okaz Complex Opp. Pillar No. 5, Mehdipatnam Hyderabad, India 500028"
   ];
@@ -701,7 +713,13 @@ useEffect(() => {
     if (!emailRegex.test(invoice.email)) return alert("Invalid email format for this invoice");
     window.open(gmailUrl(invoice.email, invoice.name, invoice.id, invoice.amount), "_blank");
   }
+function deleteInvoice(id: string) {
+  const ok = confirm("Are you sure you want to delete this invoice?");
+  if (!ok) return;
 
+  const updated = listInvoices().filter((invoice) => invoice.id !== id);
+  saveInvoices(updated);
+}
   const router = useRouter();
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#fff7f3] via-[#faf7ff] to-[#f8faff] px-6 py-8">
@@ -800,7 +818,7 @@ useEffect(() => {
                   <col style={{ width: 120 }} />
                   <col style={{ width: 120 }} />
                   <col style={{ width: 120 }} />
-                  <col style={{ width: 520 }} />
+                  <col style={{ width: 620 }} />
                 </colgroup>
 
                 <thead className="bg-gray-50 sticky top-0 z-10">
@@ -811,7 +829,8 @@ useEffect(() => {
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-600">Created</th>
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-600">Due</th>
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-600">Status</th>
-                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-600 text-right w-[520px]">Actions</th>
+                    {/* <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-600 text-right w-[520px]">Actions</th> */}
+                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-gray-600 text-right w-[620px]">Actions</th>
                   </tr>
                 </thead>
 
@@ -826,12 +845,30 @@ useEffect(() => {
                       <td className="px-6 py-4">
                         <span className={`status-pill ${i.status === "PAID" ? "status-paid" : "status-unpaid"}`}>{i.status}</span>
                       </td>
-                      <td className="px-6 py-4 w-[520px]">
+                      {/* <td className="px-6 py-4 w-[520px]"> */}
+                      <td className="px-6 py-4 w-[620px]">
                         <div className="actions-grid">
                           <button style={{ ...pillSmStyle, width: "72px"  }} onMouseEnter={(e) => pillHoverIn(e.currentTarget)} onMouseLeave={(e) => pillHoverOut(e.currentTarget)} onMouseDown={(e)=>pillActiveIn(e.currentTarget)} onMouseUp={(e)=>pillActiveOut(e.currentTarget)} onClick={() => generateInvoicePDF(i)}>PDF</button>
                           <button style={{ ...pillSmStyle, width: "120px" }} onMouseEnter={(e) => pillHoverIn(e.currentTarget)} onMouseLeave={(e) => pillHoverOut(e.currentTarget)} onMouseDown={(e)=>pillActiveIn(e.currentTarget)} onMouseUp={(e)=>pillActiveOut(e.currentTarget)} onClick={() => { setStatus(i.id, i.status === "PAID" ? "UNPAID" : "PAID"); setItems(listInvoices()); }}>{i.status === "PAID" ? "Mark Unpaid" : "Mark Paid"}</button>
                           <button style={{ ...pillSmStyle, width: "120px" }} onMouseEnter={(e) => pillHoverIn(e.currentTarget)} onMouseLeave={(e) => pillHoverOut(e.currentTarget)} onMouseDown={(e)=>pillActiveIn(e.currentTarget)} onMouseUp={(e)=>pillActiveOut(e.currentTarget)} onClick={() => { if (!i.phone) return alert("No phone number"); window.open(whatsappUrl(i.phone!, i.name, i.id, i.amount), "_blank"); }}>WhatsApp</button>
                           <button style={{ ...pillSmStyle, width: "88px"  }} onMouseEnter={(e) => pillHoverIn(e.currentTarget)} onMouseLeave={(e) => pillHoverOut(e.currentTarget)} onMouseDown={(e)=>pillActiveIn(e.currentTarget)} onMouseUp={(e)=>pillActiveOut(e.currentTarget)} onClick={() => handleEmailExisting(i)}>Email</button>
+                          <button
+    style={{
+      ...pillSmStyle,
+      width: "88px",
+      backgroundImage: "linear-gradient(90deg, #dc2626, #ef4444)",
+    }}
+    onMouseEnter={(e) => pillHoverIn(e.currentTarget)}
+    onMouseLeave={(e) => pillHoverOut(e.currentTarget)}
+    onMouseDown={(e) => pillActiveIn(e.currentTarget)}
+    onMouseUp={(e) => pillActiveOut(e.currentTarget)}
+    onClick={() => {
+      deleteInvoice(i.id);
+      setItems(listInvoices());
+    }}
+  >
+    Delete
+  </button>
                         </div>
                       </td>
                     </tr>
@@ -948,8 +985,12 @@ useEffect(() => {
         .status-unpaid{background:#fff7e6; color:#a16207; }
 
         .actions-grid{
-          display:grid; grid-template-columns:72px 120px 120px 88px; justify-content:end; gap:12px;
-        }
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  flex-wrap:nowrap;
+}
         @media (max-width:1024px){
           .actions-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); justify-content:stretch; }
         }
