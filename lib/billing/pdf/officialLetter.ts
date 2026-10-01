@@ -239,35 +239,10 @@ export async function buildOfficialLetterPdf(
     );
   }
 
-  function drawOfficialLabel() {
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
-
-    doc.setFontSize(8);
-
-    doc.setTextColor(
-      150,
-      100,
-      10
-    );
-
-    doc.text(
-      "OFFICIAL",
-      BODY_RIGHT,
-      47,
-      {
-        align: "right",
-      }
-    );
-  }
 
   function startPage() {
-    drawTemplate();
-    drawOfficialLabel();
-  }
-
+  drawTemplate();
+}
   startPage();
 
   let y = BODY_TOP;

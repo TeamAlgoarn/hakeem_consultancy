@@ -321,6 +321,18 @@ export default function UnofficialLetterForm({
 
     setSuccessMessage("");
 
+    if (
+      official &&
+      !includeSignature &&
+      !includeStamp
+    ) {
+      setErrorMessage(
+        "Please select at least one Official Letter option: Authorized Signature or Company Stamp."
+      );
+
+      return null;
+    }
+
     const letter =
 
       buildLetter();
@@ -362,39 +374,43 @@ export default function UnofficialLetterForm({
 
   }
 
-  function confirmOfficial():
-    boolean {
-    if (!official) {
-      return true;
-    }
-
-    let optionSummary =
-      "No signature or stamp";
-
-    if (
-      includeSignature &&
-      includeStamp
-    ) {
-      optionSummary =
-        "Authorized Signature + Company Stamp";
-    } else if (
-      includeSignature
-    ) {
-      optionSummary =
-        "Authorized Signature";
-    } else if (
-      includeStamp
-    ) {
-      optionSummary =
-        "Company Stamp";
-    }
-
-    return window.confirm(
-      "Generate Official Letter?\n\n" +
-        `Selected option: ${optionSummary}.\n\n` +
-        "Continue?"
-    );
+  function confirmOfficial(): boolean {
+  if (!official) {
+    return true;
   }
+
+  let optionSummary = "";
+
+  if (
+    includeSignature &&
+    includeStamp
+  ) {
+    optionSummary =
+      "Authorized Signature + Company Stamp";
+  } else if (
+    includeSignature
+  ) {
+    optionSummary =
+      "Authorized Signature";
+  } else if (
+    includeStamp
+  ) {
+    optionSummary =
+      "Company Stamp";
+  } else {
+    setErrorMessage(
+      "Please select at least one Official Letter option: Authorized Signature or Company Stamp."
+    );
+
+    return false;
+  }
+
+  return window.confirm(
+    "Generate Official Letter?\n\n" +
+      `Selected option: ${optionSummary}.\n\n` +
+      "Continue?"
+  );
+}
 
   async function handlePreview() {
     if (
@@ -795,17 +811,17 @@ export default function UnofficialLetterForm({
 
                 <p className="mt-1 text-sm font-medium text-emerald-900">
 
-                  Choose whether the official letter should include a
+                  Select the authorization required for this official letter.
 
-                  signature, stamp, both, or neither.
+                  Choose a signature, company stamp, or both.
 
                 </p>
 
                 <p className="mt-1 text-xs leading-5 text-emerald-700">
 
-                  The document remains an Official Letter even when both
+                  At least one option must be selected before an Official Letter
 
-                  options are left unchecked.
+                  can be previewed, generated, or saved.
 
                 </p>
 
@@ -883,7 +899,7 @@ export default function UnofficialLetterForm({
 
                     <span className="mt-1 block text-xs leading-5 text-slate-500">
 
-                      Add the approved company stamp when the final stamp asset is available.
+                      Add the approved company stamp to the official letter.
 
                     </span>
 
@@ -909,7 +925,7 @@ export default function UnofficialLetterForm({
 
                   ? "Company Stamp only"
 
-                  : "No signature or stamp"}
+                  : "Select Authorized Signature or Company Stamp"}
 
               </div>
 
