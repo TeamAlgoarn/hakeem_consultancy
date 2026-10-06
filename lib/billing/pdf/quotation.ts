@@ -5,12 +5,8 @@ import type {
 } from "@/lib/billing/types";
 
 import {
-  CURRENT_STUDYVISUM_BRANDING,
-  PDF_PAGE,
-  drawFooter,
   formatDocumentDate,
   formatMoney,
-  hasPageSpace,
   loadImageAsDataUrl,
   type DocumentBranding,
 } from "@/lib/billing/pdf/common";
@@ -19,93 +15,504 @@ import type {
   WatermarkRenderer,
 } from "@/lib/billing/pdf/watermark";
 
+/* ============================================================
+   QUOTATION PDF OPTIONS
+   ============================================================ */
+
 export type QuotationPdfOptions = {
   branding?: DocumentBranding;
   watermark?: WatermarkRenderer;
 };
 
+/* ============================================================
+   PAGE CONSTANTS
+   ============================================================ */
+
+const PAGE_WIDTH = 210;
+const PAGE_HEIGHT = 297;
+
+const LEFT = 8;
+const RIGHT = 202;
+
+const BLACK = [20, 20, 20] as const;
+const DARK_GREY = [70, 70, 70] as const;
+const LIGHT_GREY = [205, 205, 205] as const;
+const GOLD = [184, 138, 85] as const;
+
+/* ============================================================
+   QUOTATION LOGO
+   ============================================================ */
+
+/*
+ * Actual StudyVisum logo.
+ *
+ * File location:
+ * public/studyvisum-logo.gif
+ */
+const STUDYVISUM_LOGO_PATH =
+  "/Studyvisummp4logo (1) (1).gif";
+
+/* ============================================================
+   LEGAL ENTITY
+   ============================================================ */
+
+const LEGAL_ENTITY_NAME =
+  "Hakeem Consultancy Services Private Limited";
+
+const BRAND_OPERATING_LINE =
+  'Operating under the brand "StudyVisum"';
+
+const LEGAL_ENTITY_ADDRESS =
+  "#301 A Block, Okaz Complex, Mehdipatnam, Hyderabad, India – 500028";
+
+const CONTACT_EMAIL =
+  "info@studyvisum.com";
+
+const CONTACT_PHONE =
+  "Phone: +91 9704879361";
+
+/* ============================================================
+   DECIMAL FORMATTER
+   ============================================================ */
+
+function formatDecimal(
+  value: number
+): string {
+  const safeValue =
+    Number.isFinite(value)
+      ? value
+      : 0;
+
+  if (
+    Number.isInteger(
+      safeValue
+    )
+  ) {
+    return String(
+      safeValue
+    );
+  }
+
+  return safeValue
+    .toFixed(4)
+    .replace(
+      /0+$/,
+      ""
+    )
+    .replace(
+      /\.$/,
+      ""
+    );
+}
+
+/* ============================================================
+   FOOTER ICONS
+   ============================================================ */
+
+const EMAIL_ICON_SVG = `
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="64"
+     height="64"
+     viewBox="0 0 24 24">
+  <rect
+    x="2"
+    y="4"
+    width="20"
+    height="16"
+    rx="1.5"
+    fill="#000000"
+  />
+  <path
+    d="M3.3 6L12 12.4L20.7 6"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
+`;
+
+const PHONE_ICON_SVG = `
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="64"
+     height="64"
+     viewBox="0 0 24 24">
+  <path
+    fill="#000000"
+    d="M6.6 2.5c.6-.2 1.2.1 1.5.7l2.1 4.7c.2.5.1 1-.3 1.4l-1.7 1.6c1.2 2.5 3.3 4.6 5.8 5.8l1.6-1.7c.4-.4.9-.5 1.4-.3l4.7 2.1c.6.3.9.9.7 1.5l-.8 3c-.2.7-.8 1.2-1.6 1.2C10.2 22.5 1.5 13.8 1.5 4c0-.8.5-1.4 1.2-1.6l3.9-.9z"
+  />
+</svg>
+`;
+
+/* ============================================================
+   PAGE FRAME
+   ============================================================ */
+
 async function drawPageFrame(
   doc: jsPDF,
-  branding: DocumentBranding,
   logoDataUrl: string | null,
+  emailIcon: string | null,
+  phoneIcon: string | null,
   watermark?: WatermarkRenderer
 ): Promise<void> {
-  const {
-    width,
-    marginLeft,
-    marginRight,
-  } = PDF_PAGE;
-
   if (watermark) {
     watermark(doc);
   }
 
+  /* ==========================================================
+     ACTUAL STUDYVISUM LOGO — TOP LEFT
+     ========================================================== */
+
+  /*
+   * There is intentionally NO text fallback here.
+   *
+   * We want only the real StudyVisum logo in the
+   * quotation header.
+   */
   if (logoDataUrl) {
     try {
       doc.addImage(
         logoDataUrl,
         "PNG",
-        marginLeft,
-        14,
-        48,
+        LEFT,
+        7,
+        71,
         14
       );
-    } catch {
-      /*
-       * Fall through to the text company name.
-       */
+    } catch (error) {
+      console.error(
+        "Unable to render StudyVisum quotation logo:",
+        error
+      );
     }
   }
 
-  if (!logoDataUrl) {
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
+  /* ==========================================================
+     LEGAL ENTITY — TOP RIGHT
+     ========================================================== */
 
-    doc.setFontSize(18);
+  doc.setTextColor(
+    ...BLACK
+  );
 
-    doc.setTextColor(
-      25,
-      25,
-      25
-    );
+  doc.setFont(
+    "times",
+    "bold"
+  );
 
-    doc.text(
-      branding.companyName,
-      marginLeft,
-      24
-    );
-  }
+  doc.setFontSize(
+    12.5
+  );
+
+  doc.text(
+    LEGAL_ENTITY_NAME,
+    RIGHT,
+    11.5,
+    {
+      align: "right",
+    }
+  );
+
+  doc.setFont(
+    "times",
+    "normal"
+  );
+
+  doc.setFontSize(
+    9.5
+  );
+
+  doc.text(
+    BRAND_OPERATING_LINE,
+    RIGHT,
+    17.5,
+    {
+      align: "right",
+    }
+  );
+
+  /* ==========================================================
+     GOLD HEADER LINE
+     ========================================================== */
 
   doc.setDrawColor(
-    184,
-    138,
-    85
+    ...GOLD
   );
 
   doc.setLineWidth(
-    0.7
+    0.8
   );
 
   doc.line(
-    marginLeft,
-    34,
-    width -
-      marginRight,
-    34
+    LEFT,
+    25,
+    RIGHT,
+    25
   );
 
-  drawFooter(
-    doc,
-    branding
+  /* ==========================================================
+     FOOTER LINE
+     ========================================================== */
+
+  doc.setDrawColor(
+    ...LIGHT_GREY
+  );
+
+  doc.setLineWidth(
+    0.25
+  );
+
+  doc.line(
+    LEFT,
+    277,
+    RIGHT,
+    277
+  );
+
+  /* ==========================================================
+     FOOTER ADDRESS
+     ========================================================== */
+
+  doc.setFont(
+    "times",
+    "normal"
+  );
+
+  doc.setFontSize(
+    8.5
+  );
+
+  doc.setTextColor(
+    ...BLACK
+  );
+
+  doc.text(
+    LEGAL_ENTITY_ADDRESS,
+    PAGE_WIDTH / 2,
+    283,
+    {
+      align: "center",
+    }
+  );
+
+  /* ==========================================================
+     FOOTER CONTACT
+     ========================================================== */
+
+  const contactY =
+    289;
+
+  doc.setFont(
+    "times",
+    "normal"
+  );
+
+  doc.setFontSize(
+    8.5
+  );
+
+  const emailTextWidth =
+    doc.getTextWidth(
+      CONTACT_EMAIL
+    );
+
+  const phoneTextWidth =
+    doc.getTextWidth(
+      CONTACT_PHONE
+    );
+
+  const emailIconSize =
+    4.8;
+
+  const phoneIconSize =
+    5;
+
+  const iconTextGap =
+    1.3;
+
+  const groupGap =
+    4;
+
+  const totalContactWidth =
+    emailIconSize +
+    iconTextGap +
+    emailTextWidth +
+    groupGap +
+    phoneIconSize +
+    iconTextGap +
+    phoneTextWidth;
+
+  let contactX =
+    (
+      PAGE_WIDTH -
+      totalContactWidth
+    ) / 2;
+
+  if (emailIcon) {
+    try {
+      doc.addImage(
+        emailIcon,
+        "PNG",
+        contactX,
+        contactY - 4,
+        emailIconSize,
+        emailIconSize
+      );
+    } catch {
+      // Non-critical.
+    }
+  }
+
+  contactX +=
+    emailIconSize +
+    iconTextGap;
+
+  doc.text(
+    CONTACT_EMAIL,
+    contactX,
+    contactY
+  );
+
+  contactX +=
+    emailTextWidth +
+    groupGap;
+
+  if (phoneIcon) {
+    try {
+      doc.addImage(
+        phoneIcon,
+        "PNG",
+        contactX,
+        contactY - 4.1,
+        phoneIconSize,
+        phoneIconSize
+      );
+    } catch {
+      // Non-critical.
+    }
+  }
+
+  contactX +=
+    phoneIconSize +
+    iconTextGap;
+
+  doc.text(
+    CONTACT_PHONE,
+    contactX,
+    contactY
   );
 }
+
+/* ============================================================
+   TABLE HEADER
+   ============================================================ */
+
+function drawTableHeader(
+  doc: jsPDF,
+  y: number
+): void {
+  doc.setDrawColor(
+    80,
+    80,
+    80
+  );
+
+  doc.setLineWidth(
+    0.22
+  );
+
+  doc.line(
+    LEFT,
+    y - 5,
+    RIGHT,
+    y - 5
+  );
+
+  doc.setFont(
+    "helvetica",
+    "bold"
+  );
+
+  doc.setFontSize(
+    8
+  );
+
+  doc.setTextColor(
+    ...DARK_GREY
+  );
+
+  doc.text(
+    "DESCRIPTION",
+    LEFT,
+    y
+  );
+
+  doc.text(
+    "QTY",
+    116,
+    y,
+    {
+      align: "right",
+    }
+  );
+
+  doc.text(
+    "RATE",
+    140,
+    y,
+    {
+      align: "right",
+    }
+  );
+
+  doc.text(
+    "TAX %",
+    162,
+    y,
+    {
+      align: "right",
+    }
+  );
+
+  doc.text(
+    "DISC %",
+    181,
+    y,
+    {
+      align: "right",
+    }
+  );
+
+  doc.text(
+    "TOTAL",
+    RIGHT,
+    y,
+    {
+      align: "right",
+    }
+  );
+
+  doc.line(
+    LEFT,
+    y + 4,
+    RIGHT,
+    y + 4
+  );
+}
+
+/* ============================================================
+   BUILD QUOTATION PDF
+   ============================================================ */
 
 export async function buildQuotationPdf(
   quotation: Quotation,
   options: QuotationPdfOptions = {}
 ): Promise<jsPDF> {
+  /* ==========================================================
+     VALIDATION
+     ========================================================== */
+
   if (
     !quotation.clientName?.trim()
   ) {
@@ -138,9 +545,64 @@ export async function buildQuotationPdf(
     );
   }
 
-  const branding =
-    options.branding ??
-    CURRENT_STUDYVISUM_BRANDING;
+  for (
+    const item of quotation.items
+  ) {
+    if (
+      !item.description?.trim()
+    ) {
+      throw new Error(
+        "Every quotation item requires a description."
+      );
+    }
+  }
+
+  /* ==========================================================
+     LOAD ACTUAL STUDYVISUM LOGO
+     ========================================================== */
+
+  /*
+   * If a caller explicitly supplies another logo,
+   * allow it. Otherwise always use our quotation logo.
+   */
+  const logoPath =
+    options.branding?.logoPath ||
+    STUDYVISUM_LOGO_PATH;
+
+  const logoDataUrl =
+    await loadImageAsDataUrl(
+      logoPath
+    );
+
+  if (!logoDataUrl) {
+    console.error(
+      `StudyVisum logo could not be loaded: ${logoPath}`
+    );
+  }
+
+  /* ==========================================================
+     LOAD FOOTER ICONS
+     ========================================================== */
+
+  const emailIcon =
+    await loadImageAsDataUrl(
+      "data:image/svg+xml;utf8," +
+        encodeURIComponent(
+          EMAIL_ICON_SVG
+        )
+    );
+
+  const phoneIcon =
+    await loadImageAsDataUrl(
+      "data:image/svg+xml;utf8," +
+        encodeURIComponent(
+          PHONE_ICON_SVG
+        )
+    );
+
+  /* ==========================================================
+     CREATE PDF
+     ========================================================== */
 
   const doc =
     new jsPDF({
@@ -149,57 +611,20 @@ export async function buildQuotationPdf(
       orientation: "portrait",
     });
 
-  const {
-    width,
-    marginLeft,
-    marginRight,
-    contentTop,
-  } = PDF_PAGE;
-
-  const right =
-    width -
-    marginRight;
-
-  const logoDataUrl =
-    await loadImageAsDataUrl(
-      branding.logoPath
-    );
-
-  const addFreshPage =
-    async () => {
-      doc.addPage(
-        "a4",
-        "portrait"
-      );
-
-      await drawPageFrame(
-        doc,
-        branding,
-        logoDataUrl,
-        options.watermark
-      );
-
-      return contentTop;
-    };
-
   await drawPageFrame(
     doc,
-    branding,
     logoDataUrl,
+    emailIcon,
+    phoneIcon,
     options.watermark
   );
 
-  let y =
-    contentTop;
-
-  /* ----------------------------------------
-     QUOTATION TITLE / META
-  ----------------------------------------- */
+  /* ==========================================================
+     QUOTATION TITLE
+     ========================================================== */
 
   doc.setTextColor(
-    25,
-    25,
-    25
+    ...BLACK
   );
 
   doc.setFont(
@@ -213,9 +638,22 @@ export async function buildQuotationPdf(
 
   doc.text(
     "QUOTATION",
-    marginLeft,
-    y
+    LEFT,
+    40
   );
+
+  /* ==========================================================
+     QUOTATION META
+     ========================================================== */
+
+  const metaLabelX =
+    156;
+
+  const metaValueX =
+    RIGHT;
+
+  const metaY =
+    39;
 
   doc.setFont(
     "helvetica",
@@ -223,49 +661,72 @@ export async function buildQuotationPdf(
   );
 
   doc.setFontSize(
-    9.5
+    9
+  );
+
+  doc.setTextColor(
+    ...DARK_GREY
   );
 
   doc.text(
-    `Quotation No: ${quotation.id}`,
-    right,
-    y,
+    "Quotation No:",
+    metaLabelX,
+    metaY
+  );
+
+  doc.text(
+    "Date:",
+    metaLabelX,
+    metaY + 6
+  );
+
+  doc.text(
+    "Valid Until:",
+    metaLabelX,
+    metaY + 12
+  );
+
+  doc.setTextColor(
+    ...BLACK
+  );
+
+  doc.text(
+    quotation.id,
+    metaValueX,
+    metaY,
     {
       align: "right",
     }
   );
 
-  y += 6;
-
   doc.text(
-    `Date: ${formatDocumentDate(
+    formatDocumentDate(
       quotation.quotationDate
-    )}`,
-    right,
-    y,
+    ),
+    metaValueX,
+    metaY + 6,
     {
       align: "right",
     }
   );
-
-  y += 5;
 
   doc.text(
-    `Valid Until: ${formatDocumentDate(
+    formatDocumentDate(
       quotation.validityDate
-    )}`,
-    right,
-    y,
+    ),
+    metaValueX,
+    metaY + 12,
     {
       align: "right",
     }
   );
 
-  y += 12;
+  /* ==========================================================
+     QUOTATION FOR
+     ========================================================== */
 
-  /* ----------------------------------------
-     CLIENT INFORMATION
-  ----------------------------------------- */
+  let y: number =
+    62;
 
   doc.setFont(
     "helvetica",
@@ -277,41 +738,37 @@ export async function buildQuotationPdf(
   );
 
   doc.setTextColor(
-    120,
-    120,
-    120
+    ...DARK_GREY
   );
 
   doc.text(
     "QUOTATION FOR",
-    marginLeft,
+    LEFT,
     y
   );
 
-  y += 6;
-
-  doc.setTextColor(
-    25,
-    25,
-    25
-  );
-
-  doc.setFontSize(
-    11
-  );
+  y += 7;
 
   doc.setFont(
     "helvetica",
     "bold"
   );
 
+  doc.setFontSize(
+    10.5
+  );
+
+  doc.setTextColor(
+    ...BLACK
+  );
+
   doc.text(
     quotation.clientName,
-    marginLeft,
+    LEFT,
     y
   );
 
-  y += 5;
+  y += 5.5;
 
   doc.setFont(
     "helvetica",
@@ -319,35 +776,33 @@ export async function buildQuotationPdf(
   );
 
   doc.setFontSize(
-    9.5
+    8.8
   );
 
-  const clientLines =
-    [
-      quotation.companyName,
+  const clientLines = [
+    quotation.companyName,
 
-      quotation.contactPerson
-        ? `Contact: ${quotation.contactPerson}`
-        : undefined,
+    quotation.contactPerson
+      ? `Contact: ${quotation.contactPerson}`
+      : undefined,
 
-      quotation.email,
+    quotation.email,
 
-      quotation.phone,
-    ].filter(
-      Boolean
-    ) as string[];
+    quotation.phone,
+  ].filter(
+    Boolean
+  ) as string[];
 
   for (
-    const line
-    of clientLines
+    const line of clientLines
   ) {
     doc.text(
       line,
-      marginLeft,
+      LEFT,
       y
     );
 
-    y += 5;
+    y += 4.5;
   }
 
   if (
@@ -356,61 +811,53 @@ export async function buildQuotationPdf(
     const addressLines =
       doc.splitTextToSize(
         quotation.billingAddress,
-        90
+        92
       ) as string[];
 
     doc.text(
       addressLines,
-      marginLeft,
+      LEFT,
       y
     );
 
     y +=
       addressLines.length *
-      4.5;
+      4.3;
   }
 
-  y += 8;
+  /* ==========================================================
+     TABLE
+     ========================================================== */
 
-  /* ----------------------------------------
-     ITEMS TABLE
-  ----------------------------------------- */
+  y = Math.max(
+    y + 10,
+    104
+  );
 
-  const columns = {
-    description:
-      marginLeft,
+  drawTableHeader(
+    doc,
+    y
+  );
 
-    quantity:
-      right - 76,
+  y += 12;
 
-    rate:
-      right - 54,
+  /* ==========================================================
+     CONTINUATION PAGE
+     ========================================================== */
 
-    tax:
-      right - 33,
-
-    discount:
-      right - 16,
-
-    total:
-      right,
-  };
-
-  const drawTableHeader =
-    () => {
-      doc.setDrawColor(
-        175
+  const addContinuationPage =
+    async (): Promise<void> => {
+      doc.addPage(
+        "a4",
+        "portrait"
       );
 
-      doc.setLineWidth(
-        0.25
-      );
-
-      doc.line(
-        marginLeft,
-        y - 4,
-        right,
-        y - 4
+      await drawPageFrame(
+        doc,
+        logoDataUrl,
+        emailIcon,
+        phoneIcon,
+        options.watermark
       );
 
       doc.setFont(
@@ -419,120 +866,59 @@ export async function buildQuotationPdf(
       );
 
       doc.setFontSize(
-        8
+        13
       );
 
       doc.setTextColor(
-        70,
-        70,
-        70
+        ...BLACK
       );
 
       doc.text(
-        "DESCRIPTION",
-        columns.description,
+        `QUOTATION - ${quotation.id}`,
+        LEFT,
+        40
+      );
+
+      y =
+        55;
+
+      drawTableHeader(
+        doc,
         y
       );
 
-      doc.text(
-        "QTY",
-        columns.quantity,
-        y,
-        {
-          align: "right",
-        }
-      );
-
-      doc.text(
-        "RATE",
-        columns.rate,
-        y,
-        {
-          align: "right",
-        }
-      );
-
-      doc.text(
-        "TAX %",
-        columns.tax,
-        y,
-        {
-          align: "right",
-        }
-      );
-
-      doc.text(
-        "DISC %",
-        columns.discount,
-        y,
-        {
-          align: "right",
-        }
-      );
-
-      doc.text(
-        "TOTAL",
-        columns.total,
-        y,
-        {
-          align: "right",
-        }
-      );
-
-      y += 4;
-
-      doc.line(
-        marginLeft,
-        y,
-        right,
-        y
-      );
-
-      y += 6;
+      y +=
+        12;
     };
 
-  drawTableHeader();
+  /* ==========================================================
+     ITEMS
+     ========================================================== */
 
   for (
-    const item
-    of quotation.items
+    const item of quotation.items
   ) {
-    if (
-      !item.description
-        ?.trim()
-    ) {
-      throw new Error(
-        "Every quotation item requires a description."
-      );
-    }
-
     const descriptionLines =
       doc.splitTextToSize(
-        item.description,
-        68
+        item.description.trim(),
+        72
       ) as string[];
 
     const lineHeight =
-      4.5;
+      4.2;
 
     const rowHeight =
       Math.max(
         descriptionLines.length *
           lineHeight,
-        8
-      ) +
-      3;
+        6
+      ) + 3;
 
     if (
-      !hasPageSpace(
-        y,
-        rowHeight
-      )
+      y + rowHeight >
+      245
     ) {
-      y =
-        await addFreshPage();
-
-      drawTableHeader();
+      await addContinuationPage();
     }
 
     const quantity =
@@ -551,19 +937,19 @@ export async function buildQuotationPdf(
         ) || 0
       );
 
-    const discountPercent =
-      Math.max(
-        0,
-        Number(
-          item.discountPercent
-        ) || 0
-      );
-
     const taxPercent =
       Math.max(
         0,
         Number(
           item.taxPercent
+        ) || 0
+      );
+
+    const discountPercent =
+      Math.max(
+        0,
+        Number(
+          item.discountPercent
         ) || 0
       );
 
@@ -596,70 +982,80 @@ export async function buildQuotationPdf(
       taxableAmount +
       taxAmount;
 
+    /* DESCRIPTION */
+
     doc.setFont(
       "helvetica",
       "normal"
     );
 
     doc.setFontSize(
-      8.8
+      8.4
     );
 
     doc.setTextColor(
-      25,
-      25,
-      25
+      ...BLACK
     );
 
     doc.text(
       descriptionLines,
-      columns.description,
+      LEFT,
       y
     );
 
+    /* QTY */
+
     doc.text(
-      String(
+      formatDecimal(
         quantity
       ),
-      columns.quantity,
+      116,
       y,
       {
         align: "right",
       }
     );
+
+    /* RATE */
 
     doc.text(
       formatMoney(
         rate
       ),
-      columns.rate,
+      140,
       y,
       {
         align: "right",
       }
     );
 
+    /* TAX */
+
     doc.text(
-      String(
+      formatDecimal(
         taxPercent
       ),
-      columns.tax,
+      162,
       y,
       {
         align: "right",
       }
     );
 
+    /* DISCOUNT */
+
     doc.text(
-      String(
+      formatDecimal(
         discountPercent
       ),
-      columns.discount,
+      181,
       y,
       {
         align: "right",
       }
     );
+
+    /* TOTAL */
 
     doc.setFont(
       "helvetica",
@@ -670,16 +1066,19 @@ export async function buildQuotationPdf(
       formatMoney(
         lineTotal
       ),
-      columns.total,
+      RIGHT,
       y,
       {
         align: "right",
       }
     );
 
-    y += rowHeight;
+    y +=
+      rowHeight;
 
     doc.setDrawColor(
+      225,
+      225,
       225
     );
 
@@ -688,31 +1087,28 @@ export async function buildQuotationPdf(
     );
 
     doc.line(
-      marginLeft,
-      y - 2,
-      right,
-      y - 2
+      LEFT,
+      y - 1.5,
+      RIGHT,
+      y - 1.5
     );
   }
 
-  y += 7;
-
-  /* ----------------------------------------
+  /* ==========================================================
      TOTALS
-  ----------------------------------------- */
+     ========================================================== */
+
+  y += 8;
 
   if (
-    !hasPageSpace(
-      y,
-      34
-    )
+    y + 45 >
+    245
   ) {
-    y =
-      await addFreshPage();
+    await addContinuationPage();
   }
 
-  const labelX =
-    right - 48;
+  const totalsLabelX =
+    149;
 
   doc.setFont(
     "helvetica",
@@ -724,14 +1120,14 @@ export async function buildQuotationPdf(
   );
 
   doc.setTextColor(
-    25,
-    25,
-    25
+    ...BLACK
   );
+
+  /* SUBTOTAL */
 
   doc.text(
     "Subtotal",
-    labelX,
+    totalsLabelX,
     y
   );
 
@@ -739,7 +1135,7 @@ export async function buildQuotationPdf(
     formatMoney(
       quotation.subtotal
     ),
-    right,
+    RIGHT,
     y,
     {
       align: "right",
@@ -748,9 +1144,11 @@ export async function buildQuotationPdf(
 
   y += 6;
 
+  /* DISCOUNT */
+
   doc.text(
     "Discount",
-    labelX,
+    totalsLabelX,
     y
   );
 
@@ -758,7 +1156,7 @@ export async function buildQuotationPdf(
     formatMoney(
       quotation.discountTotal
     ),
-    right,
+    RIGHT,
     y,
     {
       align: "right",
@@ -767,9 +1165,11 @@ export async function buildQuotationPdf(
 
   y += 6;
 
+  /* TAX */
+
   doc.text(
     "Tax",
-    labelX,
+    totalsLabelX,
     y
   );
 
@@ -777,28 +1177,32 @@ export async function buildQuotationPdf(
     formatMoney(
       quotation.taxTotal
     ),
-    right,
+    RIGHT,
     y,
     {
       align: "right",
     }
   );
 
-  y += 7;
+  y += 8;
+
+  /* GRAND TOTAL */
 
   doc.setDrawColor(
-    60
+    65,
+    65,
+    65
   );
 
   doc.setLineWidth(
-    0.5
+    0.45
   );
 
   doc.line(
-    labelX - 6,
-    y - 3,
-    right,
-    y - 3
+    totalsLabelX - 7,
+    y - 4,
+    RIGHT,
+    y - 4
   );
 
   doc.setFont(
@@ -812,16 +1216,16 @@ export async function buildQuotationPdf(
 
   doc.text(
     "Grand Total",
-    labelX,
-    y + 3
+    totalsLabelX,
+    y + 2
   );
 
   doc.text(
     formatMoney(
       quotation.grandTotal
     ),
-    right,
-    y + 3,
+    RIGHT,
+    y + 2,
     {
       align: "right",
     }
@@ -829,15 +1233,15 @@ export async function buildQuotationPdf(
 
   y += 16;
 
-  /* ----------------------------------------
+  /* ==========================================================
      NOTES / TERMS
-  ----------------------------------------- */
+     ========================================================== */
 
   const drawTextSection =
     async (
       title: string,
       content?: string
-    ) => {
+    ): Promise<void> => {
       if (
         !content?.trim()
       ) {
@@ -847,21 +1251,28 @@ export async function buildQuotationPdf(
       const lines =
         doc.splitTextToSize(
           content.trim(),
-          right -
-            marginLeft
+          RIGHT - LEFT
         ) as string[];
 
-      const lineHeight =
-        4.5;
-
       if (
-        !hasPageSpace(
-          y,
-          12
-        )
+        y + 15 >
+        260
       ) {
+        doc.addPage(
+          "a4",
+          "portrait"
+        );
+
+        await drawPageFrame(
+          doc,
+          logoDataUrl,
+          emailIcon,
+          phoneIcon,
+          options.watermark
+        );
+
         y =
-          await addFreshPage();
+          45;
       }
 
       doc.setFont(
@@ -870,22 +1281,21 @@ export async function buildQuotationPdf(
       );
 
       doc.setFontSize(
-        9.5
+        9
       );
 
       doc.setTextColor(
-        25,
-        25,
-        25
+        ...BLACK
       );
 
       doc.text(
         title,
-        marginLeft,
+        LEFT,
         y
       );
 
-      y += 6;
+      y +=
+        6;
 
       doc.setFont(
         "helvetica",
@@ -893,21 +1303,31 @@ export async function buildQuotationPdf(
       );
 
       doc.setFontSize(
-        9
+        8.5
       );
 
       for (
-        const line
-        of lines
+        const line of lines
       ) {
         if (
-          !hasPageSpace(
-            y,
-            lineHeight
-          )
+          y + 5 >
+          263
         ) {
+          doc.addPage(
+            "a4",
+            "portrait"
+          );
+
+          await drawPageFrame(
+            doc,
+            logoDataUrl,
+            emailIcon,
+            phoneIcon,
+            options.watermark
+          );
+
           y =
-            await addFreshPage();
+            45;
 
           doc.setFont(
             "helvetica",
@@ -915,27 +1335,26 @@ export async function buildQuotationPdf(
           );
 
           doc.setFontSize(
-            9
+            8.5
           );
 
           doc.setTextColor(
-            25,
-            25,
-            25
+            ...BLACK
           );
         }
 
         doc.text(
           line,
-          marginLeft,
+          LEFT,
           y
         );
 
         y +=
-          lineHeight;
+          4.5;
       }
 
-      y += 5;
+      y +=
+        5;
     };
 
   await drawTextSection(
@@ -951,17 +1370,14 @@ export async function buildQuotationPdf(
   return doc;
 }
 
-/*
- * Reliable browser download helper.
- *
- * We deliberately use a Blob + temporary anchor
- * instead of relying only on jsPDF.save() after
- * asynchronous image/PDF generation.
- */
+/* ============================================================
+   DOWNLOAD HELPER
+   ============================================================ */
+
 function downloadPdfBlob(
   doc: jsPDF,
   fileName: string
-) {
+): void {
   const blob =
     doc.output(
       "blob"
@@ -1004,6 +1420,10 @@ function downloadPdfBlob(
   );
 }
 
+/* ============================================================
+   DOWNLOAD QUOTATION
+   ============================================================ */
+
 export async function downloadQuotationPdf(
   quotation: Quotation,
   options?: QuotationPdfOptions
@@ -1020,15 +1440,10 @@ export async function downloadQuotationPdf(
   );
 }
 
-/*
- * IMPORTANT:
- *
- * Opening the blank tab happens BEFORE any await.
- *
- * This preserves the original browser user gesture
- * and prevents Chrome from treating the completed
- * PDF preview as an unsolicited popup.
- */
+/* ============================================================
+   PREVIEW QUOTATION
+   ============================================================ */
+
 export async function previewQuotationPdf(
   quotation: Quotation,
   options?: QuotationPdfOptions
@@ -1039,15 +1454,14 @@ export async function previewQuotationPdf(
       "_blank"
     );
 
-  if (!previewWindow) {
+  if (
+    !previewWindow
+  ) {
     throw new Error(
       "The PDF preview was blocked by the browser. Please allow pop-ups for localhost and try again."
     );
   }
 
-  /*
-   * Give immediate feedback while the PDF builds.
-   */
   try {
     previewWindow.document.title =
       "Generating Quotation...";
@@ -1086,10 +1500,6 @@ export async function previewQuotationPdf(
         blob
       );
 
-    /*
-     * Navigate the already-authorized browser tab
-     * to the generated PDF.
-     */
     previewWindow.location.href =
       url;
 
@@ -1101,7 +1511,9 @@ export async function previewQuotationPdf(
       },
       60_000
     );
-  } catch (error) {
+  } catch (
+    error
+  ) {
     previewWindow.close();
 
     throw error;

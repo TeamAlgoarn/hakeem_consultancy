@@ -3117,713 +3117,600 @@ const money = (n: number) => n.toLocaleString("en-IN");
 
 
 async function generateInvoicePDF(i: Invoice) {
+  const doc = new jsPDF({
+    unit: "mm",
+    format: "a4",
+    orientation: "portrait",
+  });
 
+  const W = 210;
+  const H = 297;
 
-
-  const doc = new jsPDF({ unit: "mm", format: "a4" });
-
-
-
-  const W = 210, H = 297;
-
-
-
-  const L = 18, R = W - 18; // page margins
-
-
-
-
-
-
+  const L = 16;
+  const R = 194;
 
   type RGB = [number, number, number];
 
-
-
   const BLACK: RGB = [20, 20, 20];
-
-
-
-  const GREY:  RGB = [145, 145, 145]; // faint label grey
-
-
-
-  const setRGB = (c: RGB) => doc.setTextColor(c[0], c[1], c[2]);
-
-
-
-
-
-
-
-
-
-
-
-// const logoPng = await loadAsPngDataUrl("/logo.png");
-
-
-
-const logoGif = await loadAsPngDataUrl("/Studyvisummp4logo%20(1)%20(1).gif");
-
-
-
-
-
-
-
-// Right alignment
-
-
-
-const logoY = 27;
-
-
-
-const logoW = 82;          // adjust ±2 if you want it a bit bigger/smaller
-
-
-
-const logoH = 18;
-
-
-
-const logoX = R - logoW;   // <— right aligned to the margin
-
-
-
-
-
-
-
-// if (logoPng) {
-
-
-
-//   doc.addImage(logoPng, "PNG", logoX, logoY, logoW, logoH);
-
-
-
-// } else if (logoGif) {
-
-
-
-//   doc.addImage(logoGif, "PNG", logoX, logoY, logoW, logoH);
-
-
-
-// } else {
-
-
-
-//   // fallback text placed at the right
-
-
-
-//   doc.setFont("times", "bold");
-
-
-
-//   doc.setFontSize(24);
-
-
-
-//   doc.setTextColor(20,20,20);
-
-
-
-//   doc.text("STUDYVISUM", R, logoY + 12, { align: "right" });
-
-
-
-// }
-
-
-
-doc.setFont("helvetica", "bold");
-
-
-
-doc.setFontSize(18);
-
-
-
-doc.setTextColor(20, 20, 20);
-
-
-
-doc.text("Hakeem Consultancy Services", R, logoY + 12, { align: "right" });
-
-
-
-// Hairline UNDER the logo (spans across the page like your screenshot)
-
-
-
-const underlineY = logoY + logoH + 4.5;
-
-
-
-doc.setDrawColor(35);
-
-
-
-doc.setLineWidth(0.8);
-
-
-
-doc.line(L, underlineY, R, underlineY);
-
-
-
-
-
-
-
-  /* ── INVOICE heading (left) ── */
-
-
-
-  const invTop = underlineY + 12.5; // generous whitespace
-
-
+  const DARK_GREY: RGB = [70, 70, 70];
+  const GREY: RGB = [145, 145, 145];
+  const LIGHT_GREY: RGB = [200, 200, 200];
+
+  const setRGB = (c: RGB) => {
+    doc.setTextColor(c[0], c[1], c[2]);
+  };
+
+  const formatInvoiceDate = (value?: string) => {
+    if (!value) return "";
+
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return value;
+    }
+
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const yyyy = date.getFullYear();
+
+    return `${dd}/${mm}/${yyyy}`;
+  };
+
+  const money = (value: number) => {
+    const safeValue = Number.isFinite(value) ? value : 0;
+
+    return safeValue.toLocaleString("en-IN", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+  };
+
+  /* ============================================================
+     HEADER
+     ============================================================ */
+
+  doc.setFont("times", "bold");
+  doc.setFontSize(15);
+  setRGB(BLACK);
+
+  doc.text(
+    "Hakeem Consultancy Services Private Limited",
+    R,
+    30,
+    {
+      align: "right",
+    }
+  );
+
+  doc.setFont("times", "normal");
+  doc.setFontSize(10.5);
+
+  doc.text(
+    'Operating under the brand “StudyVisum”',
+    R,
+    36.5,
+    {
+      align: "right",
+    }
+  );
+
+  doc.setDrawColor(20, 20, 20);
+  doc.setLineWidth(0.7);
+
+  doc.line(
+    L,
+    43,
+    R,
+    43
+  );
+
+  /* ============================================================
+     INVOICE TITLE
+     ============================================================ */
 
   doc.setFont("helvetica", "bold");
+  doc.setFontSize(17);
+  setRGB(DARK_GREY);
 
+  doc.text(
+    "INVOICE",
+    L,
+    55
+  );
 
+  /* ============================================================
+     ISSUED TO + META
+     ============================================================ */
 
-  doc.setFontSize(18);              // larger like the screenshot
+  const infoY = 76;
 
-
-
-  setRGB([70, 70, 70]);
-
-
-
-  doc.text("INVOICE", L, invTop);
-
-
-
-
-
-
-
-  /* ── Meta (right): INVOICE NO / DATE ── */
-
-
-
-  const metaY = invTop + 22;        // breathing room like the reference
-
-
-
-  doc.setFont("helvetica", "normal");
-
-
-
-  doc.setFontSize(9.3);
-
-
-
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
   setRGB(GREY);
 
-
-
-  doc.text("INVOICE NO:", R - 54, metaY);
-
-
-
-  doc.text("DATE:",       R - 54, metaY + 6);
-
-
-
-  setRGB(BLACK);
-
-
-
-  doc.text(i.id,                            R, metaY,     { align: "right" });
-
-
-
-  doc.text(formatDateDDMMYYYY(i.createdAt), R, metaY + 6, { align: "right" });
-
-
-
-
-
-
-
-  /* ── ISSUED TO (left) ── */
-
-
+  doc.text(
+    "ISSUED TO:",
+    L,
+    infoY
+  );
 
   doc.setFont("helvetica", "bold");
-
-
-
-  doc.setFontSize(9.3);
-
-
-
-  setRGB(GREY);
-
-
-
-  doc.text("ISSUED TO:", L, metaY);
-
-
-
+  doc.setFontSize(10.5);
   setRGB(BLACK);
 
+  doc.text(
+    i.name || "—",
+    L,
+    infoY + 7
+  );
 
-
-  doc.setFont("helvetica", "bold");
-
-
-
-  doc.setFontSize(12);
-
-
-
-  doc.text(i.name || "—", L, metaY + 7);
-
-
+  let clientY = infoY + 13;
 
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  setRGB(DARK_GREY);
 
+  if (i.phone) {
+    doc.text(
+      i.phone,
+      L,
+      clientY
+    );
 
+    clientY += 5;
+  }
 
-  doc.setFontSize(9.3);
+  if (i.email) {
+    doc.text(
+      i.email,
+      L,
+      clientY
+    );
 
+    clientY += 5;
+  }
 
+  const metaLabelX = 138;
 
-  if (i.phone) { setRGB(GREY); doc.text(i.phone, L, metaY + 13); }
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  setRGB(GREY);
 
+  doc.text(
+    "INVOICE NO:",
+    metaLabelX,
+    infoY
+  );
 
+  doc.text(
+    "DATE:",
+    metaLabelX,
+    infoY + 6
+  );
 
-  if (i.email) { setRGB(GREY); doc.text(i.email, L, metaY + 19); }
-
-
-
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
   setRGB(BLACK);
 
+  doc.text(
+    i.id,
+    R,
+    infoY,
+    {
+      align: "right",
+    }
+  );
 
+  doc.text(
+    formatInvoiceDate(i.createdAt),
+    R,
+    infoY + 6,
+    {
+      align: "right",
+    }
+  );
 
+  /* ============================================================
+     TABLE HEADER
+     ============================================================ */
 
+  const tableTop = 101;
 
+  doc.setDrawColor(45, 45, 45);
+  doc.setLineWidth(0.28);
 
+  doc.line(
+    L,
+    tableTop,
+    R,
+    tableTop
+  );
 
-  /* ── Table header: DESCRIPTION · RATE · QTY · TOTAL ── */
-
-
-
-  const tY = metaY + 29;
-
-
-
-  doc.setDrawColor(65); doc.setLineWidth(0.25);
-
-
-
-  doc.line(L, tY - 9, R, tY - 9);   // hairline above header
-
-
-
-
-
-
-
-  const col = {
-
-
-
-    desc: L,
-
-
-
-    rate: R - 58,
-
-
-
-    qty:  R - 32,
-
-
-
-    total:R
-
-
-
-  } as const;
-
-
-
-
-
-
+  const columns = {
+    description: L,
+    rate: 132,
+    qty: 160,
+    total: R,
+  };
 
   doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
+  setRGB(BLACK);
 
+  const tableHeaderY = tableTop + 6;
 
+  doc.text(
+    "DESCRIPTION",
+    columns.description,
+    tableHeaderY
+  );
 
-  doc.setFontSize(9.3);
+  doc.text(
+    "RATE",
+    columns.rate,
+    tableHeaderY,
+    {
+      align: "right",
+    }
+  );
 
+  doc.text(
+    "QTY",
+    columns.qty,
+    tableHeaderY,
+    {
+      align: "right",
+    }
+  );
 
+  doc.text(
+    "TOTAL",
+    columns.total,
+    tableHeaderY,
+    {
+      align: "right",
+    }
+  );
 
-  setRGB([60,60,60]);
+  doc.setLineWidth(0.25);
 
+  doc.line(
+    L,
+    tableTop + 9,
+    R,
+    tableTop + 9
+  );
 
+  /* ============================================================
+     INVOICE ITEM
+     ============================================================ */
 
-  doc.text("DESCRIPTION", col.desc, tY - 3);
-
-
-
-  doc.text("RATE",        col.rate, tY - 3, { align: "right" });
-
-
-
-  doc.text("QTY",         col.qty,  tY - 3, { align: "right" });
-
-
-
-  doc.text("TOTAL",       col.total,tY - 3, { align: "right" });
-
-
-
-
-
-
-
-  doc.line(L, tY - 1.6, R, tY - 1.6); // hairline under header
-
-
-
-
-
-
-
-  /* ── Row ── */
-
-
-
-  const rowY = tY + 7.2;
-
-
+  const rowY = tableTop + 18;
 
   const qty = 1;
+  const rate = Number(i.amount) || 0;
+  const total = qty * rate;
 
+  const description =
+    i.course?.trim() || "Course Fee";
 
-
-  const rate = i.amount;
-
-
-
-
-
-
+  const descriptionLines =
+    doc.splitTextToSize(
+      description,
+      85
+    ) as string[];
 
   doc.setFont("helvetica", "normal");
-
-
-
-  doc.setFontSize(10.8);
-
-
-
+  doc.setFontSize(8.8);
   setRGB(BLACK);
 
+  doc.text(
+    descriptionLines,
+    columns.description,
+    rowY
+  );
 
+  doc.text(
+    money(rate),
+    columns.rate,
+    rowY,
+    {
+      align: "right",
+    }
+  );
 
-  doc.text(i.course?.trim() || "Course Fee", col.desc, rowY);
-
-
-
-  doc.text(money(rate),                      col.rate, rowY, { align: "right" });
-
-
-
-  doc.text(String(qty),                      col.qty,  rowY, { align: "right" });
-
-
+  doc.text(
+    String(qty),
+    columns.qty,
+    rowY,
+    {
+      align: "right",
+    }
+  );
 
   doc.setFont("helvetica", "bold");
 
+  doc.text(
+    money(total),
+    columns.total,
+    rowY,
+    {
+      align: "right",
+    }
+  );
 
+  /* ============================================================
+     TOTALS
+     ============================================================ */
 
-  doc.text(money(qty * rate),                col.total,rowY, { align: "right" });
-
-
-
-
-
-
-
-  /* ── Totals (right) ── */
-
-
-
-  const boxTop = rowY + 26;
-
-
-
-  const labelX = R - 38;
-
-
-
-  const valueX = R;
-
-
-
-
-
-
+  const totalsY = 144;
+  const totalsLabelX = 152;
 
   doc.setFont("helvetica", "normal");
-
-
-
-  doc.setFontSize(9.6);
-
-
-
+  doc.setFontSize(9);
   setRGB(GREY);
 
+  doc.text(
+    "SUBTOTAL",
+    totalsLabelX,
+    totalsY
+  );
 
-
-  doc.text("SUBTOTAL", labelX, boxTop);
-
-
-
-  doc.text("Tax",      labelX, boxTop + 6);
-
-
+  doc.text(
+    "Tax",
+    totalsLabelX,
+    totalsY + 7
+  );
 
   setRGB(BLACK);
 
-
-
-
-
-
-
-  const sub = rate;
-
-
+  doc.text(
+    money(rate),
+    R,
+    totalsY,
+    {
+      align: "right",
+    }
+  );
 
   const tax = 0;
 
+  doc.text(
+    money(tax),
+    R,
+    totalsY + 7,
+    {
+      align: "right",
+    }
+  );
 
+  const totalLineY = totalsY + 15;
 
-  const grand = sub + tax;
+  doc.setDrawColor(20, 20, 20);
+  doc.setLineWidth(0.75);
 
-
-
-
-
-
-
-  doc.text(money(sub), valueX, boxTop,     { align: "right" });
-
-
-
-  doc.text(money(tax), valueX, boxTop + 6, { align: "right" });
-
-
-
-
-
-
-
-  // short bold rule before TOTAL (short & subtle)
-
-
-
-  const barY = boxTop + 14.2;
-
-
-
-  doc.setDrawColor(25); doc.setLineWidth(0.7);
-
-
-
-  doc.line(R - 64, barY, R, barY);
-
-
-
-
-
-
+  doc.line(
+    127,
+    totalLineY,
+    R,
+    totalLineY
+  );
 
   doc.setFont("helvetica", "bold");
+  doc.setFontSize(10.5);
+  setRGB(BLACK);
 
+  doc.text(
+    "TOTAL",
+    totalsLabelX,
+    totalLineY + 8
+  );
 
+  doc.text(
+    money(total + tax),
+    R,
+    totalLineY + 8,
+    {
+      align: "right",
+    }
+  );
 
-  doc.setFontSize(11.5);
+  /* ============================================================
+     PAYMENT INFO
+     ============================================================ */
 
-
-
-  doc.text("TOTAL", labelX, barY + 7);
-
-
-
-  doc.text(money(grand), valueX, barY + 7, { align: "right" });
-
-
-
-
-
-
-
-  /* ── Payment info (left) ── */
-
-
-
-  const payY = H - 56;
-
-
+  const paymentY = 239;
 
   doc.setFont("helvetica", "bold");
-
-
-
-  doc.setFontSize(9.6);
-
-
-
-  doc.text("PAYMENT INFO:", L, payY);
-
-
-
-
-
-
-
-  doc.setFont("helvetica", "normal");
-
-
-
-  doc.setFontSize(9.3);
-
-
-
-  const paymentLines = [
-
-
-
-    // "UPI: studyvisum@upi  ·  Ref: " + i.id,
-
-
-
-    // "UPI: hakeemconsultancy@upi  ·  Ref: " + i.id,
-
-
-
-    "Email: info@studyvisum.com  ·  Phone: +91 9704879361",
-
-
-
-    "Address: Flat No. 301 A Block, Okaz Complex Opp. Pillar No. 5, Mehdipatnam Hyderabad, India 500028"
-
-
-
-  ];
-
-
-
-  let yy = payY + 6;
-
-
-
-  paymentLines.forEach(line => { doc.text(line, L, yy); yy += 5.1; });
-
-
-
-
-
-
-
-  // bottom hairline
-
-
-
-  doc.setDrawColor(210); doc.setLineWidth(0.3);
-
-
-
-  doc.line(L, H - 18, R, H - 18);
-
-
-
-  /* ── Payment info (left) ── */
-
-
-
-
-
-
-
-
-
-
-
-  /* ── Status tag (show only when PAID) ── */
-
-
-
-  if (i.status === "PAID") {
-
-
-
-    const pillY = metaY + 11.2;
-
-
-
-    doc.setFont("helvetica", "bold");
-
-
-
-    doc.setFontSize(9.3);
-
-
-
-
-
-
-
-    const statusColor: RGB = [0, 130, 60]; // green for PAID
-
-
-
-    setRGB(statusColor);
-
-
-
-    doc.text("PAID", R, pillY, { align: "right" });
-
-
-
-
-
-
-
-    setRGB(BLACK); // reset text color
-
-
-
+  doc.setFontSize(9.2);
+  setRGB(BLACK);
+
+  doc.text(
+    "PAYMENT INFO:",
+    L,
+    paymentY
+  );
+
+  /* Address */
+  doc.setFont("times", "normal");
+  doc.setFontSize(8.3);
+  setRGB(BLACK);
+
+  doc.text(
+    "#301 A Block, Okaz Complex, Mehdipatnam, Hyderabad, India – 500028",
+    L,
+    paymentY + 7
+  );
+
+  /*
+   * Solid black footer icons.
+   * These are intentionally filled rather than outline icons
+   * so they match the supplied reference more closely.
+   */
+
+  const emailSvg = `
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="64"
+         height="64"
+         viewBox="0 0 24 24">
+      <rect
+        x="2"
+        y="4"
+        width="20"
+        height="16"
+        rx="2"
+        fill="#000000"
+      />
+      <path
+        d="M3.5 6L12 12.5L20.5 6"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  `;
+
+  const phoneSvg = `
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="64"
+         height="64"
+         viewBox="0 0 24 24">
+      <path
+        fill="#000000"
+        d="M6.6 2.5c.6-.2 1.2.1 1.5.7l2.1 4.7c.2.5.1 1-.3 1.4l-1.7 1.6c1.2 2.5 3.3 4.6 5.8 5.8l1.6-1.7c.4-.4.9-.5 1.4-.3l4.7 2.1c.6.3.9.9.7 1.5l-.8 3c-.2.7-.8 1.2-1.6 1.2C10.2 22.5 1.5 13.8 1.5 4c0-.8.5-1.4 1.2-1.6l3.9-.9z"
+      />
+    </svg>
+  `;
+
+  const emailIcon =
+    await loadAsPngDataUrl(
+      "data:image/svg+xml;utf8," +
+        encodeURIComponent(emailSvg)
+    );
+
+  const phoneIcon =
+    await loadAsPngDataUrl(
+      "data:image/svg+xml;utf8," +
+        encodeURIComponent(phoneSvg)
+    );
+
+  const contactY =
+    paymentY + 14;
+
+  /*
+   * Slightly larger than before.
+   */
+  const emailIconSize = 4.6;
+  const phoneIconSize = 4.8;
+
+  /*
+   * EMAIL
+   */
+  if (emailIcon) {
+    doc.addImage(
+      emailIcon,
+      "PNG",
+      L,
+      contactY - 3.8,
+      emailIconSize,
+      emailIconSize
+    );
   }
 
+  doc.setFont(
+    "times",
+    "normal"
+  );
 
+  doc.setFontSize(
+    8.3
+  );
 
+  setRGB(BLACK);
 
+  const emailText =
+    "info@studyvisum.com";
 
+  const emailTextX =
+    L + 5.8;
 
+  doc.text(
+    emailText,
+    emailTextX,
+    contactY
+  );
 
-  doc.save(`Invoice-${i.id}.pdf`);
+  /*
+   * PHONE
+   *
+   * The phone icon is positioned from the actual rendered
+   * width of the email so the two blocks stay naturally close.
+   */
+  const emailWidth =
+    doc.getTextWidth(
+      emailText
+    );
 
+  /*
+   * Only ~3 mm between email text and phone icon.
+   */
+  const gapBetweenContacts =
+    3.2;
 
+  const phoneIconX =
+    emailTextX +
+    emailWidth +
+    gapBetweenContacts;
 
+  if (phoneIcon) {
+    doc.addImage(
+      phoneIcon,
+      "PNG",
+      phoneIconX,
+      contactY - 4,
+      phoneIconSize,
+      phoneIconSize
+    );
+  }
+
+  const phoneTextX =
+    phoneIconX + 5.8;
+
+  doc.text(
+    "Phone: +91 9704879361",
+    phoneTextX,
+    contactY
+  );
+
+  /* ============================================================
+     BOTTOM RULE
+     ============================================================ */
+
+  doc.setDrawColor(
+    ...LIGHT_GREY
+  );
+
+  doc.setLineWidth(
+    0.25
+  );
+
+  doc.line(
+    L,
+    276,
+    R,
+    276
+  );
+
+  /* ============================================================
+     SAVE
+     ============================================================ */
+
+  doc.save(
+    `Invoice-${i.id}.pdf`
+  );
 }
-
-
-
 
 
 
