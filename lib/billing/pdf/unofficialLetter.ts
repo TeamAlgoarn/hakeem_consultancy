@@ -722,15 +722,7 @@ export async function buildUnofficialLetterPdf(
 
 
 
-  doc.text(
 
-    "UNOFFICIAL",
-
-    CONTENT_LEFT,
-
-    y
-
-  );
 
 
 
